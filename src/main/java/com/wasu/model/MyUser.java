@@ -16,6 +16,8 @@ public class MyUser {
 
     private Date modDate;
 
+    private String mobile;
+
     public BigDecimal getId() {
         return id;
     }
@@ -62,5 +64,13 @@ public class MyUser {
 
     public void setModDate(Date modDate) {
         this.modDate = modDate;
+    }
+
+    public String getMobile() {
+        return mobile;
+    }
+
+    public void setMobile(String mobile) {
+        this.mobile = mobile == null ? null : mobile.trim();
     }
 }
