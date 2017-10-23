@@ -4,8 +4,7 @@
         "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
 
 <generatorConfiguration>
-    <classPathEntry
-            location="C:/Oracle/Middleware/wlserver_10.3/server/lib/ojdbc6.jar"/>
+    <classPathEntry location="D:/java/workapsce_idea/Treasure/src/main/java/com/wasu/lib/ojdbc14.jar"/>
     <context id="my" targetRuntime="MyBatis3">
         <commentGenerator>
             <property name="suppressDate" value="false"/>
@@ -13,8 +12,8 @@
         </commentGenerator>
 
         <jdbcConnection driverClass="oracle.jdbc.driver.OracleDriver"
-                        connectionURL="jdbc:oracle:thin:@172.20.16.***:1521:CARGO" userId="***"
-                        password="***"/>
+                        connectionURL="jdbc:oracle:thin:@127.0.0.1:1521:ORCL" userId="system"
+                        password="123456"/>
 
         <javaModelGenerator targetPackage="com.wasu.model"
                             targetProject="src/main/java">
@@ -37,10 +36,10 @@
                enableDeleteByExample="false" enableSelectByExample="false"
                selectByExampleQueryId="false"/>-->
 
-        <table tableName="CTAS_FEE_BASE" domainObjectName="FeeBase"
-               enableCountByExample="false" enableUpdateByExample="false"
-               enableDeleteByExample="false" enableSelectByExample="false"
-               selectByExampleQueryId="false">
+        <table tableName="my_user1" domainObjectName="MyUser">
+               <!--enableCountByExample="false" enableUpdateByExample="false"-->
+               <!--enableDeleteByExample="false" enableSelectByExample="false"-->
+               <!--selectByExampleQueryId="false">-->
             <!--<columnRenamingRule searchString="^D_"
                                 replaceString=""/>-->
         </table>
