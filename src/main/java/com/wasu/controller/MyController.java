@@ -23,9 +23,11 @@ public class MyController {
 
     @RequestMapping(value = "/test")
     public Object getAlarm(Model model) throws Exception {
+        logger.info("进入test接口-----------------");
 //		Response responses=badiduYunUtils.createGeotable("geotable");
         List<MyUser> res=userService.getAll();
         model.addAttribute("result", "first name"+res.size());
+        model.addAttribute("data",res);
 //        callService.findCall();
 //		System.out.println("message"+responses.getMessage()+"id"+responses.getId());
         return "test";
