@@ -1,0 +1,465 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.wasu.dao.AssertMapper" >
+  <resultMap id="BaseResultMap" type="com.wasu.model.Assert" >
+    <id column="ASSETCODE" property="assetcode" jdbcType="VARCHAR" />
+    <result column="ID" property="id" jdbcType="DECIMAL" />
+    <result column="ASSETSORTNAME" property="assetsortname" jdbcType="VARCHAR" />
+    <result column="NAME" property="name" jdbcType="VARCHAR" />
+    <result column="NORMS" property="norms" jdbcType="VARCHAR" />
+    <result column="UNIT" property="unit" jdbcType="DECIMAL" />
+    <result column="NUMBERS" property="numbers" jdbcType="DECIMAL" />
+    <result column="PRICE" property="price" jdbcType="DECIMAL" />
+    <result column="STATE" property="state" jdbcType="DECIMAL" />
+    <result column="DEPTNAME" property="deptname" jdbcType="VARCHAR" />
+    <result column="PLACE" property="place" jdbcType="VARCHAR" />
+    <result column="MANUFACTURER" property="manufacturer" jdbcType="VARCHAR" />
+    <result column="BUYDATE" property="buydate" jdbcType="DATE" />
+    <result column="PROJECTID" property="projectid" jdbcType="VARCHAR" />
+    <result column="PROJECTNAME" property="projectname" jdbcType="VARCHAR" />
+    <result column="VALID" property="valid" jdbcType="DECIMAL" />
+    <result column="REMARK" property="remark" jdbcType="VARCHAR" />
+    <result column="DETAILEDLOCATION" property="detailedlocation" jdbcType="VARCHAR" />
+    <result column="GUARANTEE" property="guarantee" jdbcType="DECIMAL" />
+    <result column="LIFEPERIODS" property="lifeperiods" jdbcType="DECIMAL" />
+    <result column="PERIODSUSED" property="periodsused" jdbcType="DECIMAL" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    ASSETCODE, ID, ASSETSORTNAME, NAME, NORMS, UNIT, NUMBERS, PRICE, STATE, DEPTNAME, 
+    PLACE, MANUFACTURER, BUYDATE, PROJECTID, PROJECTNAME, VALID, REMARK, DETAILEDLOCATION, 
+    GUARANTEE, LIFEPERIODS, PERIODSUSED
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.wasu.model.AssertExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from T_ASSERT
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from T_ASSERT
+    where ASSETCODE = #{assetcode,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from T_ASSERT
+    where ASSETCODE = #{assetcode,jdbcType=VARCHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.wasu.model.AssertExample" >
+    delete from T_ASSERT
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.wasu.model.Assert" >
+    insert into T_ASSERT (ASSETCODE, ID, ASSETSORTNAME, 
+      NAME, NORMS, UNIT, 
+      NUMBERS, PRICE, STATE, 
+      DEPTNAME, PLACE, MANUFACTURER, 
+      BUYDATE, PROJECTID, PROJECTNAME, 
+      VALID, REMARK, DETAILEDLOCATION, 
+      GUARANTEE, LIFEPERIODS, PERIODSUSED
+      )
+    values (#{assetcode,jdbcType=VARCHAR}, #{id,jdbcType=DECIMAL}, #{assetsortname,jdbcType=VARCHAR}, 
+      #{name,jdbcType=VARCHAR}, #{norms,jdbcType=VARCHAR}, #{unit,jdbcType=DECIMAL}, 
+      #{numbers,jdbcType=DECIMAL}, #{price,jdbcType=DECIMAL}, #{state,jdbcType=DECIMAL}, 
+      #{deptname,jdbcType=VARCHAR}, #{place,jdbcType=VARCHAR}, #{manufacturer,jdbcType=VARCHAR}, 
+      #{buydate,jdbcType=DATE}, #{projectid,jdbcType=VARCHAR}, #{projectname,jdbcType=VARCHAR}, 
+      #{valid,jdbcType=DECIMAL}, #{remark,jdbcType=VARCHAR}, #{detailedlocation,jdbcType=VARCHAR}, 
+      #{guarantee,jdbcType=DECIMAL}, #{lifeperiods,jdbcType=DECIMAL}, #{periodsused,jdbcType=DECIMAL}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.wasu.model.Assert" >
+    insert into T_ASSERT
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="assetcode != null" >
+        ASSETCODE,
+      </if>
+      <if test="id != null" >
+        ID,
+      </if>
+      <if test="assetsortname != null" >
+        ASSETSORTNAME,
+      </if>
+      <if test="name != null" >
+        NAME,
+      </if>
+      <if test="norms != null" >
+        NORMS,
+      </if>
+      <if test="unit != null" >
+        UNIT,
+      </if>
+      <if test="numbers != null" >
+        NUMBERS,
+      </if>
+      <if test="price != null" >
+        PRICE,
+      </if>
+      <if test="state != null" >
+        STATE,
+      </if>
+      <if test="deptname != null" >
+        DEPTNAME,
+      </if>
+      <if test="place != null" >
+        PLACE,
+      </if>
+      <if test="manufacturer != null" >
+        MANUFACTURER,
+      </if>
+      <if test="buydate != null" >
+        BUYDATE,
+      </if>
+      <if test="projectid != null" >
+        PROJECTID,
+      </if>
+      <if test="projectname != null" >
+        PROJECTNAME,
+      </if>
+      <if test="valid != null" >
+        VALID,
+      </if>
+      <if test="remark != null" >
+        REMARK,
+      </if>
+      <if test="detailedlocation != null" >
+        DETAILEDLOCATION,
+      </if>
+      <if test="guarantee != null" >
+        GUARANTEE,
+      </if>
+      <if test="lifeperiods != null" >
+        LIFEPERIODS,
+      </if>
+      <if test="periodsused != null" >
+        PERIODSUSED,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="assetcode != null" >
+        #{assetcode,jdbcType=VARCHAR},
+      </if>
+      <if test="id != null" >
+        #{id,jdbcType=DECIMAL},
+      </if>
+      <if test="assetsortname != null" >
+        #{assetsortname,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null" >
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="norms != null" >
+        #{norms,jdbcType=VARCHAR},
+      </if>
+      <if test="unit != null" >
+        #{unit,jdbcType=DECIMAL},
+      </if>
+      <if test="numbers != null" >
+        #{numbers,jdbcType=DECIMAL},
+      </if>
+      <if test="price != null" >
+        #{price,jdbcType=DECIMAL},
+      </if>
+      <if test="state != null" >
+        #{state,jdbcType=DECIMAL},
+      </if>
+      <if test="deptname != null" >
+        #{deptname,jdbcType=VARCHAR},
+      </if>
+      <if test="place != null" >
+        #{place,jdbcType=VARCHAR},
+      </if>
+      <if test="manufacturer != null" >
+        #{manufacturer,jdbcType=VARCHAR},
+      </if>
+      <if test="buydate != null" >
+        #{buydate,jdbcType=DATE},
+      </if>
+      <if test="projectid != null" >
+        #{projectid,jdbcType=VARCHAR},
+      </if>
+      <if test="projectname != null" >
+        #{projectname,jdbcType=VARCHAR},
+      </if>
+      <if test="valid != null" >
+        #{valid,jdbcType=DECIMAL},
+      </if>
+      <if test="remark != null" >
+        #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="detailedlocation != null" >
+        #{detailedlocation,jdbcType=VARCHAR},
+      </if>
+      <if test="guarantee != null" >
+        #{guarantee,jdbcType=DECIMAL},
+      </if>
+      <if test="lifeperiods != null" >
+        #{lifeperiods,jdbcType=DECIMAL},
+      </if>
+      <if test="periodsused != null" >
+        #{periodsused,jdbcType=DECIMAL},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.wasu.model.AssertExample" resultType="java.lang.Integer" >
+    select count(*) from T_ASSERT
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update T_ASSERT
+    <set >
+      <if test="record.assetcode != null" >
+        ASSETCODE = #{record.assetcode,jdbcType=VARCHAR},
+      </if>
+      <if test="record.id != null" >
+        ID = #{record.id,jdbcType=DECIMAL},
+      </if>
+      <if test="record.assetsortname != null" >
+        ASSETSORTNAME = #{record.assetsortname,jdbcType=VARCHAR},
+      </if>
+      <if test="record.name != null" >
+        NAME = #{record.name,jdbcType=VARCHAR},
+      </if>
+      <if test="record.norms != null" >
+        NORMS = #{record.norms,jdbcType=VARCHAR},
+      </if>
+      <if test="record.unit != null" >
+        UNIT = #{record.unit,jdbcType=DECIMAL},
+      </if>
+      <if test="record.numbers != null" >
+        NUMBERS = #{record.numbers,jdbcType=DECIMAL},
+      </if>
+      <if test="record.price != null" >
+        PRICE = #{record.price,jdbcType=DECIMAL},
+      </if>
+      <if test="record.state != null" >
+        STATE = #{record.state,jdbcType=DECIMAL},
+      </if>
+      <if test="record.deptname != null" >
+        DEPTNAME = #{record.deptname,jdbcType=VARCHAR},
+      </if>
+      <if test="record.place != null" >
+        PLACE = #{record.place,jdbcType=VARCHAR},
+      </if>
+      <if test="record.manufacturer != null" >
+        MANUFACTURER = #{record.manufacturer,jdbcType=VARCHAR},
+      </if>
+      <if test="record.buydate != null" >
+        BUYDATE = #{record.buydate,jdbcType=DATE},
+      </if>
+      <if test="record.projectid != null" >
+        PROJECTID = #{record.projectid,jdbcType=VARCHAR},
+      </if>
+      <if test="record.projectname != null" >
+        PROJECTNAME = #{record.projectname,jdbcType=VARCHAR},
+      </if>
+      <if test="record.valid != null" >
+        VALID = #{record.valid,jdbcType=DECIMAL},
+      </if>
+      <if test="record.remark != null" >
+        REMARK = #{record.remark,jdbcType=VARCHAR},
+      </if>
+      <if test="record.detailedlocation != null" >
+        DETAILEDLOCATION = #{record.detailedlocation,jdbcType=VARCHAR},
+      </if>
+      <if test="record.guarantee != null" >
+        GUARANTEE = #{record.guarantee,jdbcType=DECIMAL},
+      </if>
+      <if test="record.lifeperiods != null" >
+        LIFEPERIODS = #{record.lifeperiods,jdbcType=DECIMAL},
+      </if>
+      <if test="record.periodsused != null" >
+        PERIODSUSED = #{record.periodsused,jdbcType=DECIMAL},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update T_ASSERT
+    set ASSETCODE = #{record.assetcode,jdbcType=VARCHAR},
+      ID = #{record.id,jdbcType=DECIMAL},
+      ASSETSORTNAME = #{record.assetsortname,jdbcType=VARCHAR},
+      NAME = #{record.name,jdbcType=VARCHAR},
+      NORMS = #{record.norms,jdbcType=VARCHAR},
+      UNIT = #{record.unit,jdbcType=DECIMAL},
+      NUMBERS = #{record.numbers,jdbcType=DECIMAL},
+      PRICE = #{record.price,jdbcType=DECIMAL},
+      STATE = #{record.state,jdbcType=DECIMAL},
+      DEPTNAME = #{record.deptname,jdbcType=VARCHAR},
+      PLACE = #{record.place,jdbcType=VARCHAR},
+      MANUFACTURER = #{record.manufacturer,jdbcType=VARCHAR},
+      BUYDATE = #{record.buydate,jdbcType=DATE},
+      PROJECTID = #{record.projectid,jdbcType=VARCHAR},
+      PROJECTNAME = #{record.projectname,jdbcType=VARCHAR},
+      VALID = #{record.valid,jdbcType=DECIMAL},
+      REMARK = #{record.remark,jdbcType=VARCHAR},
+      DETAILEDLOCATION = #{record.detailedlocation,jdbcType=VARCHAR},
+      GUARANTEE = #{record.guarantee,jdbcType=DECIMAL},
+      LIFEPERIODS = #{record.lifeperiods,jdbcType=DECIMAL},
+      PERIODSUSED = #{record.periodsused,jdbcType=DECIMAL}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.wasu.model.Assert" >
+    update T_ASSERT
+    <set >
+      <if test="id != null" >
+        ID = #{id,jdbcType=DECIMAL},
+      </if>
+      <if test="assetsortname != null" >
+        ASSETSORTNAME = #{assetsortname,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null" >
+        NAME = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="norms != null" >
+        NORMS = #{norms,jdbcType=VARCHAR},
+      </if>
+      <if test="unit != null" >
+        UNIT = #{unit,jdbcType=DECIMAL},
+      </if>
+      <if test="numbers != null" >
+        NUMBERS = #{numbers,jdbcType=DECIMAL},
+      </if>
+      <if test="price != null" >
+        PRICE = #{price,jdbcType=DECIMAL},
+      </if>
+      <if test="state != null" >
+        STATE = #{state,jdbcType=DECIMAL},
+      </if>
+      <if test="deptname != null" >
+        DEPTNAME = #{deptname,jdbcType=VARCHAR},
+      </if>
+      <if test="place != null" >
+        PLACE = #{place,jdbcType=VARCHAR},
+      </if>
+      <if test="manufacturer != null" >
+        MANUFACTURER = #{manufacturer,jdbcType=VARCHAR},
+      </if>
+      <if test="buydate != null" >
+        BUYDATE = #{buydate,jdbcType=DATE},
+      </if>
+      <if test="projectid != null" >
+        PROJECTID = #{projectid,jdbcType=VARCHAR},
+      </if>
+      <if test="projectname != null" >
+        PROJECTNAME = #{projectname,jdbcType=VARCHAR},
+      </if>
+      <if test="valid != null" >
+        VALID = #{valid,jdbcType=DECIMAL},
+      </if>
+      <if test="remark != null" >
+        REMARK = #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="detailedlocation != null" >
+        DETAILEDLOCATION = #{detailedlocation,jdbcType=VARCHAR},
+      </if>
+      <if test="guarantee != null" >
+        GUARANTEE = #{guarantee,jdbcType=DECIMAL},
+      </if>
+      <if test="lifeperiods != null" >
+        LIFEPERIODS = #{lifeperiods,jdbcType=DECIMAL},
+      </if>
+      <if test="periodsused != null" >
+        PERIODSUSED = #{periodsused,jdbcType=DECIMAL},
+      </if>
+    </set>
+    where ASSETCODE = #{assetcode,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.wasu.model.Assert" >
+    update T_ASSERT
+    set ID = #{id,jdbcType=DECIMAL},
+      ASSETSORTNAME = #{assetsortname,jdbcType=VARCHAR},
+      NAME = #{name,jdbcType=VARCHAR},
+      NORMS = #{norms,jdbcType=VARCHAR},
+      UNIT = #{unit,jdbcType=DECIMAL},
+      NUMBERS = #{numbers,jdbcType=DECIMAL},
+      PRICE = #{price,jdbcType=DECIMAL},
+      STATE = #{state,jdbcType=DECIMAL},
+      DEPTNAME = #{deptname,jdbcType=VARCHAR},
+      PLACE = #{place,jdbcType=VARCHAR},
+      MANUFACTURER = #{manufacturer,jdbcType=VARCHAR},
+      BUYDATE = #{buydate,jdbcType=DATE},
+      PROJECTID = #{projectid,jdbcType=VARCHAR},
+      PROJECTNAME = #{projectname,jdbcType=VARCHAR},
+      VALID = #{valid,jdbcType=DECIMAL},
+      REMARK = #{remark,jdbcType=VARCHAR},
+      DETAILEDLOCATION = #{detailedlocation,jdbcType=VARCHAR},
+      GUARANTEE = #{guarantee,jdbcType=DECIMAL},
+      LIFEPERIODS = #{lifeperiods,jdbcType=DECIMAL},
+      PERIODSUSED = #{periodsused,jdbcType=DECIMAL}
+    where ASSETCODE = #{assetcode,jdbcType=VARCHAR}
+  </update>
+</mapper>

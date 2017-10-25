@@ -6,7 +6,7 @@ import java.util.Date;
 public class Assert {
     private String assetcode;
 
-    private String id;
+    private BigDecimal id;
 
     private String assetsortname;
 
@@ -54,12 +54,12 @@ public class Assert {
         this.assetcode = assetcode == null ? null : assetcode.trim();
     }
 
-    public String getId() {
+    public BigDecimal getId() {
         return id;
     }
 
-    public void setId(String id) {
-        this.id = id == null ? null : id.trim();
+    public void setId(BigDecimal id) {
+        this.id = id;
     }
 
     public String getAssetsortname() {
