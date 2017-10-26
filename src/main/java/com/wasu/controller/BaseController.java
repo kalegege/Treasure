@@ -26,9 +26,9 @@ public class BaseController {
     public Object getAlarm(Model model, String userId, String passwd) throws Exception {
         logger.info("进入test接口-----------------userId=" + userId + "passwd=" + passwd);
 //		Response responses=badiduYunUtils.createGeotable("geotable");
-        List<Assert> result = MyUtils.readExcel();
-        int num = assertService.insert(result);
-        model.addAttribute("result", "first name" + num);
+//        List<Assert> result = MyUtils.readExcel();
+//        int num = assertService.insert(result);
+        model.addAttribute("result", "first name" );
 //        callService.findCall();
 //		System.out.println("message"+responses.getMessage()+"id"+responses.getId());
         return "index";

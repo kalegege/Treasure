@@ -20,15 +20,16 @@ import java.util.logging.Logger;
 public class MyUtils {
     private static Logger logger = Logger.getLogger(MyUtils.class.getName());
 
-    public static void main(String[] args) {
 
-    }
-
+    /**
+     * 读取excel
+     * @return
+     */
     public static List<Assert> readExcel() {
         List<Assert> result = new ArrayList<>();
         boolean isE2007 = false;
-//        String fileName="D:\\work\\assert.xlsx";
-        String fileName = "/Users/kale/test/assert.xlsx";
+        String fileName="D:\\work\\assert.xlsx";
+//        String fileName = "/Users/kale/test/assert.xlsx";
         if (fileName.endsWith(".xlsx"))
             isE2007 = true;
         try {

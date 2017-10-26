@@ -54,9 +54,39 @@
     <mvc:default-servlet-handler />
     <!---->
     <mvc:annotation-driven />
-    <mvc:resources location="WEB-INF/image/" mapping="/image/**"/>
-    <mvc:resources location="WEB-INF/css/" mapping="/css/**"/>
-    <mvc:resources location="WEB-INF/js/" mapping="/js/**"/>
+
+    <!--<mvc:resources location="WEB-INF/image/" mapping="/image/**"/>-->
+    <!--<mvc:resources location="WEB-INF/css/" mapping="/css/**"/>-->
+    <!--<mvc:resources location="WEB-INF/js/" mapping="/js/**"/>-->
     <!--<mvc:resources location="WEB-INF/font/" mapping="/font/**"/>-->
+    <mvc:interceptors>
+        <mvc:interceptor>
+            <mvc:mapping path="/**"/>
+
+            <mvc:exclude-mapping path="/**/*.js"/>
+            <mvc:exclude-mapping path="/**/*.css"/>
+            <mvc:exclude-mapping path="/**/*.png"/>
+            <mvc:exclude-mapping path="/**/*.gif"/>
+            <mvc:exclude-mapping path="/**/*.woff"/>
+            <mvc:exclude-mapping path="/**/*.jsp"/>
+            <mvc:exclude-mapping path="/dingdinglogin/index"/>
+            <mvc:exclude-mapping path="/dingdinglogin/userInfo"/>
+            <mvc:exclude-mapping path="/dingdinglogin/session"/>
+            <mvc:exclude-mapping path="/dingdinglogin/test"/>
+
+            <bean class="com.wasu.interceptor.SSOInterceptor">
+                <property name="allowUrls">
+                    <list>
+                        <value>login</value>
+                        <value>.jpg</value>
+                        <value>/dingdinglogin/index</value>
+                        <value>/dingdinglogin/userInfo</value>
+                        <value>/dingdinglogin/session</value>
+                        <value>/dingdinglogin/test</value>
+                    </list>
+                </property>
+            </bean>
+        </mvc:interceptor>
+    </mvc:interceptors>
 
 </beans>

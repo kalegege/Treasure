@@ -14,7 +14,7 @@ import java.util.List;
  * Created by kale on 2017/10/23.
  */
 @Controller
-@RequestMapping("/treasure")
+//@RequestMapping("/treasure")
 public class MyController {
     private static Logger logger = Logger.getLogger(MyController.class.getName());
 

@@ -6,6 +6,8 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<c:set var="ctx" value="${pageContext.request.contextPath}"/>
 <%
     String path = request.getContextPath();
     String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + path + "/";
@@ -14,26 +16,26 @@
 <head>
     <title>Title</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/ace/bootstrap.min.css" type="text/css"/>
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/ace/font-awesome.min.css" type="text/css"/>
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/ace/ace.min.css" type="text/css"/>
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/ace/ace-rtl.min.css" type="text/css"/>
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/ace/ace-skins.min.css" type="text/css"/>
+    <link rel="stylesheet" href="${ctx}/css/ace/bootstrap.min.css" type="text/css"/>
+    <link rel="stylesheet" href="${ctx}/css/ace/font-awesome.min.css" type="text/css"/>
+    <link rel="stylesheet" href="${ctx}/css/ace/ace.min.css" type="text/css"/>
+    <link rel="stylesheet" href="${ctx}/css/ace/ace-rtl.min.css" type="text/css"/>
+    <link rel="stylesheet" href="${ctx}/css/ace/ace-skins.min.css" type="text/css"/>
 
-    <script type="text/javascript" src="${pageContext.request.contextPath}/js/ace-extra.min.js"></script>
-    <script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-2.0.3.min.js"></script>
-    <script type="text/javascript" src="${pageContext.request.contextPath}/js/bootstrap.min.js"></script>
-    <script type="text/javascript" src="${pageContext.request.contextPath}/js/typeahead-bs2.min.js"></script>
-    <script type="text/javascript" src="${pageContext.request.contextPath}/js/ace-elements.min.js"></script>
-    <script type="text/javascript" src="${pageContext.request.contextPath}/js/ace.min.js"></script>
-    <script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-ui-1.10.3.custom.min.js"></script>
-    <script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery.ui.touch-punch.min.js"></script>
-    <script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery.slimscroll.min.js"></script>
-    <script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery.easy-pie-chart.min.js"></script>
-    <script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery.sparkline.min.js"></script>
-    <script type="text/javascript" src="${pageContext.request.contextPath}/js/flot/jquery.flot.min.js"></script>
-    <script type="text/javascript" src="${pageContext.request.contextPath}/js/flot/jquery.flot.pie.min.js"></script>
-    <script type="text/javascript" src="${pageContext.request.contextPath}/js/flot/jquery.flot.resize.min.js"></script>
+    <script type="text/javascript" src="${ctx}/js/ace-extra.min.js"></script>
+    <script type="text/javascript" src="${ctx}/js/jquery-2.0.3.min.js"></script>
+    <script type="text/javascript" src="${ctx}/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="${ctx}/js/typeahead-bs2.min.js"></script>
+    <script type="text/javascript" src="${ctx}/js/ace-elements.min.js"></script>
+    <script type="text/javascript" src="${ctx}/js/ace.min.js"></script>
+    <script type="text/javascript" src="${ctx}/js/jquery-ui-1.10.3.custom.min.js"></script>
+    <script type="text/javascript" src="${ctx}/js/jquery.ui.touch-punch.min.js"></script>
+    <script type="text/javascript" src="${ctx}/js/jquery.slimscroll.min.js"></script>
+    <script type="text/javascript" src="${ctx}/js/jquery.easy-pie-chart.min.js"></script>
+    <script type="text/javascript" src="${ctx}/js/jquery.sparkline.min.js"></script>
+    <script type="text/javascript" src="${ctx}/js/flot/jquery.flot.min.js"></script>
+    <script type="text/javascript" src="${ctx}/js/flot/jquery.flot.pie.min.js"></script>
+    <script type="text/javascript" src="${ctx}/js/flot/jquery.flot.resize.min.js"></script>
 
 </head>
 <body>
