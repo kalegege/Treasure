@@ -1,12 +1,12 @@
 package com.wasu.dingding;
 
+import com.dingtalk.open.client.api.model.corp.CorpUserDetailList;
 import com.wasu.utils.FileUtils;
 import com.wasu.utils.HttpHelper;
 import com.alibaba.fastjson.JSONObject;
 import com.dingtalk.open.client.ServiceFactory;
 import com.dingtalk.open.client.api.model.corp.CorpUserBaseInfo;
 import com.dingtalk.open.client.api.model.corp.CorpUserDetail;
-import com.dingtalk.open.client.api.model.corp.CorpUserDetailList;
 import com.dingtalk.open.client.api.model.corp.CorpUserList;
 import com.dingtalk.open.client.api.service.corp.CorpUserService;
 
