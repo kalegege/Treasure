@@ -24,21 +24,20 @@ dd.ready(function() {
 		onSuccess : function(info) {
 //			alert('authcode: ' + info.code);
 			$.ajax({
-				url : 'userInfo',
+				url : '/dingdinglogin/userInfo',
 				type : 'GET',
 				data:{
 					"corpId":corpId,
 					"code":info.code
 				},
 				success : function(data, status, xhr) {
-				    // alert(data);
+				    alert(data);
 					var info = JSON.parse(data);
-					if(info.isok == '1'){
-						//正确跳转首页
-						window.location.href=url_page+"/html/dingdingcache.jsp";
-					}else{
-                        window.location.href=url_page+"/html/error/error.jsp";
-					}
+					// if(info.isok == '1'){
+					// 	window.location.href=url_page+"/html/dingdingcache.jsp";
+					// }else{
+                     //    window.location.href=url_page+"/html/error/error.jsp";
+					// }
 
 				},
 				error : function(xhr, errorType, error) {

@@ -37,15 +37,15 @@ public class DingdingLiginController {
         mv.addObject("conf",js);
         mv.setViewName("dingdinglogin");
 //        mv.setViewName("test");
-        ClassPathResource res=new ClassPathResource("/config.properties",this.getClass());
-        Properties prop=new Properties();
-        try {
-            prop.load(res.getInputStream());
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        String url_db=prop.getProperty("url_db");
-        mv.addObject("url_db",url_db);
+//        ClassPathResource res=new ClassPathResource("/config.properties",this.getClass());
+//        Properties prop=new Properties();
+//        try {
+//            prop.load(res.getInputStream());
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
+//        String url_db=prop.getProperty("url_db");
+//        mv.addObject("url_db",url_db);
         return mv;
     }
 
@@ -60,17 +60,19 @@ public class DingdingLiginController {
     public String userInfo(String corpId,String code,HttpServletRequest request,HttpServletResponse response) throws Exception{
         Map<String,String> m=new HashMap<>();
         String accessToken=AuthHelper.getAccessToken();
-        CorpUserDetail user=(CorpUserDetail) UserHelper.getUser(accessToken,UserHelper.getUserInfo(accessToken,code).getUserid());
+        String userId=UserHelper.getUserInfo(accessToken,code).getUserid();
+        System.out.println("当前用户userid=");
+        CorpUserDetail user=(CorpUserDetail) UserHelper.getUser(accessToken,userId);
         logger.info(JSON.toJSONString(user));
 
-        ClassPathResource res=new ClassPathResource("/config.properties",this.getClass());
-        Properties prop=new Properties();
-        try {
-            prop.load(res.getInputStream());
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        String url_db=prop.getProperty("url_db");
+//        ClassPathResource res=new ClassPathResource("/config.properties",this.getClass());
+//        Properties prop=new Properties();
+//        try {
+//            prop.load(res.getInputStream());
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
+//        String url_db=prop.getProperty("url_db");
 
         String param="oaId="+user.getJobnumber();
         System.out.print(param);

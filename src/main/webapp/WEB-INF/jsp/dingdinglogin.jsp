@@ -17,7 +17,7 @@
         var timeStamp='${conf.timeStamp}';
         var nonceStr='${conf.nonceStr}';
         var signature='${conf.signature}';
-        var url_db='${url_db}';
+        <%--var url_db='${url_db}';--%>
         var url_page='${ctx}'+'/WEB-INF';
     </script>
     <meta http-equiv=Content-Type content="text/html;charset=utf-8">
@@ -28,5 +28,6 @@
 
 </head>
 <body>
+我是正文
 </body>
 </html>
