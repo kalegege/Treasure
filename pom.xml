@@ -243,6 +243,34 @@
             <artifactId>fastjson</artifactId>
             <version>1.1.41</version>
         </dependency>
+
+        <!-- 钉钉api -->
+        <dependency>
+            <groupId>com.wasu.ptyw.dingding</groupId>
+            <artifactId>client-sdk</artifactId>
+            <version>1.0.0</version>
+        </dependency>
+        <dependency>
+            <groupId>com.wasu.ptyw.dingding</groupId>
+            <artifactId>client-sdk-common</artifactId>
+            <version>1.0.0</version>
+        </dependency>
+        <dependency>
+            <groupId>com.wasu.ptyw.dingding</groupId>
+            <artifactId>client-sdk-core</artifactId>
+            <version>1.0.0</version>
+        </dependency>
+        <dependency>
+            <groupId>com.wasu.ptyw.dingding</groupId>
+            <artifactId>client-sdk-example</artifactId>
+            <version>1.0.0</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.wasu.ptyw.dingding</groupId>
+            <artifactId>client-sdk-spring</artifactId>
+            <version>1.0.0</version>
+        </dependency>
     </dependencies>
     <build>
         <finalName>treasure</finalName>
