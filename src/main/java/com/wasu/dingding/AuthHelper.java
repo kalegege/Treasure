@@ -1,14 +1,13 @@
 package com.wasu.dingding;
 
-import com.wasu.dingding.Env;
-import com.wasu.dingding.OApiException;
-import com.wasu.utils.FileUtils;
-import com.wasu.utils.HttpHelper;
-import com.alibaba.fastjson.JSONObject;
 import com.dingtalk.open.client.ServiceFactory;
 import com.dingtalk.open.client.api.model.corp.JsapiTicket;
 import com.dingtalk.open.client.api.service.corp.CorpConnectionService;
 import com.dingtalk.open.client.api.service.corp.JsapiService;
+import com.wasu.utils.FileUtils;
+import com.wasu.utils.HttpHelper;
+import com.alibaba.fastjson.JSONObject;
+
 
 import javax.servlet.http.HttpServletRequest;
 import java.net.URLDecoder;
@@ -41,6 +40,7 @@ public class AuthHelper {
         if (accessTokenValue == null || curTime - accessTokenValue.getLong("begin_time") >= cacheTime) {
             try {
                 ServiceFactory serviceFactory = ServiceFactory.getInstance();
+                System.out.println("--------------");
                 CorpConnectionService corpConnectionService = serviceFactory.getOpenService(CorpConnectionService.class);
                 accToken = corpConnectionService.getCorpToken(Env.CORP_ID, Env.CORP_SECRET);
                 // save accessToken
