@@ -50,9 +50,13 @@ public class DingdingLiginController {
     }
 
     @RequestMapping("test")
-    @ResponseBody
     public String test(HttpServletRequest request, HttpServletResponse response){
         return "test";
+    }
+
+    @RequestMapping("test1")
+    public String test1(HttpServletRequest request, HttpServletResponse response){
+        return "test1";
     }
 
     @RequestMapping("userInfo")

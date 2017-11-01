@@ -69,10 +69,11 @@
             <mvc:exclude-mapping path="/**/*.gif"/>
             <mvc:exclude-mapping path="/**/*.woff"/>
             <mvc:exclude-mapping path="/**/*.jsp"/>
+            <mvc:exclude-mapping path="/**/*.html"/>
             <mvc:exclude-mapping path="/dingdinglogin/index"/>
             <mvc:exclude-mapping path="/dingdinglogin/userInfo"/>
             <mvc:exclude-mapping path="/dingdinglogin/session"/>
-            <mvc:exclude-mapping path="/dingdinglogin/test"/>
+            <!--<mvc:exclude-mapping path="/dingdinglogin/test"/>-->
 
             <bean class="com.wasu.interceptor.SSOInterceptor">
                 <property name="allowUrls">
@@ -83,6 +84,8 @@
                         <value>/dingdinglogin/userInfo</value>
                         <value>/dingdinglogin/session</value>
                         <value>/dingdinglogin/test</value>
+                        <value>/dingdinglogin/test1</value>
+
                     </list>
                 </property>
             </bean>
