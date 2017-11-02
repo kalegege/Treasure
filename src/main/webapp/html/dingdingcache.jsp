@@ -20,6 +20,7 @@
 
 </script>
 <body>
+<img src="${ctx}/image/head.jpg"  alt="大标题" />
 
 </body>
 </html>
