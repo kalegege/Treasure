@@ -59,6 +59,12 @@ public class DingdingLiginController {
         return "test1";
     }
 
+    @RequestMapping("test2")
+    public String test2(HttpServletRequest request, HttpServletResponse response){
+        return "test2";
+    }
+
+
     @RequestMapping("userInfo")
     @ResponseBody
     public String userInfo(String corpId,String code,HttpServletRequest request,HttpServletResponse response) throws Exception{

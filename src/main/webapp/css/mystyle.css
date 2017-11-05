@@ -1,26 +1,106 @@
-.ltitle{
-    background: url("/image/title.jpg");
-    width: 50%;
-    height: 10%;
-    float: left;
-    font-size: 60px;
+
+body{
+    font-size: .14rem;
+    color:#222;
 }
-.rtitle{
-    background: url("/image/title.jpg");
-    width: 50%;
-    height: 10%;
-    float: right;
-    font-size: 60px;
-}
-.mytable{
+
+.tab{
+    left:0;
+    top:0;
     width: 100%;
+    z-index:1000;
+    position: sticky!important;
 }
-.mytable tr td{
-    font-size: 60px;
+ul{
+    margin:0px;
+    padding: 0px;
+}
+li{
+    list-style:none;
+}
+.tab ul{
+    position:relative;
+    z-index: 100;
+    background:#edf5fa;
+    display:-webkit-box;
+    height:.4rem;
+    border-bottom:1px solid #dfe8ef;
+    box-sizing:border-box;
+    text-align:center;
+    line-height:.4rem;
+    font-size:.17rem;
+    color:#222;
+    padding:0px;
+}
+.tab li{
+    width: 50%;
+    height:.38rem;
+    /*margin:0 .16rem;*/
+    -webkit-box-flex:1;
+}
+.tab li.selected{
+    color: #277de2;
+    font-weight:700;
+    border-bottom:2px solid #277de2;
+}
+.item{
+    height: 80px;
+    border-bottom:1px solid #f2f7fc;
+    font-size: .2rem;
+}
+.head{
+    width:100%;
+    height:110px;
+}
+.content{
+    width:100%;
+    line-height: 80px;
+}
+.content div{
+    float: left;
+    width:33.33%
+}
+.info{
+    font-size: .2rem;
+}
+.info div{
+    margin:2px;
+    border-bottom: 1px solid white;
+    height: 40px;
+    line-height: 40px;
+}
+.pandian{
+    align:center;
     text-align: center;
-    background-color: coral;
-    border: solid 1px;
+    background-color: #277de2;
+    height:40px;
+    font-size: .2rem;
+    line-height: 40px;
 }
-.mytable tr td button{
-    font-size: 60px;
+.box{
+    font-size: .2rem;
+    width: 100%;
+    height: 60px;
+    border-bottom: 1px solid #277de2;
+}
+.box button{
+    float: right;
+}
+.fullbox{
+    border: 1px solid #277de2;
+    width: 100%;
+    height: 60px;
+    font-size: .2rem;
+}
+.pai{
+    float: right;
+    position: absolute;
+    top:180px;
+    left:80%;
+}
+.sao{
+    float: right;
+    position: absolute;
+    top:30px;
+    left:80%;
 }

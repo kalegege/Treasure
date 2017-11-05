@@ -11,7 +11,7 @@
 <c:set var="ctx" value="${pageContext.request.contextPath}"/>
 <html>
 <head>
-    <title>首页</title>
+    <title>资产盘点</title>
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/mystyle.css" type="text/css"/>
     <script type="text/javascript" src="${pageContext.request.contextPath}/js/my.js"></script>
     <script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-2.0.3.min.js"></script>
@@ -42,63 +42,61 @@
 </head>
 <body>
 <div class="page">
-<div class="head">
-    <img src="${ctx}/image/head.jpg" style="width:100%"  alt="大标题" />
-    <input type="hidden" value="${ctx}" id="head"/>
-</div>
-<div class="tab" id="tab-switch">
-    <ul>
-        <li class="own">
-            <span>个人资产</span>
-        </li>
-        <li class="recom">
-            <span>未盘点(数量)</span>
-        </li>
-    </ul>
-</div>
-<div>
-    <ul>
-        <li class="item">
-            <a href="${pageContext.request.contextPath}/dingdinglogin/test">
-                <div class="content">
-                    <div class="tNo">654321</div>
-                    <div class="tName">笔记本电脑</div>
-                    <div class="tType">个人资产</div>
+    <div>
+    <%--<img src="${ctx}/image/head.jpg" style="width:100%"  alt="大标题" />--%>
+        <input type="hidden" value="${ctx}" id="head"/>
+    </div>
+    <div>
+        <div class="box" style="margin-top: 20px;">
+            <div style="float: left;">
+                <div>
+                    <label>资产编号:123456</label>
                 </div>
-            </a>
-        </li>
-        <li class="item">
-            <a href="${pageContext.request.contextPath}/dingdinglogin/test1">
-                <div class="content">
-                    <div class="tNo">123456</div>
-                    <div class="tName">台式电脑</div>
-                    <div class="tType">个人资产</div>
+                <div>
+                    <label id="saoma">扫码结果</label>
                 </div>
-            </a>
-        </li>
-    </ul>
-</div>
+            </div>
+            <button class="sao" onclick="click_sao()" style="float: right">扫码</button>
+        </div>
+        <div class="box" style="height:300px;">
+            <button class="pai" onclick="click_pai()">拍照</button>
+        </div>
+        <div class="fullbox" style="line-height: 30px;">
+            <div>
+                <label>经纬度</label>
+            </div>
+            <div>
+                <label>大致位置</label>
+            </div>
+        </div>
+        <div class="fullbox" style="line-height: 60px;">
+            <div>
+                <label>备注:</label>
+                <input type="text" style="width: 20%;"/>
+            </div>
+        </div>
+    </div>
+
+    <div class="pandian" style="margin-top: 60px;">
+        <ul>
+            <li class="btn">
+                <span style="color:white;">确认</span>
+            </li>
+        </ul>
+    </div>
+
 </div>
 <script>
-    function fun(){
-        var obj = document.getElementById("tab-switch");
-        for(i=0;i<obj.length;i++){
-            if(obj[i].value==str)
-                obj[i].selected = true;
-        }
+    function click_sao() {
+        alert("saoma");
     }
-    $('.own').click(function(){
-        $('.own').toggleClass("selected");
-        if($('.recom').hasClass("selected")){
-            $('.recom').removeClass("selected");
-        }
-    });
-    $('.recom').click(function(){
-        $('.recom').toggleClass("selected");
-        if($('.own').hasClass("selected")){
-            $('.own').removeClass("selected");
-        }
+    function click_pai() {
+        alert("paizhao");
+    }
+    $('.btn').click(function(){
+        window.location.href="${pageContext.request.contextPath}/dingdinglogin/test1";
     });
 </script>
+
 </body>
 </html>
