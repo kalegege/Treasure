@@ -64,6 +64,7 @@
                     <div class="tNo">654321</div>
                     <div class="tName">笔记本电脑</div>
                     <div class="tType">个人资产</div>
+                    <div class="tNum">200</div>
                 </div>
             </a>
         </li>
@@ -73,6 +74,7 @@
                     <div class="tNo">123456</div>
                     <div class="tName">台式电脑</div>
                     <div class="tType">个人资产</div>
+                    <div class="tNum">100</div>
                 </div>
             </a>
         </li>
@@ -91,12 +93,21 @@
         $('.own').toggleClass("selected");
         if($('.recom').hasClass("selected")){
             $('.recom').removeClass("selected");
+            $(".tNo").css("width","33%");
+            $(".tName").css("width","33%");
+            $(".tType").css("width","33%");
+            $(".tNum").css("display","none");
         }
     });
     $('.recom').click(function(){
         $('.recom').toggleClass("selected");
         if($('.own').hasClass("selected")){
             $('.own').removeClass("selected");
+            $(".tNo").css("width","25%");
+            $(".tName").css("width","25%");
+            $(".tType").css("width","25%");
+            $(".tNum").css("width","25%");
+            $(".tNum").css("display","block");
         }
     });
 </script>

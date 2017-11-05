@@ -46,7 +46,7 @@ li{
 .item{
     height: 80px;
     border-bottom:1px solid #f2f7fc;
-    font-size: .2rem;
+    font-size: .15rem;
 }
 .head{
     width:100%;
@@ -58,7 +58,11 @@ li{
 }
 .content div{
     float: left;
-    width:33.33%
+    width:33%
+}
+.tNum{
+    width:25%;
+    display: none;
 }
 .info{
     font-size: .2rem;
