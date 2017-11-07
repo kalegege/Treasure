@@ -35,7 +35,7 @@ dd.ready(function() {
 				    alert(data);
 					var info = JSON.parse(data);
 					if(info.isok == '1'){
-						window.location.href=url_page+"/html/dingdingcache.jsp";
+						window.location.href=url_page+"/dingdinglogin/test";
 					}else{
                         window.location.href=url_page+"/html/error/error.jsp";
 					}

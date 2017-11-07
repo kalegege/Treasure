@@ -87,12 +87,7 @@
 
 </div>
 <script>
-    function click_sao() {
-        alert("saoma");
-    }
-    function click_pai() {
-        alert("paizhao");
-    }
+
     $('.btn').click(function(){
         window.location.href="${pageContext.request.contextPath}/dingdinglogin/test1";
     });
