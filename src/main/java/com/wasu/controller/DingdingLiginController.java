@@ -51,7 +51,7 @@ public class DingdingLiginController {
 
     @RequestMapping("test")
     public String test(HttpServletRequest request, HttpServletResponse response){
-        return "test";
+        return "test3";
     }
 
     @RequestMapping("test1")
