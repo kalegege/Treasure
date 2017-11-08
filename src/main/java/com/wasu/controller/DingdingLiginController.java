@@ -30,22 +30,13 @@ public class DingdingLiginController {
     int MaxInactiveInterval=60*60;
 
     @RequestMapping("index")
-    public ModelAndView login(String corpid, HttpServletRequest request){
+    public ModelAndView login( HttpServletRequest request){
         ModelAndView mv=new ModelAndView();
         Cookie[] cookies=request.getCookies();
         JSONObject js=JSON.parseObject(AuthHelper.getConfig(request));
         mv.addObject("conf",js);
         mv.setViewName("dingdinglogin");
-//        mv.setViewName("test");
-//        ClassPathResource res=new ClassPathResource("/config.properties",this.getClass());
-//        Properties prop=new Properties();
-//        try {
-//            prop.load(res.getInputStream());
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        }
-//        String url_db=prop.getProperty("url_db");
-//        mv.addObject("url_db",url_db);
+
         return mv;
     }
 

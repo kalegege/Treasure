@@ -13,10 +13,13 @@
 <html>
 <head>
     <title>Title</title>
+    // 免登相关代码
+    <script type="text/javascript" src="${ctx}/js/jquery-2.0.3.min.js"></script>
+    <script type="text/javascript" src="${ctx}/js/dingding/demo.js"></script>
+    <script type="text/javascript" src="${ctx}/js/dingding/dingtalk.js"></script>
 </head>
 <body>
-    this is test
-<script type="text/javascript">
+<script >
     window.location = '${ctx}/dingdinglogin/index';
 </script>
 </body>

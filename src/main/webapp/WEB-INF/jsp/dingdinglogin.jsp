@@ -11,6 +11,9 @@
 
 <html>
 <head>
+
+    <meta http-equiv=Content-Type content="text/html;charset=utf-8">
+    <title>首页</title>
     <script type="text/javascript">
         var agentid='${conf.agentid}';
         var corpId='${conf.corpId}';
@@ -18,10 +21,8 @@
         var nonceStr='${conf.nonceStr}';
         var signature='${conf.signature}';
         <%--var url_db='${url_db}';--%>
-        var url_page='${ctx}'+'/WEB-INF';
+        var url_page='${ctx}';
     </script>
-    <meta http-equiv=Content-Type content="text/html;charset=utf-8">
-    <title>首页</title>
     <script type="text/javascript" src="${ctx}/js/jquery-2.0.3.min.js"></script>
     <script type="text/javascript" src="${ctx}/js/dingding/demo.js"></script>
     <script type="text/javascript" src="${ctx}/js/dingding/dingtalk.js"></script>

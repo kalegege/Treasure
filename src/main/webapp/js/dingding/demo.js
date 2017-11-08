@@ -20,38 +20,40 @@ dd.config({
 
 
 dd.ready(function() {
-	dd.runtime.permission.requestAuthCode({
-		corpId : corpId,
-		onSuccess : function(info) {
-//			alert('authcode: ' + info.code);
-			$.ajax({
-				url : '/dingdinglogin/userInfo',
-				type : 'GET',
-				data:{
-					"corpId":corpId,
-					"code":info.code
-				},
-				success : function(data, status, xhr) {
-				    alert(data);
-					var info = JSON.parse(data);
-					if(info.isok == '1'){
-						window.location.href=url_page+"/dingdinglogin/test";
-					}else{
-                        window.location.href=url_page+"/html/error/error.jsp";
-					}
-
-				},
-				error : function(xhr, errorType, error) {
-					logger.e("yinyien:" + _config.corpId);
-					alert(errorType + ', ' + error);
-				}
-			});
-
-		},
-		onFail : function(err) {
-			alert('fail: ' + JSON.stringify(err));
-		}
-	});
+	alert("success"+url);
+    window.location = url+'/dingdinglogin/test';
+// 	dd.runtime.permission.requestAuthCode({
+// 		corpId : corpId,
+// 		onSuccess : function(info) {
+// //			alert('authcode: ' + info.code);
+// 			$.ajax({
+// 				url : '/dingdinglogin/userInfo',
+// 				type : 'GET',
+// 				data:{
+// 					"corpId":corpId,
+// 					"code":info.code
+// 				},
+// 				success : function(data, status, xhr) {
+// 				    alert(data);
+// 					var info = JSON.parse(data);
+// 					if(info.isok == '1'){
+// 						window.location.href=url_page+"/dingdinglogin/test";
+// 					}else{
+//                         window.location.href=url_page+"/html/error/error.jsp";
+// 					}
+//
+// 				},
+// 				error : function(xhr, errorType, error) {
+// 					logger.e("yinyien:" + _config.corpId);
+// 					alert(errorType + ', ' + error);
+// 				}
+// 			});
+//
+// 		},
+// 		onFail : function(err) {
+// 			alert('fail: ' + JSON.stringify(err));
+// 		}
+// 	});
 });
 
 dd.error(function(err) {

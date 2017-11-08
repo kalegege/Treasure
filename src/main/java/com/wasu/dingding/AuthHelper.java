@@ -33,31 +33,33 @@ public class AuthHelper {
      * 具体信息请查看开发者文档--权限验证配置
      */
     public static String getAccessToken() throws OApiException {
-        long curTime = System.currentTimeMillis();
-        JSONObject accessTokenValue = (JSONObject) FileUtils.getValue("accesstoken", Env.CORP_ID);
+//        long curTime = System.currentTimeMillis();
+//        JSONObject accessTokenValue = (JSONObject) FileUtils.getValue("accesstoken", Env.CORP_ID);
         String accToken = "";
-        JSONObject jsontemp = new JSONObject();
-        if (accessTokenValue == null || curTime - accessTokenValue.getLong("begin_time") >= cacheTime) {
+//        JSONObject jsontemp = new JSONObject();
+//        if (accessTokenValue == null || curTime - accessTokenValue.getLong("begin_time") >= cacheTime) {
             try {
                 ServiceFactory serviceFactory = ServiceFactory.getInstance();
                 System.out.println("--------------");
                 CorpConnectionService corpConnectionService = serviceFactory.getOpenService(CorpConnectionService.class);
+                System.out.println("++++++");
                 accToken = corpConnectionService.getCorpToken(Env.CORP_ID, Env.CORP_SECRET);
+                System.out.println(accToken);
                 // save accessToken
-                JSONObject jsonAccess = new JSONObject();
-                jsontemp.clear();
-                jsontemp.put("access_token", accToken);
-                jsontemp.put("begin_time", curTime);
-                jsonAccess.put(Env.CORP_ID, jsontemp);
-                //真实项目中最好保存到数据库中
-                FileUtils.write2File(jsonAccess, "accesstoken");
+//                JSONObject jsonAccess = new JSONObject();
+//                jsontemp.clear();
+//                jsontemp.put("access_token", accToken);
+//                jsontemp.put("begin_time", curTime);
+//                jsonAccess.put(Env.CORP_ID, jsontemp);
+//                //真实项目中最好保存到数据库中
+//                FileUtils.write2File(jsonAccess, "accesstoken");
 
             } catch (Exception e) {
                 e.printStackTrace();
             }
-        } else {
-            return accessTokenValue.getString("access_token");
-        }
+//        } else {
+//            return accessTokenValue.getString("access_token");
+//        }
 
         return accToken;
     }
@@ -67,12 +69,12 @@ public class AuthHelper {
      * 正常的情况下，jsapi_ticket的有效期为7200秒，所以开发者需要在某个地方设计一个定时器，定期去更新jsapi_ticket
      */
     public static String getJsapiTicket(String accessToken) throws OApiException {
-        JSONObject jsTicketValue = (JSONObject) FileUtils.getValue("jsticket", Env.CORP_ID);
-        long curTime = System.currentTimeMillis();
+//        JSONObject jsTicketValue = (JSONObject) FileUtils.getValue("jsticket", Env.CORP_ID);
+//        long curTime = System.currentTimeMillis();
         String jsTicket = "";
 
-        if (jsTicketValue == null || curTime -
-                jsTicketValue.getLong("begin_time") >= cacheTime) {
+//        if (jsTicketValue == null || curTime -
+//                jsTicketValue.getLong("begin_time") >= cacheTime) {
             ServiceFactory serviceFactory;
             try {
                 serviceFactory = ServiceFactory.getInstance();
@@ -81,20 +83,20 @@ public class AuthHelper {
                 JsapiTicket JsapiTicket = jsapiService.getJsapiTicket(accessToken, "jsapi");
                 jsTicket = JsapiTicket.getTicket();
 
-                JSONObject jsonTicket = new JSONObject();
-                JSONObject jsontemp = new JSONObject();
-                jsontemp.clear();
-                jsontemp.put("ticket", jsTicket);
-                jsontemp.put("begin_time", curTime);
-                jsonTicket.put(Env.CORP_ID, jsontemp);
-                FileUtils.write2File(jsonTicket, "jsticket");
+//                JSONObject jsonTicket = new JSONObject();
+//                JSONObject jsontemp = new JSONObject();
+//                jsontemp.clear();
+//                jsontemp.put("ticket", jsTicket);
+//                jsontemp.put("begin_time", curTime);
+//                jsonTicket.put(Env.CORP_ID, jsontemp);
+//                FileUtils.write2File(jsonTicket, "jsticket");
             } catch (Exception e) {
                 e.printStackTrace();
             }
             return jsTicket;
-        } else {
-            return jsTicketValue.getString("ticket");
-        }
+//        } else {
+//            return jsTicketValue.getString("ticket");
+//        }
     }
 
 
@@ -130,6 +132,7 @@ public class AuthHelper {
      * @return
      */
     public static String getConfig(HttpServletRequest request) {
+        System.out.println("test:start");
         String urlString = request.getRequestURL().toString();
         String queryString = request.getQueryString();
 
@@ -151,11 +154,14 @@ public class AuthHelper {
         String agentid = null;
 
         try {
+            System.out.println("test:start2");
             accessToken = AuthHelper.getAccessToken();
-
+            System.out.println(accessToken);
             ticket = AuthHelper.getJsapiTicket(accessToken);
+            System.out.println(ticket);
             signature = AuthHelper.sign(ticket, nonceStr, timeStamp, signedUrl);
-            agentid = "";
+            System.out.println(signature);
+            agentid = "134027113";
 
         } catch (OApiException e) {
             e.printStackTrace();

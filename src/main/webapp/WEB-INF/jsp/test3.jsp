@@ -31,7 +31,7 @@
             <span class="mui-tab-label">个人资产</span>
         </a>
         <a class="mui-tab-item" href="#tabbar-with-chat">
-            <span class="mui-icon mui-icon-email"><span class="mui-badge">9</span></span>
+            <span class="mui-icon mui-icon-email"><span class="mui-badge">2</span></span>
             <span class="mui-tab-label">未盘点</span>
         </a>
     </nav>
@@ -54,12 +54,12 @@
                     <a href="${pageContext.request.contextPath}/dingdinglogin/test1">
                         <div class="mui-table">
                             <div class="mui-table-cell mui-col-xs-10">
-                                <h4 class="mui-ellipsis-2">信息化推进办公室张彦合同付款信息化推进办公室张彦合同付款信息化推进办公室张彦合同付款</h4>
-                                <h5>申请人：极限挑战</h5>
-                                <p class="mui-h6 mui-ellipsis">Hi，李明明，申请交行信息卡，100元等你拿，李明明，申请交行信息卡，100元等你拿，</p>
+                                <h4 class="mui-ellipsis-2">台式电脑</h4>
+                                <h5>申请人：刘德华</h5>
+                                <p class="mui-h6 mui-ellipsis">华数机房2-1-11</p>
                             </div>
                             <div class="mui-table-cell mui-col-xs-2 mui-text-right">
-                                <span class="mui-h5">12:25</span>
+                                <span class="mui-h5">14:36</span>
 
                             </div>
                         </div>
@@ -72,9 +72,9 @@
                 <li class="mui-table-view-cell">
                     <div class="mui-table">
                         <div class="mui-table-cell mui-col-xs-10">
-                            <h4 class="mui-ellipsis">信息化推进办公室张彦合同付款信息化</h4>
+                            <h4 class="mui-ellipsis">笔记本电脑</h4>
                             <h5>申请人：李四</h5>
-                            <p class="mui-h6 mui-ellipsis">Hi，李明明，申请交行信息卡，100元等你拿，李明明，申请交行信息卡，100元等你拿，</p>
+                            <p class="mui-h6 mui-ellipsis">白马湖A座5楼</p>
                         </div>
                         <div class="mui-table-cell mui-col-xs-2 mui-text-right">
                             <span class="mui-h5">12:25</span>
@@ -85,12 +85,12 @@
                     <a href="${pageContext.request.contextPath}/dingdinglogin/test1">
                         <div class="mui-table">
                             <div class="mui-table-cell mui-col-xs-10">
-                                <h4 class="mui-ellipsis-2">信息化推进办公室张彦合同付款信息化推进办公室张彦合同付款信息化推进办公室张彦合同付款</h4>
-                                <h5>申请人：李四</h5>
-                                <p class="mui-h6 mui-ellipsis">Hi，李明明，申请交行信息卡，100元等你拿，李明明，申请交行信息卡，100元等你拿，</p>
+                                <h4 class="mui-ellipsis-2">交换机</h4>
+                                <h5>申请人：项目经理</h5>
+                                <p class="mui-h6 mui-ellipsis">马鞍山机房</p>
                             </div>
                             <div class="mui-table-cell mui-col-xs-2 mui-text-right">
-                                <span class="mui-h5">12:25</span>
+                                <span class="mui-h5">13:25</span>
 
                             </div>
                         </div>

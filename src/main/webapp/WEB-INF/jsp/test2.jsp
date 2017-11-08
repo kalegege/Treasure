@@ -12,33 +12,15 @@
 <html>
 <head>
     <title>资产盘点</title>
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/mystyle.css" type="text/css"/>
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/app.css" type="text/css"/>
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/mui.min.css" type="text/css"/>
     <script type="text/javascript" src="${pageContext.request.contextPath}/js/my.js"></script>
+    <script type="text/javascript" src="${pageContext.request.contextPath}/js/mui.min.js"></script>
     <script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-2.0.3.min.js"></script>
-    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=no,shrink-to-fit=no">
-    <meta name="MobileOptimized" content="320">
-    <meta http-equiv="Cache-Control" content="no-cache, must-revalidate">
-    <meta http-equiv="Pragma" content="no-cache">
-    <meta name="HandheldFriendly" content="true">
+    <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
 
-    <script>
-        (function() {
-            var baseFontSize = 100;
-            var baseWidth = 375;
-            var clientWidth = document.documentElement.clientWidth || window.innerWidth;
-            var innerWidth = Math.max(Math.min(clientWidth, 480), 360);
-
-            var rem = 100;
-            if (innerWidth >= 414) {
-                rem = Math.floor(innerWidth / baseWidth * baseFontSize * 0.98);
-            } else {
-                rem = Math.floor(innerWidth / baseWidth * baseFontSize);
-            }
-
-            document.querySelector('html').style.fontSize = rem + 'px';
-        }());
-
-    </script>
 </head>
 <body>
 <div class="page">
@@ -46,49 +28,36 @@
     <%--<img src="${ctx}/image/head.jpg" style="width:100%"  alt="大标题" />--%>
         <input type="hidden" value="${ctx}" id="head"/>
     </div>
-    <div>
-        <div class="box" style="margin-top: 20px;">
-            <div style="float: left;">
-                <div>
-                    <label>资产编号:123456</label>
-                </div>
-                <div>
-                    <label id="saoma">扫码结果</label>
-                </div>
+    <ul class="mui-table-view">
+        <li class="mui-table-view-cell">资产编号:123456</li>
+        <li class="mui-table-view-cell">
+            扫码结果
+            <button type="button" class="mui-btn mui-btn-primary">
+                扫码
+            </button>
+        </li>
+        <li class="mui-table-view-cell">
+            <img class="mui-media-object" src="${pageContext.request.contextPath}/image/avatar.png">
+            <button type="button" class="mui-btn mui-btn-primary">
+                拍照
+            </button>
+        </li>
+        <li class="mui-table-view-cell">经纬度：10，100</li>
+        <li class="mui-table-view-cell">大致位置：白马湖5楼</li>
+        <li class="mui-table-view-cell">
+            <div class="mui-input-row" style="margin: 10px 5px;">
+                <textarea id="textarea" rows="5" placeholder="备注:"></textarea>
             </div>
-            <button class="sao" onclick="click_sao()" style="float: right">扫码</button>
-        </div>
-        <div class="box" style="height:300px;">
-            <button class="pai" onclick="click_pai()">拍照</button>
-        </div>
-        <div class="fullbox" style="line-height: 30px;">
-            <div>
-                <label>经纬度</label>
-            </div>
-            <div>
-                <label>大致位置</label>
-            </div>
-        </div>
-        <div class="fullbox" style="line-height: 60px;">
-            <div>
-                <label>备注:</label>
-                <input type="text" style="width: 20%;"/>
-            </div>
-        </div>
-    </div>
-
-    <div class="pandian" style="margin-top: 60px;">
-        <ul>
-            <li class="btn">
-                <span style="color:white;">确认</span>
-            </li>
-        </ul>
+        </li>
+    </ul>
+    <div class="mui-content-padded">
+        <button id='queren' class="mui-btn mui-btn-block mui-btn-primary">确认</button>
     </div>
 
 </div>
 <script>
 
-    $('.btn').click(function(){
+    $('#queren').click(function(){
         window.location.href="${pageContext.request.contextPath}/dingdinglogin/test1";
     });
 </script>
