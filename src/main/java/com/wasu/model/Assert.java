@@ -1,50 +1,63 @@
 package com.wasu.model;
 
-import java.math.BigDecimal;
 import java.util.Date;
 
 public class Assert {
     private String assetcode;
 
-    private BigDecimal id;
+    private String address;
 
     private String assetsortname;
+
+    private Date buydate;
+
+    private String deptname;
+
+    private String detailedlocation;
+
+    private Long guarantee;
+
+    private Date inventorydate;
+
+    private Long inventorystate;
+
+    private Long latitude;
+
+    private Long lifeperiods;
+
+    private Long longitude;
+
+    private String manufacturer;
 
     private String name;
 
     private String norms;
 
-    private Short unit;
+    private Long numbers;
 
-    private Integer numbers;
+    private Long periodsused;
 
-    private BigDecimal price;
-
-    private Short state;
-
-    private String deptname;
+    private String photo;
 
     private String place;
 
-    private String manufacturer;
-
-    private Date buydate;
+    private Long price;
 
     private String projectid;
 
     private String projectname;
 
-    private Short valid;
-
     private String remark;
 
-    private String detailedlocation;
+    private Long state;
 
-    private Short guarantee;
+    private Long unit;
 
-    private Short lifeperiods;
+    private Long valid;
 
-    private Short periodsused;
+    private String inventoryRemark;
+
+    private String inventoryUser;
 
     public String getAssetcode() {
         return assetcode;
@@ -54,12 +67,12 @@ public class Assert {
         this.assetcode = assetcode == null ? null : assetcode.trim();
     }
 
-    public BigDecimal getId() {
-        return id;
+    public String getAddress() {
+        return address;
     }
 
-    public void setId(BigDecimal id) {
-        this.id = id;
+    public void setAddress(String address) {
+        this.address = address == null ? null : address.trim();
     }
 
     public String getAssetsortname() {
@@ -68,6 +81,86 @@ public class Assert {
 
     public void setAssetsortname(String assetsortname) {
         this.assetsortname = assetsortname == null ? null : assetsortname.trim();
+    }
+
+    public Date getBuydate() {
+        return buydate;
+    }
+
+    public void setBuydate(Date buydate) {
+        this.buydate = buydate;
+    }
+
+    public String getDeptname() {
+        return deptname;
+    }
+
+    public void setDeptname(String deptname) {
+        this.deptname = deptname == null ? null : deptname.trim();
+    }
+
+    public String getDetailedlocation() {
+        return detailedlocation;
+    }
+
+    public void setDetailedlocation(String detailedlocation) {
+        this.detailedlocation = detailedlocation == null ? null : detailedlocation.trim();
+    }
+
+    public Long getGuarantee() {
+        return guarantee;
+    }
+
+    public void setGuarantee(Long guarantee) {
+        this.guarantee = guarantee;
+    }
+
+    public Date getInventorydate() {
+        return inventorydate;
+    }
+
+    public void setInventorydate(Date inventorydate) {
+        this.inventorydate = inventorydate;
+    }
+
+    public Long getInventorystate() {
+        return inventorystate;
+    }
+
+    public void setInventorystate(Long inventorystate) {
+        this.inventorystate = inventorystate;
+    }
+
+    public Long getLatitude() {
+        return latitude;
+    }
+
+    public void setLatitude(Long latitude) {
+        this.latitude = latitude;
+    }
+
+    public Long getLifeperiods() {
+        return lifeperiods;
+    }
+
+    public void setLifeperiods(Long lifeperiods) {
+        this.lifeperiods = lifeperiods;
+    }
+
+    public Long getLongitude() {
+        return longitude;
+    }
+
+    public void setLongitude(Long longitude) {
+        this.longitude = longitude;
+    }
+
+    public String getManufacturer() {
+        return manufacturer;
+    }
+
+    public void setManufacturer(String manufacturer) {
+        this.manufacturer = manufacturer == null ? null : manufacturer.trim();
     }
 
     public String getName() {
@@ -86,44 +179,28 @@ public class Assert {
         this.norms = norms == null ? null : norms.trim();
     }
 
-    public Short getUnit() {
-        return unit;
-    }
-
-    public void setUnit(Short unit) {
-        this.unit = unit;
-    }
-
-    public Integer getNumbers() {
+    public Long getNumbers() {
         return numbers;
     }
 
-    public void setNumbers(Integer numbers) {
+    public void setNumbers(Long numbers) {
         this.numbers = numbers;
     }
 
-    public BigDecimal getPrice() {
-        return price;
+    public Long getPeriodsused() {
+        return periodsused;
     }
 
-    public void setPrice(BigDecimal price) {
-        this.price = price;
+    public void setPeriodsused(Long periodsused) {
+        this.periodsused = periodsused;
     }
 
-    public Short getState() {
-        return state;
+    public String getPhoto() {
+        return photo;
     }
 
-    public void setState(Short state) {
-        this.state = state;
-    }
-
-    public String getDeptname() {
-        return deptname;
-    }
-
-    public void setDeptname(String deptname) {
-        this.deptname = deptname == null ? null : deptname.trim();
+    public void setPhoto(String photo) {
+        this.photo = photo == null ? null : photo.trim();
     }
 
     public String getPlace() {
@@ -134,20 +211,12 @@ public class Assert {
         this.place = place == null ? null : place.trim();
     }
 
-    public String getManufacturer() {
-        return manufacturer;
+    public Long getPrice() {
+        return price;
     }
 
-    public void setManufacturer(String manufacturer) {
-        this.manufacturer = manufacturer == null ? null : manufacturer.trim();
-    }
-
-    public Date getBuydate() {
-        return buydate;
-    }
-
-    public void setBuydate(Date buydate) {
-        this.buydate = buydate;
+    public void setPrice(Long price) {
+        this.price = price;
     }
 
     public String getProjectid() {
@@ -166,14 +235,6 @@ public class Assert {
         this.projectname = projectname == null ? null : projectname.trim();
     }
 
-    public Short getValid() {
-        return valid;
-    }
-
-    public void setValid(Short valid) {
-        this.valid = valid;
-    }
-
     public String getRemark() {
         return remark;
     }
@@ -182,35 +243,43 @@ public class Assert {
         this.remark = remark == null ? null : remark.trim();
     }
 
-    public String getDetailedlocation() {
-        return detailedlocation;
+    public Long getState() {
+        return state;
     }
 
-    public void setDetailedlocation(String detailedlocation) {
-        this.detailedlocation = detailedlocation == null ? null : detailedlocation.trim();
+    public void setState(Long state) {
+        this.state = state;
     }
 
-    public Short getGuarantee() {
-        return guarantee;
+    public Long getUnit() {
+        return unit;
     }
 
-    public void setGuarantee(Short guarantee) {
-        this.guarantee = guarantee;
+    public void setUnit(Long unit) {
+        this.unit = unit;
     }
 
-    public Short getLifeperiods() {
-        return lifeperiods;
+    public Long getValid() {
+        return valid;
     }
 
-    public void setLifeperiods(Short lifeperiods) {
-        this.lifeperiods = lifeperiods;
+    public void setValid(Long valid) {
+        this.valid = valid;
     }
 
-    public Short getPeriodsused() {
-        return periodsused;
+    public String getInventoryRemark() {
+        return inventoryRemark;
     }
 
-    public void setPeriodsused(Short periodsused) {
-        this.periodsused = periodsused;
+    public void setInventoryRemark(String inventoryRemark) {
+        this.inventoryRemark = inventoryRemark == null ? null : inventoryRemark.trim();
+    }
+
+    public String getInventoryUser() {
+        return inventoryUser;
+    }
+
+    public void setInventoryUser(String inventoryUser) {
+        this.inventoryUser = inventoryUser == null ? null : inventoryUser.trim();
     }
 }

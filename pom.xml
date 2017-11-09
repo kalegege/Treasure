@@ -277,6 +277,8 @@
             <artifactId>client-sdk-core</artifactId>
             <version>1.0.0</version>
         </dependency>
+
+
         <!--<dependency>-->
             <!--<groupId>com.wasu.ptyw.dingding</groupId>-->
             <!--<artifactId>client-sdk-example</artifactId>-->
@@ -306,6 +308,13 @@
                     <verbose>true</verbose>
                     <overwrite>true</overwrite>
                 </configuration>
+                <dependencies>
+                    <!--<dependency>-->
+                        <!--<groupId>com.wasu.ptyw</groupId>-->
+                        <!--<artifactId>ojdbc</artifactId>-->
+                        <!--<version>14.0</version>-->
+                    <!--</dependency>-->
+                </dependencies>
             </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
