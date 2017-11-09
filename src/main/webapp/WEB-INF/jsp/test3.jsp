@@ -82,7 +82,7 @@
                     </div>
                 </li>
                 <li class="mui-table-view-cell">
-                    <a href="${pageContext.request.contextPath}/dingdinglogin/test1">
+                    <a href="${pageContext.request.contextPath}/dingdinglogin/test1?pandian=1">
                         <div class="mui-table">
                             <div class="mui-table-cell mui-col-xs-10">
                                 <h4 class="mui-ellipsis-2">交换机</h4>

@@ -50,9 +50,11 @@
             </div>
         </li>
     </ul>
-    <div class="mui-content-padded">
-        <button id='queren' class="mui-btn mui-btn-block mui-btn-primary">确认</button>
-    </div>
+
+        <div class="mui-content-padded" >
+            <button id='queren' class="mui-btn mui-btn-block mui-btn-primary">确认</button>
+        </div>
+
 
 </div>
 <script>

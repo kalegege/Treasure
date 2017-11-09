@@ -15,12 +15,12 @@
     <title>Title</title>
     // 免登相关代码
     <script type="text/javascript" src="${ctx}/js/jquery-2.0.3.min.js"></script>
-    <script type="text/javascript" src="${ctx}/js/dingding/demo.js"></script>
-    <script type="text/javascript" src="${ctx}/js/dingding/dingtalk.js"></script>
+    <%--<script type="text/javascript" src="${ctx}/js/dingding/demo.js"></script>--%>
+    <%--<script type="text/javascript" src="${ctx}/js/dingding/dingtalk.js"></script>--%>
 </head>
 <body>
 <script >
-    window.location = '${ctx}/dingdinglogin/index';
+    window.location = '${ctx}/dingdinglogin/test';
 </script>
 </body>
 </html>

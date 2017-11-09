@@ -8,6 +8,7 @@ import com.wasu.dingding.UserHelper;
 import org.apache.log4j.Logger;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
@@ -16,6 +17,7 @@ import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Properties;
@@ -46,7 +48,9 @@ public class DingdingLiginController {
     }
 
     @RequestMapping("test1")
-    public String test1(HttpServletRequest request, HttpServletResponse response){
+    public String test1(Model model,HttpServletRequest request, HttpServletResponse response){
+        String pandian=request.getParameter("pandian");
+        model.addAttribute("pandian",pandian!=null?Integer.parseInt(pandian):0);
         return "test1";
     }
 

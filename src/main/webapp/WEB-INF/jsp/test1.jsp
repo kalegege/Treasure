@@ -42,10 +42,12 @@
         <li class="mui-table-view-cell">最新盘点位置:白马湖5楼</li>
         <li class="mui-table-view-cell">个人备注:太卡</li>
     </ul>
+    <c:if test="${pandian == 1}">
     <div class="mui-content-padded">
         <button id='login' class="mui-btn mui-btn-block mui-btn-primary">盘点</button>
         </div>
     </div>
+    </c:if>
     <%--<div class="pandian" >--%>
         <%--<ul>--%>
             <%--<li class="btn">--%>
