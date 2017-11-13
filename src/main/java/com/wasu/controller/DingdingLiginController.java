@@ -32,7 +32,10 @@ public class DingdingLiginController {
     int MaxInactiveInterval=60*60;
 
     @RequestMapping("test")
-    public String test(HttpServletRequest request, HttpServletResponse response){
+    public String test(Model model,HttpServletRequest request, HttpServletResponse response){
+        String userid = request.getParameter("userid");
+        //需要传递自己的资产，待处理数据，数量
+
         return "test3";
     }
 
