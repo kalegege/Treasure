@@ -12,6 +12,10 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.math.BigDecimal;
+import java.nio.channels.FileChannel;
+import java.nio.channels.FileLock;
+import java.nio.file.Paths;
+import java.nio.file.StandardOpenOption;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Logger;
@@ -97,14 +101,8 @@ public class MyUtils {
     }
 
 
-    public static void MyTest(){
-        try(InputStream is=new FileInputStream("lll")){
-
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+    public static void MyTest() throws IOException{
+        
     }
 
 }

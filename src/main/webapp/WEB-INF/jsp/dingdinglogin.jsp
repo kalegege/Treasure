@@ -22,13 +22,19 @@
         var signature='${conf.signature}';
         <%--var url_db='${url_db}';--%>
         var url_page='${ctx}';
+        alert("conf:"+${conf});
     </script>
-    <script type="text/javascript" src="${ctx}/js/jquery-2.0.3.min.js"></script>
-    <script type="text/javascript" src="${ctx}/js/dingding/demo.js"></script>
+    <script type="text/javascript" src="${ctx}/js/dingding/zepto.min.js"></script>
+    <%--<script type="text/javascript" src="${ctx}/js/jquery-2.0.3.min.js"></script>--%>
     <script type="text/javascript" src="${ctx}/js/dingding/dingtalk.js"></script>
+    <script type="text/javascript" src="${ctx}/js/dingding/demo.js"></script>
+
+
 
 </head>
 <body>
-我是正文
+<input id="url" type="text" value="${ctx}/dingdinglogin/test"/>
+<a href="${ctx}/dingdinglogin/test">switch</a>
+我是跳转页+${conf}
 </body>
 </html>

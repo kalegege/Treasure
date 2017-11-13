@@ -12,15 +12,24 @@
 
 <html>
 <head>
-    <title>Title</title>
-    // 免登相关代码
-    <script type="text/javascript" src="${ctx}/js/jquery-2.0.3.min.js"></script>
-    <%--<script type="text/javascript" src="${ctx}/js/dingding/demo.js"></script>--%>
-    <%--<script type="text/javascript" src="${ctx}/js/dingding/dingtalk.js"></script>--%>
+    <meta http-equiv=Content-Type content="text/html;charset=utf-8">
+    <title>首页</title>
+    <script type="text/javascript">
+
+        //在此拿到jsAPI权限验证配置所需要的信息
+        var _config = <%= com.wasu.dingding.AuthHelper.getConfig(request) %>;
+    </script>
+    <script type="text/javascript" src="${ctx}/js/dingding/zepto.min.js"></script>
+    <%--<script type="text/javascript" src="${ctx}/js/jquery-2.0.3.min.js"></script>--%>
+    <script type="text/javascript" src="${ctx}/js/dingding/dingtalk.js"></script>
+    <script type="text/javascript" src="${ctx}/js/dingding/demo.js"></script>
 </head>
 <body>
 <script >
-    window.location = '${ctx}/dingdinglogin/test';
+    window.addEventListener('load', function() {
+        setTimeout(function(){
+        }, 500);
+    });
 </script>
 </body>
 </html>

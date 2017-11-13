@@ -3,7 +3,7 @@ function click_sao() {
     dd.biz.util.scan({
         type: "all" , // type 为 all、qrCode、barCode，默认是all。
         onSuccess: function(data) {
-            alert("扫码成功"+data);
+            alert("扫码成功"+data.text);
             //onSuccess将在扫码成功之后回调
             /* data结构
               { 'text': String}

@@ -1,5 +1,6 @@
 package com.wasu.dingding;
 
+import com.dingtalk.oapi.lib.aes.DingTalkJsApiSingnature;
 import com.dingtalk.open.client.ServiceFactory;
 import com.dingtalk.open.client.api.model.corp.JsapiTicket;
 import com.dingtalk.open.client.api.service.corp.CorpConnectionService;
@@ -40,11 +41,8 @@ public class AuthHelper {
 //        if (accessTokenValue == null || curTime - accessTokenValue.getLong("begin_time") >= cacheTime) {
             try {
                 ServiceFactory serviceFactory = ServiceFactory.getInstance();
-                System.out.println("--------------");
                 CorpConnectionService corpConnectionService = serviceFactory.getOpenService(CorpConnectionService.class);
-                System.out.println("++++++");
                 accToken = corpConnectionService.getCorpToken(Env.CORP_ID, Env.CORP_SECRET);
-                System.out.println(accToken);
                 // save accessToken
 //                JSONObject jsonAccess = new JSONObject();
 //                jsontemp.clear();
@@ -100,18 +98,27 @@ public class AuthHelper {
     }
 
 
+//    public static String sign(String ticket, String nonceStr, long timeStamp, String url) throws OApiException {
+//        String plain="jsapi ticket="+ticket+"&noncestr="+nonceStr+"&timestamp="+String.valueOf(timeStamp)
+//                +"&url"+url;
+//        try {
+//            MessageDigest sha1=MessageDigest.getInstance("SHA-1");
+//            sha1.reset();;
+//            sha1.update(plain.getBytes("UTF-8"));
+//            return bytesToHex(sha1.digest());
+//        } catch (Exception ex) {
+//            throw new OApiException(0, ex.getMessage());
+//        }
+//    }
+
     public static String sign(String ticket, String nonceStr, long timeStamp, String url) throws OApiException {
-        String plain="jsapi ticket="+ticket+"&noncestr="+nonceStr+"&timestamp="+String.valueOf(timeStamp)
-                +"&url"+url;
         try {
-            MessageDigest sha1=MessageDigest.getInstance("SHA-1");
-            sha1.reset();;
-            sha1.update(plain.getBytes("UTF-8"));
-            return bytesToHex(sha1.digest());
+            return DingTalkJsApiSingnature.getJsApiSingnature(url, nonceStr, timeStamp, ticket);
         } catch (Exception ex) {
             throw new OApiException(0, ex.getMessage());
         }
     }
+
     private static String bytesToHex(byte[] hash){
         Formatter formatter=new Formatter();
         for(byte b:hash ){
@@ -132,7 +139,6 @@ public class AuthHelper {
      * @return
      */
     public static String getConfig(HttpServletRequest request) {
-        System.out.println("test:start");
         String urlString = request.getRequestURL().toString();
         String queryString = request.getQueryString();
 
@@ -154,13 +160,10 @@ public class AuthHelper {
         String agentid = null;
 
         try {
-            System.out.println("test:start2");
             accessToken = AuthHelper.getAccessToken();
-            System.out.println(accessToken);
             ticket = AuthHelper.getJsapiTicket(accessToken);
-            System.out.println(ticket);
+            System.out.println("signedUrl:"+signedUrl);
             signature = AuthHelper.sign(ticket, nonceStr, timeStamp, signedUrl);
-            System.out.println(signature);
             agentid = "134027113";
 
         } catch (OApiException e) {
