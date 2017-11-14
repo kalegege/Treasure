@@ -9,4 +9,5 @@ import java.util.List;
  */
 public interface AssertService {
     public int insert(List<Assert> asserts);
+    public List<Assert> getByAssertCode(String assertCode);
 }
