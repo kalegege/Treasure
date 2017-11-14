@@ -40,13 +40,15 @@
                enableDeleteByExample="false" enableSelectByExample="false"
                selectByExampleQueryId="false"/>-->
 
-        <table tableName="asset" domainObjectName="Assert">
+        <table tableName="asset" domainObjectName="Assert"></table>
+        <table tableName="inventory" domainObjectName="Inventory"></table>
+        <table tableName="inventory_history" domainObjectName="InventoryHistory"></table>
                <!--enableCountByExample="false" enableUpdateByExample="false"-->
                <!--enableDeleteByExample="false" enableSelectByExample="false"-->
                <!--selectByExampleQueryId="false">-->
             <!--<columnRenamingRule searchString="^D_"
                                 replaceString=""/>-->
-        </table>
+
 
     </context>
 </generatorConfiguration>

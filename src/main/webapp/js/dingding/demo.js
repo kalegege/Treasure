@@ -15,14 +15,12 @@ dd.config({
 			jsApiList : [ 'runtime.info', 'biz.contact.choose',
 					'device.notification.confirm', 'device.notification.alert',
 					'device.notification.prompt', 'biz.ding.post',
-					'biz.util.openLink','biz.util.scan','biz.util.uploadImageFromCamera' ]
+					'biz.util.openLink','biz.util.scan','biz.util.uploadImageFromCamera','biz.user.get',
+					'biz.util.uploadImage']
 		});
 
 
 dd.ready(function() {
-
-
-
 	dd.runtime.permission.requestAuthCode({
 		corpId : _config.corpId,
 		onSuccess : function(info) {
@@ -32,10 +30,11 @@ dd.ready(function() {
                 + _config.corpId,
 				type : 'GET',
 				success : function(data, status, xhr) {
-				    alert(data);
+				    // alert(data);
 					var info = JSON.parse(data);
+					var user=JSON.parse(info.user);
 					if(info.isSuccess == '1'){
-                        window.location = "/treasure/dingdinglogin/test?userid="+info.user.userid;
+                        window.location = "/treasure/dingdinglogin/test?userid="+user.userid;
 					}else{
                         window.location = "/treasure/html/error/error.jsp";
 					}

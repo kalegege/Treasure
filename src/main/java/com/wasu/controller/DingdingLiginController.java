@@ -35,7 +35,9 @@ public class DingdingLiginController {
     public String test(Model model,HttpServletRequest request, HttpServletResponse response){
         String userid = request.getParameter("userid");
         //需要传递自己的资产，待处理数据，数量
-
+        if(userid!=null){
+            model.addAttribute("userid",userid);
+        }
         return "test3";
     }
 

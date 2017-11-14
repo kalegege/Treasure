@@ -1,0 +1,353 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.wasu.dao.InventoryHistoryMapper" >
+  <resultMap id="BaseResultMap" type="com.wasu.model.InventoryHistory" >
+    <id column="ID" property="id" jdbcType="DECIMAL" />
+    <result column="ADDRESS" property="address" jdbcType="VARCHAR" />
+    <result column="ASSETCODE" property="assetcode" jdbcType="VARCHAR" />
+    <result column="DEPTNAME" property="deptname" jdbcType="VARCHAR" />
+    <result column="INVENTORY_ID" property="inventoryId" jdbcType="DECIMAL" />
+    <result column="INVENTORY_REMARK" property="inventoryRemark" jdbcType="VARCHAR" />
+    <result column="INVENTORY_USER" property="inventoryUser" jdbcType="VARCHAR" />
+    <result column="INVENTORYDATE" property="inventorydate" jdbcType="DATE" />
+    <result column="INVENTORYSTATE" property="inventorystate" jdbcType="DECIMAL" />
+    <result column="LATITUDE" property="latitude" jdbcType="DECIMAL" />
+    <result column="LONGITUDE" property="longitude" jdbcType="DECIMAL" />
+    <result column="NAME" property="name" jdbcType="VARCHAR" />
+    <result column="PHOTO" property="photo" jdbcType="VARCHAR" />
+    <result column="PLACE" property="place" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    ID, ADDRESS, ASSETCODE, DEPTNAME, INVENTORY_ID, INVENTORY_REMARK, INVENTORY_USER, 
+    INVENTORYDATE, INVENTORYSTATE, LATITUDE, LONGITUDE, NAME, PHOTO, PLACE
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.wasu.model.InventoryHistoryExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from INVENTORY_HISTORY
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from INVENTORY_HISTORY
+    where ID = #{id,jdbcType=DECIMAL}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from INVENTORY_HISTORY
+    where ID = #{id,jdbcType=DECIMAL}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.wasu.model.InventoryHistoryExample" >
+    delete from INVENTORY_HISTORY
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.wasu.model.InventoryHistory" >
+    insert into INVENTORY_HISTORY (ID, ADDRESS, ASSETCODE, 
+      DEPTNAME, INVENTORY_ID, INVENTORY_REMARK, 
+      INVENTORY_USER, INVENTORYDATE, INVENTORYSTATE, 
+      LATITUDE, LONGITUDE, NAME, 
+      PHOTO, PLACE)
+    values (#{id,jdbcType=DECIMAL}, #{address,jdbcType=VARCHAR}, #{assetcode,jdbcType=VARCHAR}, 
+      #{deptname,jdbcType=VARCHAR}, #{inventoryId,jdbcType=DECIMAL}, #{inventoryRemark,jdbcType=VARCHAR}, 
+      #{inventoryUser,jdbcType=VARCHAR}, #{inventorydate,jdbcType=DATE}, #{inventorystate,jdbcType=DECIMAL}, 
+      #{latitude,jdbcType=DECIMAL}, #{longitude,jdbcType=DECIMAL}, #{name,jdbcType=VARCHAR}, 
+      #{photo,jdbcType=VARCHAR}, #{place,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.wasu.model.InventoryHistory" >
+    insert into INVENTORY_HISTORY
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        ID,
+      </if>
+      <if test="address != null" >
+        ADDRESS,
+      </if>
+      <if test="assetcode != null" >
+        ASSETCODE,
+      </if>
+      <if test="deptname != null" >
+        DEPTNAME,
+      </if>
+      <if test="inventoryId != null" >
+        INVENTORY_ID,
+      </if>
+      <if test="inventoryRemark != null" >
+        INVENTORY_REMARK,
+      </if>
+      <if test="inventoryUser != null" >
+        INVENTORY_USER,
+      </if>
+      <if test="inventorydate != null" >
+        INVENTORYDATE,
+      </if>
+      <if test="inventorystate != null" >
+        INVENTORYSTATE,
+      </if>
+      <if test="latitude != null" >
+        LATITUDE,
+      </if>
+      <if test="longitude != null" >
+        LONGITUDE,
+      </if>
+      <if test="name != null" >
+        NAME,
+      </if>
+      <if test="photo != null" >
+        PHOTO,
+      </if>
+      <if test="place != null" >
+        PLACE,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=DECIMAL},
+      </if>
+      <if test="address != null" >
+        #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="assetcode != null" >
+        #{assetcode,jdbcType=VARCHAR},
+      </if>
+      <if test="deptname != null" >
+        #{deptname,jdbcType=VARCHAR},
+      </if>
+      <if test="inventoryId != null" >
+        #{inventoryId,jdbcType=DECIMAL},
+      </if>
+      <if test="inventoryRemark != null" >
+        #{inventoryRemark,jdbcType=VARCHAR},
+      </if>
+      <if test="inventoryUser != null" >
+        #{inventoryUser,jdbcType=VARCHAR},
+      </if>
+      <if test="inventorydate != null" >
+        #{inventorydate,jdbcType=DATE},
+      </if>
+      <if test="inventorystate != null" >
+        #{inventorystate,jdbcType=DECIMAL},
+      </if>
+      <if test="latitude != null" >
+        #{latitude,jdbcType=DECIMAL},
+      </if>
+      <if test="longitude != null" >
+        #{longitude,jdbcType=DECIMAL},
+      </if>
+      <if test="name != null" >
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="photo != null" >
+        #{photo,jdbcType=VARCHAR},
+      </if>
+      <if test="place != null" >
+        #{place,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.wasu.model.InventoryHistoryExample" resultType="java.lang.Integer" >
+    select count(*) from INVENTORY_HISTORY
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update INVENTORY_HISTORY
+    <set >
+      <if test="record.id != null" >
+        ID = #{record.id,jdbcType=DECIMAL},
+      </if>
+      <if test="record.address != null" >
+        ADDRESS = #{record.address,jdbcType=VARCHAR},
+      </if>
+      <if test="record.assetcode != null" >
+        ASSETCODE = #{record.assetcode,jdbcType=VARCHAR},
+      </if>
+      <if test="record.deptname != null" >
+        DEPTNAME = #{record.deptname,jdbcType=VARCHAR},
+      </if>
+      <if test="record.inventoryId != null" >
+        INVENTORY_ID = #{record.inventoryId,jdbcType=DECIMAL},
+      </if>
+      <if test="record.inventoryRemark != null" >
+        INVENTORY_REMARK = #{record.inventoryRemark,jdbcType=VARCHAR},
+      </if>
+      <if test="record.inventoryUser != null" >
+        INVENTORY_USER = #{record.inventoryUser,jdbcType=VARCHAR},
+      </if>
+      <if test="record.inventorydate != null" >
+        INVENTORYDATE = #{record.inventorydate,jdbcType=DATE},
+      </if>
+      <if test="record.inventorystate != null" >
+        INVENTORYSTATE = #{record.inventorystate,jdbcType=DECIMAL},
+      </if>
+      <if test="record.latitude != null" >
+        LATITUDE = #{record.latitude,jdbcType=DECIMAL},
+      </if>
+      <if test="record.longitude != null" >
+        LONGITUDE = #{record.longitude,jdbcType=DECIMAL},
+      </if>
+      <if test="record.name != null" >
+        NAME = #{record.name,jdbcType=VARCHAR},
+      </if>
+      <if test="record.photo != null" >
+        PHOTO = #{record.photo,jdbcType=VARCHAR},
+      </if>
+      <if test="record.place != null" >
+        PLACE = #{record.place,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update INVENTORY_HISTORY
+    set ID = #{record.id,jdbcType=DECIMAL},
+      ADDRESS = #{record.address,jdbcType=VARCHAR},
+      ASSETCODE = #{record.assetcode,jdbcType=VARCHAR},
+      DEPTNAME = #{record.deptname,jdbcType=VARCHAR},
+      INVENTORY_ID = #{record.inventoryId,jdbcType=DECIMAL},
+      INVENTORY_REMARK = #{record.inventoryRemark,jdbcType=VARCHAR},
+      INVENTORY_USER = #{record.inventoryUser,jdbcType=VARCHAR},
+      INVENTORYDATE = #{record.inventorydate,jdbcType=DATE},
+      INVENTORYSTATE = #{record.inventorystate,jdbcType=DECIMAL},
+      LATITUDE = #{record.latitude,jdbcType=DECIMAL},
+      LONGITUDE = #{record.longitude,jdbcType=DECIMAL},
+      NAME = #{record.name,jdbcType=VARCHAR},
+      PHOTO = #{record.photo,jdbcType=VARCHAR},
+      PLACE = #{record.place,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.wasu.model.InventoryHistory" >
+    update INVENTORY_HISTORY
+    <set >
+      <if test="address != null" >
+        ADDRESS = #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="assetcode != null" >
+        ASSETCODE = #{assetcode,jdbcType=VARCHAR},
+      </if>
+      <if test="deptname != null" >
+        DEPTNAME = #{deptname,jdbcType=VARCHAR},
+      </if>
+      <if test="inventoryId != null" >
+        INVENTORY_ID = #{inventoryId,jdbcType=DECIMAL},
+      </if>
+      <if test="inventoryRemark != null" >
+        INVENTORY_REMARK = #{inventoryRemark,jdbcType=VARCHAR},
+      </if>
+      <if test="inventoryUser != null" >
+        INVENTORY_USER = #{inventoryUser,jdbcType=VARCHAR},
+      </if>
+      <if test="inventorydate != null" >
+        INVENTORYDATE = #{inventorydate,jdbcType=DATE},
+      </if>
+      <if test="inventorystate != null" >
+        INVENTORYSTATE = #{inventorystate,jdbcType=DECIMAL},
+      </if>
+      <if test="latitude != null" >
+        LATITUDE = #{latitude,jdbcType=DECIMAL},
+      </if>
+      <if test="longitude != null" >
+        LONGITUDE = #{longitude,jdbcType=DECIMAL},
+      </if>
+      <if test="name != null" >
+        NAME = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="photo != null" >
+        PHOTO = #{photo,jdbcType=VARCHAR},
+      </if>
+      <if test="place != null" >
+        PLACE = #{place,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where ID = #{id,jdbcType=DECIMAL}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.wasu.model.InventoryHistory" >
+    update INVENTORY_HISTORY
+    set ADDRESS = #{address,jdbcType=VARCHAR},
+      ASSETCODE = #{assetcode,jdbcType=VARCHAR},
+      DEPTNAME = #{deptname,jdbcType=VARCHAR},
+      INVENTORY_ID = #{inventoryId,jdbcType=DECIMAL},
+      INVENTORY_REMARK = #{inventoryRemark,jdbcType=VARCHAR},
+      INVENTORY_USER = #{inventoryUser,jdbcType=VARCHAR},
+      INVENTORYDATE = #{inventorydate,jdbcType=DATE},
+      INVENTORYSTATE = #{inventorystate,jdbcType=DECIMAL},
+      LATITUDE = #{latitude,jdbcType=DECIMAL},
+      LONGITUDE = #{longitude,jdbcType=DECIMAL},
+      NAME = #{name,jdbcType=VARCHAR},
+      PHOTO = #{photo,jdbcType=VARCHAR},
+      PLACE = #{place,jdbcType=VARCHAR}
+    where ID = #{id,jdbcType=DECIMAL}
+  </update>
+</mapper>

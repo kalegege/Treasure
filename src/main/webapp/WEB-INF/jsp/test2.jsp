@@ -67,7 +67,7 @@
         click_sao();
     });
     $('#pai').click(function(){
-        click_pai();
+        click_pai1();
     });
 </script>
 
