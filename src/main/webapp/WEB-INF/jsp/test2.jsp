@@ -16,7 +16,9 @@
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/mui.min.css" type="text/css"/>
     <script type="text/javascript" src="${pageContext.request.contextPath}/js/my.js"></script>
     <script type="text/javascript" src="${pageContext.request.contextPath}/js/mui.min.js"></script>
-    <script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-2.0.3.min.js"></script>
+    <%--<script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-2.0.3.min.js"></script>--%>
+    <script type="text/javascript" src="${pageContext.request.contextPath}/js/dingding/zepto.min.js"></script>
+    <script type="text/javascript" src="${pageContext.request.contextPath}/js/dingding/dingtalk.js"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
@@ -32,13 +34,13 @@
         <li class="mui-table-view-cell">资产编号:123456</li>
         <li class="mui-table-view-cell">
             扫码结果
-            <button type="button" class="mui-btn mui-btn-primary">
+            <button type="button" id="saoma" class="mui-btn mui-btn-primary">
                 扫码
             </button>
         </li>
         <li class="mui-table-view-cell">
             <img class="mui-media-object" src="${pageContext.request.contextPath}/image/avatar.png">
-            <button type="button" class="mui-btn mui-btn-primary">
+            <button type="button" id="pai" class="mui-btn mui-btn-primary">
                 拍照
             </button>
         </li>
@@ -58,9 +60,14 @@
 
 </div>
 <script>
-
     $('#queren').click(function(){
         window.location.href="${pageContext.request.contextPath}/dingdinglogin/test1";
+    });
+    $('#saoma').click(function(){
+        click_sao();
+    });
+    $('#pai').click(function(){
+        click_pai1();
     });
 </script>
 

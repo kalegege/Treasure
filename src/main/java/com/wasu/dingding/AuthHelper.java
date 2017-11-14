@@ -1,9 +1,14 @@
 package com.wasu.dingding;
 
+import com.dingtalk.oapi.lib.aes.DingTalkJsApiSingnature;
 import com.dingtalk.open.client.ServiceFactory;
 import com.dingtalk.open.client.api.model.corp.JsapiTicket;
 import com.dingtalk.open.client.api.service.corp.CorpConnectionService;
 import com.dingtalk.open.client.api.service.corp.JsapiService;
+import com.google.common.cache.Cache;
+import com.google.common.cache.CacheBuilder;
+import com.google.common.cache.CacheLoader;
+import com.wasu.utils.AccessTokenCache;
 import com.wasu.utils.FileUtils;
 import com.wasu.utils.HttpHelper;
 import com.alibaba.fastjson.JSONObject;
@@ -13,14 +18,17 @@ import javax.servlet.http.HttpServletRequest;
 import java.net.URLDecoder;
 import java.security.MessageDigest;
 import java.util.Formatter;
+import java.util.concurrent.Callable;
+import java.util.concurrent.TimeUnit;
 
 /**
  * AccessToken和jsticket的获取封装
  */
 public class AuthHelper {
 
-    // 调整到1小时50分钟
-    public static final long cacheTime = 1000 * 60 * 55 * 2;
+    private static Cache<String, String> cache_token;
+
+    private static Cache<String, String> cache_ticket;
 
     /*
      * 在此方法中，为了避免频繁获取access_token，
@@ -33,35 +41,7 @@ public class AuthHelper {
      * 具体信息请查看开发者文档--权限验证配置
      */
     public static String getAccessToken() throws OApiException {
-//        long curTime = System.currentTimeMillis();
-//        JSONObject accessTokenValue = (JSONObject) FileUtils.getValue("accesstoken", Env.CORP_ID);
-        String accToken = "";
-//        JSONObject jsontemp = new JSONObject();
-//        if (accessTokenValue == null || curTime - accessTokenValue.getLong("begin_time") >= cacheTime) {
-            try {
-                ServiceFactory serviceFactory = ServiceFactory.getInstance();
-                System.out.println("--------------");
-                CorpConnectionService corpConnectionService = serviceFactory.getOpenService(CorpConnectionService.class);
-                System.out.println("++++++");
-                accToken = corpConnectionService.getCorpToken(Env.CORP_ID, Env.CORP_SECRET);
-                System.out.println(accToken);
-                // save accessToken
-//                JSONObject jsonAccess = new JSONObject();
-//                jsontemp.clear();
-//                jsontemp.put("access_token", accToken);
-//                jsontemp.put("begin_time", curTime);
-//                jsonAccess.put(Env.CORP_ID, jsontemp);
-//                //真实项目中最好保存到数据库中
-//                FileUtils.write2File(jsonAccess, "accesstoken");
-
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-//        } else {
-//            return accessTokenValue.getString("access_token");
-//        }
-
-        return accToken;
+        return getTokenCache();
     }
 
     /**
@@ -69,49 +49,17 @@ public class AuthHelper {
      * 正常的情况下，jsapi_ticket的有效期为7200秒，所以开发者需要在某个地方设计一个定时器，定期去更新jsapi_ticket
      */
     public static String getJsapiTicket(String accessToken) throws OApiException {
-//        JSONObject jsTicketValue = (JSONObject) FileUtils.getValue("jsticket", Env.CORP_ID);
-//        long curTime = System.currentTimeMillis();
-        String jsTicket = "";
-
-//        if (jsTicketValue == null || curTime -
-//                jsTicketValue.getLong("begin_time") >= cacheTime) {
-            ServiceFactory serviceFactory;
-            try {
-                serviceFactory = ServiceFactory.getInstance();
-                JsapiService jsapiService = serviceFactory.getOpenService(JsapiService.class);
-
-                JsapiTicket JsapiTicket = jsapiService.getJsapiTicket(accessToken, "jsapi");
-                jsTicket = JsapiTicket.getTicket();
-
-//                JSONObject jsonTicket = new JSONObject();
-//                JSONObject jsontemp = new JSONObject();
-//                jsontemp.clear();
-//                jsontemp.put("ticket", jsTicket);
-//                jsontemp.put("begin_time", curTime);
-//                jsonTicket.put(Env.CORP_ID, jsontemp);
-//                FileUtils.write2File(jsonTicket, "jsticket");
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-            return jsTicket;
-//        } else {
-//            return jsTicketValue.getString("ticket");
-//        }
+        return getTicketCache(accessToken);
     }
 
-
     public static String sign(String ticket, String nonceStr, long timeStamp, String url) throws OApiException {
-        String plain="jsapi ticket="+ticket+"&noncestr="+nonceStr+"&timestamp="+String.valueOf(timeStamp)
-                +"&url"+url;
         try {
-            MessageDigest sha1=MessageDigest.getInstance("SHA-1");
-            sha1.reset();;
-            sha1.update(plain.getBytes("UTF-8"));
-            return bytesToHex(sha1.digest());
+            return DingTalkJsApiSingnature.getJsApiSingnature(url, nonceStr, timeStamp, ticket);
         } catch (Exception ex) {
             throw new OApiException(0, ex.getMessage());
         }
     }
+
     private static String bytesToHex(byte[] hash){
         Formatter formatter=new Formatter();
         for(byte b:hash ){
@@ -132,7 +80,6 @@ public class AuthHelper {
      * @return
      */
     public static String getConfig(HttpServletRequest request) {
-        System.out.println("test:start");
         String urlString = request.getRequestURL().toString();
         String queryString = request.getQueryString();
 
@@ -154,13 +101,10 @@ public class AuthHelper {
         String agentid = null;
 
         try {
-            System.out.println("test:start2");
-            accessToken = AuthHelper.getAccessToken();
-            System.out.println(accessToken);
+            accessToken= AuthHelper.getAccessToken();
             ticket = AuthHelper.getJsapiTicket(accessToken);
-            System.out.println(ticket);
+            System.out.println("signedUrl:"+signedUrl);
             signature = AuthHelper.sign(ticket, nonceStr, timeStamp, signedUrl);
-            System.out.println(signature);
             agentid = "134027113";
 
         } catch (OApiException e) {
@@ -184,6 +128,84 @@ public class AuthHelper {
         }
         return ssoToken;
 
+    }
+
+    public static String getTokenCache() {
+        final String key = "access_token";
+        if (cache_token == null) {
+            cache_token = CacheBuilder.newBuilder().maximumSize(1000).refreshAfterWrite(1, TimeUnit.HOURS)
+                    .expireAfterAccess(1, TimeUnit.HOURS).build(new CacheLoader<String, String>() {
+                        @Override
+                        public String load(String s) throws Exception {
+                            return null;
+                        }
+                    });
+        }
+
+        try {
+            String result = (String) cache_token.get(key,
+                    new Callable<String>() {
+                        @Override
+                        public String call() throws Exception {
+//                            String accToken = "123456";
+                            String accToken = "";
+                            try {
+                                ServiceFactory serviceFactory = ServiceFactory.getInstance();
+                                CorpConnectionService corpConnectionService = serviceFactory.getOpenService(CorpConnectionService.class);
+                                accToken = corpConnectionService.getCorpToken(Env.CORP_ID, Env.CORP_SECRET);
+                            } catch (Exception e) {
+                                e.printStackTrace();
+                            }
+                            return accToken;
+                            // return chanelTeamManager.getMenu(query);
+                        }
+                    });
+
+            return result;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    public static String getTicketCache(String accessToken) {
+        final String key = "ticket";
+        if (cache_ticket == null) {
+            cache_ticket = CacheBuilder.newBuilder().maximumSize(1000).refreshAfterWrite(1, TimeUnit.HOURS)
+                    .expireAfterAccess(1, TimeUnit.HOURS).build(new CacheLoader<String, String>() {
+                        @Override
+                        public String load(String s) throws Exception {
+                            return null;
+                        }
+                    });
+        }
+
+        try {
+            String result = (String) cache_ticket.get(key,
+                    new Callable<String>() {
+                        @Override
+                        public String call() throws Exception {
+//                            String jsTicket = "654321";
+                            String jsTicket = "";
+                            ServiceFactory serviceFactory;
+                            try {
+                                serviceFactory = ServiceFactory.getInstance();
+                                JsapiService jsapiService = serviceFactory.getOpenService(JsapiService.class);
+
+                                JsapiTicket JsapiTicket = jsapiService.getJsapiTicket(accessToken, "jsapi");
+                                jsTicket = JsapiTicket.getTicket();
+                            } catch (Exception e) {
+                                e.printStackTrace();
+                            }
+                            return jsTicket;
+                        }
+                    });
+
+            return result;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
     }
 
 }

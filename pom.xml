@@ -279,11 +279,11 @@
         </dependency>
 
 
-        <!--<dependency>-->
-            <!--<groupId>com.wasu.ptyw.dingding</groupId>-->
-            <!--<artifactId>client-sdk-example</artifactId>-->
-            <!--<version>1.0.0</version>-->
-        <!--</dependency>-->
+        <dependency>
+            <groupId>com.wasu.ptyw</groupId>
+            <artifactId>lippi-oapi-encrpt</artifactId>
+            <version>1.0.2</version>
+        </dependency>
 
         <dependency>
             <groupId>com.wasu.ptyw.dingding</groupId>
@@ -296,6 +296,7 @@
             <artifactId>client-sdk-spring</artifactId>
             <version>1.0.0</version>
         </dependency>
+
     </dependencies>
     <build>
         <finalName>treasure</finalName>

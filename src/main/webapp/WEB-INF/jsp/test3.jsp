@@ -42,7 +42,7 @@
                     <div class="mui-table">
                         <div class="mui-table-cell mui-col-xs-10">
                             <h4 class="mui-ellipsis">笔记本电脑</h4>
-                            <h5>申请人：黄渤</h5>
+                            <h5>申请人${userid}：黄渤</h5>
                             <p class="mui-h6 mui-ellipsis">白马湖D座5楼</p>
                         </div>
                         <div class="mui-table-cell mui-col-xs-2 mui-text-right">

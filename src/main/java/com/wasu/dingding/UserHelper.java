@@ -138,4 +138,21 @@ public class UserHelper {
         return response;
     }
 
+    /**
+     *
+     * @param accessToken
+     * @param departmentId
+     * @return
+     */
+    public static JSONObject getDeptDetail(String accessToken,long departmentId ){
+        String url= Env.OAPI_HOST+"/department/get?access_token="+accessToken+"&id="+departmentId;
+        JSONObject response=null;
+        try {
+            response= HttpHelper.httpGet(url);
+        } catch (OApiException e) {
+            e.printStackTrace();
+        }
+        return response;
+    }
+
 }

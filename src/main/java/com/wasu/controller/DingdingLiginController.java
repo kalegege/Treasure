@@ -31,19 +31,13 @@ public class DingdingLiginController {
     private static Logger logger= Logger.getLogger(DingdingLiginController.class);
     int MaxInactiveInterval=60*60;
 
-    @RequestMapping("index")
-    public ModelAndView login( HttpServletRequest request){
-        ModelAndView mv=new ModelAndView();
-        Cookie[] cookies=request.getCookies();
-        JSONObject js=JSON.parseObject(AuthHelper.getConfig(request));
-        mv.addObject("conf",js);
-        mv.setViewName("dingdinglogin");
-
-        return mv;
-    }
-
     @RequestMapping("test")
-    public String test(HttpServletRequest request, HttpServletResponse response){
+    public String test(Model model,HttpServletRequest request, HttpServletResponse response){
+        String userid = request.getParameter("userid");
+        //需要传递自己的资产，待处理数据，数量
+        if(userid!=null){
+            model.addAttribute("userid",userid);
+        }
         return "test3";
     }
 
@@ -62,26 +56,36 @@ public class DingdingLiginController {
 
     @RequestMapping("userInfo")
     @ResponseBody
-    public String userInfo(String corpId,String code,HttpServletRequest request,HttpServletResponse response) throws Exception{
+    public String userInfo(HttpServletRequest request,HttpServletResponse response) throws Exception{
+        // 获取免登授权码
+        String code = request.getParameter("code");
+        String corpId = request.getParameter("corpid");
+        System.out.println("authCode:" + code + " corpid:" + corpId);
         Map<String,String> m=new HashMap<>();
-        String accessToken=AuthHelper.getAccessToken();
-        String userId=UserHelper.getUserInfo(accessToken,code).getUserid();
-        System.out.println("当前用户userid=");
-        CorpUserDetail user=(CorpUserDetail) UserHelper.getUser(accessToken,userId);
-        logger.info(JSON.toJSONString(user));
+        try {
+            response.setContentType("text/html; charset=utf-8");
 
-//        ClassPathResource res=new ClassPathResource("/config.properties",this.getClass());
-//        Properties prop=new Properties();
-//        try {
-//            prop.load(res.getInputStream());
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        }
-//        String url_db=prop.getProperty("url_db");
+            String accessToken = AuthHelper.getAccessToken();
+            m.put("accessToken",accessToken);
+            System.out.println("access token:" + accessToken);
+            CorpUserDetail user = UserHelper.getUser(accessToken, UserHelper.getUserInfo(accessToken, code).getUserid());
 
-        String param="oaId="+user.getJobnumber();
-        System.out.print(param);
-
-        return "success";
+            String userJson = JSON.toJSONString(user);
+            m.put("user",userJson);
+            m.put("isSuccess","1");
+            System.out.println("user:" + userJson);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+//        Map<String,String> m=new HashMap<>();
+//        String accessToken=AuthHelper.getAccessToken();
+//        String userId=UserHelper.getUserInfo(accessToken,code).getUserid();
+//        System.out.println("当前用户userid=");
+//        CorpUserDetail user=(CorpUserDetail) UserHelper.getUser(accessToken,userId);
+//        logger.info(JSON.toJSONString(user));
+//
+//        String param="oaId="+user.getJobnumber();
+//        System.out.print(param);
+        return JSON.toJSONString(m);
     }
 }
