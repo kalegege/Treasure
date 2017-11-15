@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.wasu.dao.OaCompanyUserMapper" >
+  <resultMap id="BaseResultMap" type="com.wasu.model.OaCompanyUser" >
+    <result column="WORKCODE" property="workcode" jdbcType="VARCHAR" />
+    <result column="LASTNAME" property="lastname" jdbcType="VARCHAR" />
+    <result column="SUPNAME" property="supname" jdbcType="VARCHAR" />
+    <result column="SUBCOMPANYNAME" property="subcompanyname" jdbcType="VARCHAR" />
+    <result column="MANAGER" property="manager" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    WORKCODE, LASTNAME, SUPNAME, SUBCOMPANYNAME, MANAGER
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.wasu.model.OaCompanyUserExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from OA_COMPANYUSER
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <delete id="deleteByExample" parameterType="com.wasu.model.OaCompanyUserExample" >
+    delete from OA_COMPANYUSER
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.wasu.model.OaCompanyUser" >
+    insert into OA_COMPANYUSER (WORKCODE, LASTNAME, SUPNAME, 
+      SUBCOMPANYNAME, MANAGER)
+    values (#{workcode,jdbcType=VARCHAR}, #{lastname,jdbcType=VARCHAR}, #{supname,jdbcType=VARCHAR}, 
+      #{subcompanyname,jdbcType=VARCHAR}, #{manager,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.wasu.model.OaCompanyUser" >
+    insert into OA_COMPANYUSER
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="workcode != null" >
+        WORKCODE,
+      </if>
+      <if test="lastname != null" >
+        LASTNAME,
+      </if>
+      <if test="supname != null" >
+        SUPNAME,
+      </if>
+      <if test="subcompanyname != null" >
+        SUBCOMPANYNAME,
+      </if>
+      <if test="manager != null" >
+        MANAGER,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="workcode != null" >
+        #{workcode,jdbcType=VARCHAR},
+      </if>
+      <if test="lastname != null" >
+        #{lastname,jdbcType=VARCHAR},
+      </if>
+      <if test="supname != null" >
+        #{supname,jdbcType=VARCHAR},
+      </if>
+      <if test="subcompanyname != null" >
+        #{subcompanyname,jdbcType=VARCHAR},
+      </if>
+      <if test="manager != null" >
+        #{manager,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.wasu.model.OaCompanyUserExample" resultType="java.lang.Integer" >
+    select count(*) from OA_COMPANYUSER
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update OA_COMPANYUSER
+    <set >
+      <if test="record.workcode != null" >
+        WORKCODE = #{record.workcode,jdbcType=VARCHAR},
+      </if>
+      <if test="record.lastname != null" >
+        LASTNAME = #{record.lastname,jdbcType=VARCHAR},
+      </if>
+      <if test="record.supname != null" >
+        SUPNAME = #{record.supname,jdbcType=VARCHAR},
+      </if>
+      <if test="record.subcompanyname != null" >
+        SUBCOMPANYNAME = #{record.subcompanyname,jdbcType=VARCHAR},
+      </if>
+      <if test="record.manager != null" >
+        MANAGER = #{record.manager,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update OA_COMPANYUSER
+    set WORKCODE = #{record.workcode,jdbcType=VARCHAR},
+      LASTNAME = #{record.lastname,jdbcType=VARCHAR},
+      SUPNAME = #{record.supname,jdbcType=VARCHAR},
+      SUBCOMPANYNAME = #{record.subcompanyname,jdbcType=VARCHAR},
+      MANAGER = #{record.manager,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+</mapper>

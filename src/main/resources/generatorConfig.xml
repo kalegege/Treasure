@@ -40,9 +40,10 @@
                enableDeleteByExample="false" enableSelectByExample="false"
                selectByExampleQueryId="false"/>-->
 
-        <table tableName="asset" domainObjectName="Assert"></table>
-        <table tableName="inventory" domainObjectName="Inventory"></table>
-        <table tableName="inventory_history" domainObjectName="InventoryHistory"></table>
+        <!--<table tableName="asset" domainObjectName="Assert"></table>-->
+        <!--<table tableName="inventory" domainObjectName="Inventory"></table>-->
+        <!--<table tableName="inventory_history" domainObjectName="InventoryHistory"></table>-->
+        <table tableName="oa_companyuser" domainObjectName="OaCompanyUser"></table>
                <!--enableCountByExample="false" enableUpdateByExample="false"-->
                <!--enableDeleteByExample="false" enableSelectByExample="false"-->
                <!--selectByExampleQueryId="false">-->

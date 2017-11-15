@@ -4,15 +4,19 @@ import com.alibaba.fastjson.JSON;
 import com.dingtalk.open.client.api.model.corp.CorpUserDetail;
 import com.wasu.dingding.AuthHelper;
 import com.wasu.dingding.UserHelper;
+import com.wasu.model.Assert;
+import com.wasu.service.AssertService;
 import org.apache.log4j.Logger;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -22,14 +26,20 @@ import java.util.Map;
 @RequestMapping("/dingdinglogin")
 public class DingdingLiginController {
     private static Logger logger= Logger.getLogger(DingdingLiginController.class);
-    int MaxInactiveInterval=60*60;
+
+    @Resource
+    private AssertService assertService;
 
     @RequestMapping("test")
     public String test(Model model,HttpServletRequest request, HttpServletResponse response){
         String userid = request.getParameter("userid");
         //需要传递自己的资产，待处理数据，数量
         if(userid!=null){
-            model.addAttribute("userid",userid);
+//            model.addAttribute("userid",userid);
+            List<Assert> result=assertService.getByAssertCode(userid);
+            if(!result.isEmpty()){
+                model.addAttribute("assert",result);
+            }
         }
         return "test3";
     }

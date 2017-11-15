@@ -572,4 +572,9 @@
       INVENTORY_USER = #{inventoryUser,jdbcType=VARCHAR}
     where ASSETCODE = #{assetcode,jdbcType=VARCHAR}
   </update>
+
+  <select id="getAssertbyCode" parameterType="java.lang.String" resultMap="BaseResultMap" >
+    select b.* from asset b,oa_companyuser a
+    where a.supname=b.deptname and a.lastname=b.place and b.state=1 and a.workcode = #{workcode,jdbcType=VARCHAR}
+  </select>
 </mapper>

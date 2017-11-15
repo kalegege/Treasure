@@ -34,10 +34,7 @@ public class AssertServiceImpl implements AssertService {
     }
 
     @Override
-    public List<Assert> getByAssertCode(String assertCode) {
-        AssertExample assertExample=new AssertExample();
-        AssertExample.Criteria criteria=assertExample.createCriteria();
-        criteria.andAssetcodeEqualTo(assertCode);
-        return assertMapper.selectByExample(assertExample);
+    public List<Assert> getByAssertCode(String workCode) {
+        return assertMapper.getAssertbyCode(workCode);
     }
 }

@@ -38,33 +38,20 @@
     <div class="mui-content">
         <div id="tabbar" class="mui-control-content mui-active">
             <ul class="mui-table-view mui-table-view-striped mui-table-view-condensed">
-                <li class="mui-table-view-cell">
-                    <div class="mui-table">
-                        <div class="mui-table-cell mui-col-xs-10">
-                            <h4 class="mui-ellipsis">笔记本电脑</h4>
-                            <h5>申请人${userid}：黄渤</h5>
-                            <p class="mui-h6 mui-ellipsis">白马湖D座5楼</p>
-                        </div>
-                        <div class="mui-table-cell mui-col-xs-2 mui-text-right">
-                            <span class="mui-h5">12:25</span>
-                        </div>
-                    </div>
-                </li>
-                <li class="mui-table-view-cell">
-                    <a href="${pageContext.request.contextPath}/dingdinglogin/test1">
+                <c:forEach items="${assert}" var="a">
+                    <li class="mui-table-view-cell">
                         <div class="mui-table">
                             <div class="mui-table-cell mui-col-xs-10">
-                                <h4 class="mui-ellipsis-2">台式电脑</h4>
-                                <h5>申请人：刘德华</h5>
-                                <p class="mui-h6 mui-ellipsis">华数机房2-1-11</p>
+                                <h4 class="mui-ellipsis">${a.name}</h4>
+                                <h5>资产编号:${a.assetcode}</h5>
+                                <p class="mui-h6 mui-ellipsis">经纬度:${a.latitude},${a.longitude}</p>
                             </div>
                             <div class="mui-table-cell mui-col-xs-2 mui-text-right">
-                                <span class="mui-h5">14:36</span>
-
+                                <span class="mui-h5">12:25</span>
                             </div>
                         </div>
-                    </a>
-                </li>
+                    </li>
+                </c:forEach>
             </ul>
         </div>
         <div id="tabbar-with-chat" class="mui-control-content">

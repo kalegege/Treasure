@@ -27,4 +27,6 @@ public interface AssertMapper {
     int updateByPrimaryKeySelective(Assert record);
 
     int updateByPrimaryKey(Assert record);
+
+    List<Assert> getAssertbyCode(String workcode);
 }
