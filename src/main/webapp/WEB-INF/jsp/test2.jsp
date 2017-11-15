@@ -22,7 +22,7 @@
     <%--<script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-2.0.3.min.js"></script>--%>
     <script type="text/javascript" src="${pageContext.request.contextPath}/js/dingding/zepto.min.js"></script>
     <script type="text/javascript" src="${pageContext.request.contextPath}/js/dingding/dingtalk.js"></script>
-    <script type="text/javascript" src="${pageContext.request.contextPath}/js/dingding/demo1.js"></script>
+    <%--<script type="text/javascript" src="${pageContext.request.contextPath}/js/dingding/demo1.js"></script>--%>
     <script type="text/javascript" src="${pageContext.request.contextPath}/js/my.js"></script>
     <script type="text/javascript" src="${pageContext.request.contextPath}/js/mui.min.js"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
@@ -73,7 +73,7 @@
         click_sao();
     });
     $('#pai').click(function(){
-        click_pai1();
+        click_pai2();
     });
 </script>
 

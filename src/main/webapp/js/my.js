@@ -105,3 +105,45 @@ function click_geo() {
         }
     });
 }
+
+function click_pai2() {
+    dd.biz.util.uploadAttachment({
+        image:{multiple:true,compress:false,max:9,spaceId: "12345"},
+        space:{corpId:"xxx3020",spaceId:"12345",isCopy:1 , max:9},
+        file:{spaceId:"12345",max:1},
+        types:["photo","camera","file","space"],
+        onSuccess : function(result) {
+            //onSuccess将在文件上传成功之后调用
+            /*
+             {
+             type:'', // 用户选择了哪种文件类型 ，image（图片）、file（手机文件）、space（钉盘文件）
+             data: [
+             {
+             spaceId: "232323",
+             fileId: "DzzzzzzNqZY",
+             fileName: "审批流程.docx",
+             fileSize: 1024,
+             fileType: "docx"
+             },
+             {
+             spaceId: "232323",
+             fileId: "DzzzzzzNqZY",
+             fileName: "审批流程1.pdf",
+             fileSize: 1024,
+             fileType: "pdf"
+             },
+             {
+             spaceId: "232323",
+             fileId: "DzzzzzzNqZY",
+             fileName: "审批流程3.pptx",
+             fileSize: 1024,
+             fileType: "pptx"
+             }
+             ]
+
+             }
+             */
+        },
+        onFail : function(err) {}
+    });
+}
