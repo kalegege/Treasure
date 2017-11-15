@@ -22,22 +22,6 @@ dd.config({
 
 dd.ready(function() {
 
-	dd.biz.util.uploadImage({
-		compression:true,//(是否压缩，默认为true)
-		onSuccess : function(result) {
-			alert("ok");
-			//onSuccess将在图片上传成功之后调用
-			/*
-			 [
-			 'http://gtms03.alicdn.com/tps/i3/TB1VF6uGFXXXXalaXXXmh5R_VXX-237-236.png'
-			 ]
-			 */
-		},
-		onFail : function(err) {
-			alert("error");
-		}
-	});
-
     // dd.device.geolocation.get({
     //     targetAccuracy : 200,
     //     coordinate : 1,
