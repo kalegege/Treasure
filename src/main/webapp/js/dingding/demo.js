@@ -24,6 +24,7 @@ dd.ready(function() {
 
 	//拍照接口
 	dd.biz.util.uploadImageFromCamera({
+		compression: true,
 		onSuccess: function (info) {
 			alert(JSON.stringify(info));
 		},
