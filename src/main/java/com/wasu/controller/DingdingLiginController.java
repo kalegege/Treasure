@@ -5,7 +5,10 @@ import com.dingtalk.open.client.api.model.corp.CorpUserDetail;
 import com.wasu.dingding.AuthHelper;
 import com.wasu.dingding.UserHelper;
 import com.wasu.model.Assert;
+import com.wasu.model.InventoryHistory;
+import com.wasu.model.InventoryHistoryExample;
 import com.wasu.service.AssertService;
+import com.wasu.service.InventoryHistoryService;
 import org.apache.log4j.Logger;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -30,6 +33,9 @@ public class DingdingLiginController {
     @Resource
     private AssertService assertService;
 
+    @Resource
+    private InventoryHistoryService inventoryHistoryService;
+
     @RequestMapping("test")
     public String test(Model model,HttpServletRequest request, HttpServletResponse response){
         String userid = request.getParameter("userid");
@@ -37,8 +43,17 @@ public class DingdingLiginController {
         if(userid!=null){
 //            model.addAttribute("userid",userid);
             List<Assert> result=assertService.getByAssertCode(userid);
+            InventoryHistory inventoryHistory=new InventoryHistory();
+            inventoryHistory.setDeptname(result.get(0).getDeptname());
+            inventoryHistory.setInventoryUser(result.get(0).getPlace());
+            inventoryHistory.setInventorystate(-1L);
+
+            List<InventoryHistory> historys=inventoryHistoryService.getByExample(inventoryHistory);
             if(!result.isEmpty()){
                 model.addAttribute("items",result);
+            }
+            if(!historys.isEmpty()){
+                model.addAttribute("historys",historys);
             }
         }
         return "test3";
