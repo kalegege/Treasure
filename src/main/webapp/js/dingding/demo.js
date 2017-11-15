@@ -22,17 +22,6 @@ dd.config({
 
 dd.ready(function() {
 
-	//拍照接口
-	dd.biz.util.uploadImageFromCamera({
-		compression: true,
-		onSuccess: function (info) {
-			alert(JSON.stringify(info));
-		},
-		onFail: function (err) {
-			alert("camera fail:"+JSON.stringify(err));
-		}
-	})
-
 	dd.runtime.permission.requestAuthCode({
 		corpId : _config.corpId,
 		onSuccess : function(info) {
