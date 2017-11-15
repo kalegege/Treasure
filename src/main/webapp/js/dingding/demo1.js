@@ -26,7 +26,7 @@ dd.ready(function() {
         targetAccuracy : 200,
         coordinate : 1,
         withReGeocode : false,
-        useCache:true, //默认是true，如果需要频繁获取地理位置，请设置false
+        useCache:false, //默认是true，如果需要频繁获取地理位置，请设置false
         onSuccess : function(result) {
         	alert(result);
             /* 高德坐标 result 结构
