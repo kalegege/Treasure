@@ -42,7 +42,7 @@
     <ul class="mui-table-view">
         <li class="mui-table-view-cell">资产编号:123456</li>
         <li class="mui-table-view-cell">
-            扫码结果
+            <p id="r_saoma">扫码结果</p>
             <button type="button" id="saoma" class="mui-btn mui-btn-primary">
                 扫码
             </button>

@@ -4,6 +4,8 @@ function click_sao() {
         type: "all" , // type 为 all、qrCode、barCode，默认是all。
         onSuccess: function(data) {
             alert("扫码成功"+data.text);
+            var text=$('#r_saoma').text()+":"+data.text;
+            $('#r_saoma').text(text);
             //onSuccess将在扫码成功之后回调
             /* data结构
               { 'text': String}
