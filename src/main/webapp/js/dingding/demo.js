@@ -34,11 +34,19 @@ dd.ready(function() {
 				    // alert(data);
 					var info = JSON.parse(data);
 					var user=JSON.parse(info.user);
+					var url;
 					if(info.isSuccess == '1'){
                         window.location = "/treasure/dingdinglogin/test?userid="+user.userid;
 					}else{
                         window.location = "/treasure/html/error/error.jsp";
 					}
+					// dd.biz.util.openLink({
+					// 	url: url,//要打开链接的地址
+					// 	onSuccess : function(result) {
+					// 		/**/
+					// 	},
+					// 	onFail : function(err) {}
+					// })
 
 				},
 				error : function(xhr, errorType, error) {
