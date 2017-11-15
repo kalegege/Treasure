@@ -38,7 +38,7 @@
     <div class="mui-content">
         <div id="tabbar" class="mui-control-content mui-active">
             <ul class="mui-table-view mui-table-view-striped mui-table-view-condensed">
-                <c:forEach items="${assert}" var="a">
+                <c:forEach items="${items}" var="a">
                     <li class="mui-table-view-cell">
                         <div class="mui-table">
                             <div class="mui-table-cell mui-col-xs-10">

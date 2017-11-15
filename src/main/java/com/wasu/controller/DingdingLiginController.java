@@ -38,7 +38,7 @@ public class DingdingLiginController {
 //            model.addAttribute("userid",userid);
             List<Assert> result=assertService.getByAssertCode(userid);
             if(!result.isEmpty()){
-                model.addAttribute("assert",result);
+                model.addAttribute("items",result);
             }
         }
         return "test3";
