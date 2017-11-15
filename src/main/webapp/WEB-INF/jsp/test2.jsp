@@ -13,9 +13,12 @@
 <head>
     <title>资产盘点</title>
     <script type="text/javascript">
-
-        //在此拿到jsAPI权限验证配置所需要的信息
-        var _config = <%= com.wasu.dingding.AuthHelper.getConfig(request) %>;
+        var agentid='${conf.agentid}';
+        var corpId='${conf.corpId}';
+        var timeStamp='${conf.timeStamp}';
+        var nonceStr='${conf.nonceStr}';
+        var signature='${conf.signature}';
+        <%--var url_db='${url_db}';--%>
     </script>
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/app.css" type="text/css"/>
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/mui.min.css" type="text/css"/>

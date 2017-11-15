@@ -6,11 +6,11 @@
  * _config comes from server-side template. see views/index.jade
  */
 dd.config({
-			agentId : _config.agentid,
-			corpId : _config.corpId,
-			timeStamp : _config.timeStamp,
-			nonceStr : _config.nonceStr,
-			signature : _config.signature,
+			agentId : agentid,
+			corpId : corpId,
+			timeStamp : timeStamp,
+			nonceStr : nonceStr,
+			signature : signature,
 			type:0,
 			jsApiList : [ 'runtime.info', 'biz.contact.choose',
 					'device.notification.confirm', 'device.notification.alert',
