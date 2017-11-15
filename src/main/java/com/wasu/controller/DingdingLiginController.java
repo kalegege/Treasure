@@ -44,7 +44,7 @@ public class DingdingLiginController {
     @RequestMapping("test2")
     public String test2(Model model,HttpServletRequest request, HttpServletResponse response){
         String _config=AuthHelper.getConfig(request);
-        model.addAttribute("conf",_config);
+        model.addAttribute("conf",JSON.parseObject(_config));
         return "test2";
     }
 
