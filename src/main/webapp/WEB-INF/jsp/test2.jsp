@@ -40,7 +40,9 @@
         <input type="hidden" value="${ctx}" id="head"/>
     </div>
     <ul class="mui-table-view">
-        <li class="mui-table-view-cell">资产编号:123456</li>
+        <li class="mui-table-view-cell">
+            <p>资产编号:123456</p>
+        </li>
         <li class="mui-table-view-cell">
             <p id="r_saoma">扫码结果</p>
             <button type="button" id="saoma" class="mui-btn mui-btn-primary">
@@ -53,7 +55,9 @@
                 拍照
             </button>
         </li>
-        <li class="mui-table-view-cell">经纬度：10，100</li>
+        <li class="mui-table-view-cell">
+            <p>经纬度：10，100</p>
+        </li>
         <li class="mui-table-view-cell">大致位置：白马湖5楼</li>
         <li class="mui-table-view-cell">
             <div class="mui-input-row" style="margin: 10px 5px;">
