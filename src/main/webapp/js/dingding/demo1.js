@@ -52,7 +52,9 @@ dd.ready(function() {
             }
             */
         },
-        onFail : function(err) {}
+        onFail : function(err) {
+			alert("error"+err);
+		}
     });
 });
 
