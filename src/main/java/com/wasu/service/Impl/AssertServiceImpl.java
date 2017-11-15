@@ -2,6 +2,7 @@ package com.wasu.service.Impl;
 
 import com.wasu.dao.AssertMapper;
 import com.wasu.model.Assert;
+import com.wasu.model.AssertExample;
 import com.wasu.service.AssertService;
 import org.apache.log4j.Logger;
 import org.springframework.stereotype.Service;
@@ -30,5 +31,13 @@ public class AssertServiceImpl implements AssertService {
 
         }
         return result;
+    }
+
+    @Override
+    public List<Assert> getByAssertCode(String assertCode) {
+        AssertExample assertExample=new AssertExample();
+        AssertExample.Criteria criteria=assertExample.createCriteria();
+        criteria.andAssetcodeEqualTo(assertCode);
+        return assertMapper.selectByExample(assertExample);
     }
 }

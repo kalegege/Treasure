@@ -16,11 +16,12 @@ dd.config({
 					'device.notification.confirm', 'device.notification.alert',
 					'device.notification.prompt', 'biz.ding.post',
 					'biz.util.openLink','biz.util.scan','biz.util.uploadImageFromCamera','biz.user.get',
-					'biz.util.uploadImage']
+					'biz.util.uploadImage','device.geolocation.get']
 		});
 
 
 dd.ready(function() {
+
 	dd.runtime.permission.requestAuthCode({
 		corpId : _config.corpId,
 		onSuccess : function(info) {
