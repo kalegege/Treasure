@@ -56,7 +56,7 @@
             </button>
         </li>
         <li class="mui-table-view-cell">
-            <p>经纬度：10，100</p>
+            <p id="ll"></p>
         </li>
         <li class="mui-table-view-cell">
             <p>大致位置：白马湖5楼</p>

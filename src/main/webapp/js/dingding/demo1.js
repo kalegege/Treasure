@@ -28,7 +28,10 @@ dd.ready(function() {
         withReGeocode : false,
         useCache:false, //默认是true，如果需要频繁获取地理位置，请设置false
         onSuccess : function(result) {
-        	alert(result);
+        	// alert(result);
+			var latitude=result.latitude;
+			var longitude=result.longitude;
+			$('#ll').text("经纬度:"+latitude+","+longitude);
             /* 高德坐标 result 结构
             {
                 longitude : Number,
