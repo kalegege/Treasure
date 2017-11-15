@@ -1,5 +1,6 @@
 package com.wasu.dingding;
 
+import com.alibaba.fastjson.JSONObject;
 import com.dingtalk.oapi.lib.aes.DingTalkJsApiSingnature;
 import com.dingtalk.open.client.ServiceFactory;
 import com.dingtalk.open.client.api.model.corp.JsapiTicket;
@@ -8,15 +9,10 @@ import com.dingtalk.open.client.api.service.corp.JsapiService;
 import com.google.common.cache.Cache;
 import com.google.common.cache.CacheBuilder;
 import com.google.common.cache.CacheLoader;
-import com.wasu.utils.AccessTokenCache;
-import com.wasu.utils.FileUtils;
 import com.wasu.utils.HttpHelper;
-import com.alibaba.fastjson.JSONObject;
-
 
 import javax.servlet.http.HttpServletRequest;
 import java.net.URLDecoder;
-import java.security.MessageDigest;
 import java.util.Formatter;
 import java.util.concurrent.Callable;
 import java.util.concurrent.TimeUnit;
@@ -94,7 +90,8 @@ public class AuthHelper {
 
         String nonceStr = "abcdefg";
         long timeStamp = System.currentTimeMillis() / 1000;
-        String signedUrl = url;
+//        String signedUrl = url;
+        String signedUrl = "http://125.210.115.11:8082/treasure/index.jsp";
         String accessToken = null;
         String ticket = null;
         String signature = null;
