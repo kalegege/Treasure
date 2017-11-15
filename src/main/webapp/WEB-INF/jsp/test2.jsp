@@ -58,7 +58,9 @@
         <li class="mui-table-view-cell">
             <p>经纬度：10，100</p>
         </li>
-        <li class="mui-table-view-cell">大致位置：白马湖5楼</li>
+        <li class="mui-table-view-cell">
+            <p>大致位置：白马湖5楼</p>
+        </li>
         <li class="mui-table-view-cell">
             <div class="mui-input-row" style="margin: 10px 5px;">
                 <textarea id="textarea" rows="5" placeholder="备注:"></textarea>
