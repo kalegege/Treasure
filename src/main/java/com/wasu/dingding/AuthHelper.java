@@ -90,8 +90,8 @@ public class AuthHelper {
 
         String nonceStr = "abcdefg";
         long timeStamp = System.currentTimeMillis() / 1000;
-//        String signedUrl = url;
-        String signedUrl = "http://125.210.115.11:8082/treasure";
+        String signedUrl = url;
+//        String signedUrl = "http://125.210.115.11:8082/treasure";
         String accessToken = null;
         String ticket = null;
         String signature = null;
