@@ -48,7 +48,7 @@
             </button>
         </li>
         <li class="mui-table-view-cell">
-            <img class="mui-media-object" src="${pageContext.request.contextPath}/image/avatar.png">
+            <img class="mui-media-object" id="assertImage" src="${pageContext.request.contextPath}/image/avatar.png">
             <button type="button" id="pai" class="mui-btn mui-btn-primary">
                 拍照
             </button>
