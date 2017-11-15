@@ -20,9 +20,9 @@ function click_pai() {
     dd.biz.util.uploadImageFromCamera({
         compression: true,
         onSuccess: function (info) {
-            var url=JSON.stringify(info)[0];
-            alert(url);
-            $('#assertImage').attr('src',url);
+            // var url=JSON.stringify(info);
+            // alert(url);
+            $('#assertImage').attr('src',info[0]);
         },
         onFail: function (err) {
             alert("camera fail:"+JSON.stringify(err));
