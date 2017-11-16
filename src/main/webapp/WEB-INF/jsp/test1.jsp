@@ -81,7 +81,7 @@
     });
     $('#choose').click(function(){
 //        alert("switch page");
-        alert("choose");
+        click_dept();
     });
 </script>
 

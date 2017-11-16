@@ -7,8 +7,10 @@ import com.wasu.dingding.UserHelper;
 import com.wasu.model.Assert;
 import com.wasu.model.AssertAdd;
 import com.wasu.model.InventoryHistory;
+import com.wasu.model.OaCompanyUser;
 import com.wasu.service.AssertService;
 import com.wasu.service.InventoryHistoryService;
+import com.wasu.service.OaCompanyUserService;
 import org.apache.log4j.Logger;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -18,10 +20,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 /**
  * Created by kale on 2017/10/26.
@@ -36,6 +35,9 @@ public class DingdingLiginController {
 
     @Resource
     private InventoryHistoryService inventoryHistoryService;
+
+    @Resource
+    private OaCompanyUserService oaCompanyUserService;
 
     @RequestMapping("test")
     public String test(Model model,HttpServletRequest request, HttpServletResponse response){
@@ -79,6 +81,16 @@ public class DingdingLiginController {
         String pandian=request.getParameter("pandian");
         int p=pandian!=null?Integer.parseInt(pandian):0;
         model.addAttribute("pandian",p);
+        if(p == 2){
+            OaCompanyUser oaCompanyUser=new OaCompanyUser();
+            oaCompanyUser.setWorkcode(userid);
+            List<OaCompanyUser> result=oaCompanyUserService.getItemByExample(oaCompanyUser);
+            List<String> ls=new ArrayList<>();
+            for(OaCompanyUser item:result){
+                ls.add(item.getWorkcode());
+            }
+            model.addAttribute("members",ls);
+        }
         if(id!=null){
             model.addAttribute("id",id);
         }
