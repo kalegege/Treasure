@@ -94,6 +94,8 @@ public class MyUtils {
     }
 
     public static  void main(String[] args){
+        String dd="30.15557020399305";
+        System.out.println(Long.parseLong(dd));
         test1();
     }
 

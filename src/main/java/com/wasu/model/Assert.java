@@ -21,11 +21,11 @@ public class Assert {
 
     private Long inventorystate;
 
-    private Long latitude;
+    private Double latitude;
 
     private Long lifeperiods;
 
-    private Long longitude;
+    private Double longitude;
 
     private String manufacturer;
 
@@ -62,7 +62,7 @@ public class Assert {
     public Assert() {
     }
 
-    public Assert(String assetcode, String address, Date inventorydate, Long latitude, Long longitude, String photo) {
+    public Assert(String assetcode, String address, Date inventorydate, Double latitude, Double longitude, String photo) {
         this.assetcode = assetcode;
         this.address = address;
         this.inventorydate = inventorydate;
@@ -143,11 +143,11 @@ public class Assert {
         this.inventorystate = inventorystate;
     }
 
-    public Long getLatitude() {
+    public Double getLatitude() {
         return latitude;
     }
 
-    public void setLatitude(Long latitude) {
+    public void setLatitude(Double latitude) {
         this.latitude = latitude;
     }
 
@@ -159,11 +159,11 @@ public class Assert {
         this.lifeperiods = lifeperiods;
     }
 
-    public Long getLongitude() {
+    public Double getLongitude() {
         return longitude;
     }
 
-    public void setLongitude(Long longitude) {
+    public void setLongitude(Double longitude) {
         this.longitude = longitude;
     }
 

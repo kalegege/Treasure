@@ -106,12 +106,12 @@ public class DingdingLiginController {
         String mess=request.getParameter("mess");
         String image=request.getParameter("image");
 
-        Assert a=new Assert(assetcode,mess,new Date(),Long.parseLong(la),Long.parseLong(lo), image);
+        Assert a=new Assert(assetcode,mess,new Date(),Double.parseDouble(la),Double.parseDouble(lo), image);
         a.setInventorystate(1L);
         int result_a=assertService.update(a);
         System.out.println("成功更新assert表:"+result_a+"条数据");
 
-        InventoryHistory b=new InventoryHistory(Long.parseLong(id),mess,new Date(),Long.parseLong(la),Long.parseLong(lo),image);
+        InventoryHistory b=new InventoryHistory(Long.parseLong(id),mess,new Date(),Double.parseDouble(la),Double.parseDouble(lo),image);
         b.setInventorystate(1L);
         int result_b=inventoryHistoryService.update(b);
         System.out.println("成功更新inventoryhistory表:"+result_b+"条数据");
