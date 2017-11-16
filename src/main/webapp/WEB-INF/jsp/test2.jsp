@@ -78,7 +78,7 @@
 </div>
 <script>
     $('#queren').click(function(){
-        alert("text");
+//        alert("text");
         var assetcode=$('#assetcode').text().split(":")[1];
         var saoma=$('#r_saoma').text().split(":")[1];
         var ll=$('#ll').text().split(":")[1];
