@@ -84,7 +84,7 @@
                         <value>/dingdinglogin/test</value>
                         <value>/dingdinglogin/test1</value>
                         <value>/dingdinglogin/test2</value>
-
+                        <value>/dingdinglogin/update</value>
                     </list>
                 </property>
             </bean>
