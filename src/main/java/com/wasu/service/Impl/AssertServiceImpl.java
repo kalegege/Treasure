@@ -48,6 +48,6 @@ public class AssertServiceImpl implements AssertService {
 
     @Override
     public int update(Assert a) {
-        return assertMapper.updateByPrimaryKey(a);
+        return assertMapper.updateByPrimaryKeySelective(a);
     }
 }

@@ -32,6 +32,6 @@ public class InventoryHistoryServiceImpl implements InventoryHistoryService {
 
     @Override
     public int update(InventoryHistory inventoryHistory) {
-        return inventoryHistoryMapper.updateByPrimaryKey(inventoryHistory);
+        return inventoryHistoryMapper.updateByPrimaryKeySelective(inventoryHistory);
     }
 }

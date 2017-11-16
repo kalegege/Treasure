@@ -109,12 +109,12 @@ public class DingdingLiginController {
         Assert a=new Assert(assetcode,mess,new Date(),Double.parseDouble(la),Double.parseDouble(lo), image);
         a.setInventorystate(1L);
         int result_a=assertService.update(a);
-        System.out.println("成功更新assert表:"+result_a+"条数据");
+        System.out.println("成功更新assert表:"+result_a+"条数据assetcode="+a.getAssetcode());
 
         InventoryHistory b=new InventoryHistory(Long.parseLong(id),mess,new Date(),Double.parseDouble(la),Double.parseDouble(lo),image);
         b.setInventorystate(1L);
         int result_b=inventoryHistoryService.update(b);
-        System.out.println("成功更新inventoryhistory表:"+result_b+"条数据");
+        System.out.println("成功更新inventoryhistory表:"+result_b+"条数据,id="+b.getId());
 
         if(userid!=null){
 //            model.addAttribute("userid",userid);
