@@ -76,6 +76,7 @@
 </div>
 <script>
     $('#queren').click(function(){
+        alert("text");
         window.location.href="${pageContext.request.contextPath}/dingdinglogin/test1";
     });
     $('#saoma').click(function(){
