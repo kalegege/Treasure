@@ -28,6 +28,8 @@
     <%--<img src="${ctx}/image/head.jpg" style="width:100%"  alt="大标题" />--%>
     <input type="hidden" value="${ctx}" id="head"/>
     <input type="hidden" value="${a.assetcode}" id="assetcode"/>
+    <input type="hidden" value="${userid}" id="userid"/>
+    <input type="hidden" value="${id}" id="id"/>
 </div>
     <ul class="mui-table-view">
         <li class="mui-table-view-cell">资产编号:${a.assetcode}</li>
@@ -63,7 +65,7 @@
 <script>
     $('#login').click(function(){
 //        alert("switch page");
-        window.location.href="${pageContext.request.contextPath}/dingdinglogin/test2?assetcode=${a.assetcode}";
+        window.location.href="${pageContext.request.contextPath}/dingdinglogin/test2?assetcode=${a.assetcode}&userid=${userid}&id=${id}";
     });
 </script>
 

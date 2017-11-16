@@ -45,4 +45,9 @@ public class AssertServiceImpl implements AssertService {
         criteria.andAssetcodeEqualTo(item.getAssetcode());
         return assertMapper.selectByExample(assertExample);
     }
+
+    @Override
+    public int update(Assert a) {
+        return assertMapper.updateByPrimaryKey(a);
+    }
 }

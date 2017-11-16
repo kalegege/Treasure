@@ -24,6 +24,10 @@
 
 </head>
 <body>
+<div>
+    <%--<img src="${ctx}/image/head.jpg" style="width:100%"  alt="大标题" />--%>
+    <input type="hidden" value="${userid}" id="userid"/>
+</div>
 <div class="page">
     <nav class="mui-bar mui-bar-tab">
         <a class="mui-tab-item mui-active" href="#tabbar">
@@ -58,7 +62,8 @@
             <ul class="mui-table-view mui-table-view-striped mui-table-view-condensed">
                 <c:forEach items="${historys}" var="a">
                     <li class="mui-table-view-cell">
-                        <a href="${pageContext.request.contextPath}/dingdinglogin/test1?assetcode=${a.assetcode}">
+                        <input type="hidden" value="${a.id}" id="id"/>
+                        <a href="${pageContext.request.contextPath}/dingdinglogin/test1?assetcode=${a.assetcode}&userid=${userid}&id=${a.id}">
                         <div class="mui-table">
                             <div class="mui-table-cell mui-col-xs-10">
                                 <h4 class="mui-ellipsis">${a.name}</h4>

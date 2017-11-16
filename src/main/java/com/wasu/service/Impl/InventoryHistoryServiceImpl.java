@@ -29,4 +29,9 @@ public class InventoryHistoryServiceImpl implements InventoryHistoryService {
         logger.info(inventoryHistory.getDeptname()+"部门:"+inventoryHistory.getPlace()+"盘点状态为"+inventoryHistory.getInventorystate()+"的资产一共有"+result.size()+"条");
         return result;
     }
+
+    @Override
+    public int update(InventoryHistory inventoryHistory) {
+        return inventoryHistoryMapper.updateByPrimaryKey(inventoryHistory);
+    }
 }

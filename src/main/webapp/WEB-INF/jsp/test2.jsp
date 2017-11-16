@@ -38,6 +38,8 @@
     <div>
     <%--<img src="${ctx}/image/head.jpg" style="width:100%"  alt="大标题" />--%>
         <input type="hidden" value="${ctx}" id="head"/>
+        <input type="hidden" value="${userid}" id="userid"/>
+        <input type="hidden" value="${id}" id="id"/>
     </div>
     <ul class="mui-table-view">
         <li class="mui-table-view-cell">
@@ -77,7 +79,20 @@
 <script>
     $('#queren').click(function(){
         alert("text");
-        window.location.href="${pageContext.request.contextPath}/dingdinglogin/test1";
+        var assetcode=$('#assetcode').text().split(":")[1];
+        var saoma=$('#r_saoma').text().split(":")[1];
+        var ll=$('#ll').text().split(":")[1];
+        var la=ll.split(",")[0];
+        var lo=ll.split(",")[1];
+        var mess=$('#textarea').val();
+        var image=$('#assertImage')[0].src;
+
+        if((saoma != null)&&(saoma != assetcode)){
+            alert("扫码结果和资产编码不一致，请重新扫码！");
+        }else{
+            window.location.href="${pageContext.request.contextPath}/dingdinglogin/update?userid=${userid}&id=${id}&assetcode="+
+                    assetcode+"&saoma="+saoma+"&la="+la+"&lo="+lo+"&mess="+mess+"&image=" +image;
+        }
     });
     $('#saoma').click(function(){
         click_sao();

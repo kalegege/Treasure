@@ -6,7 +6,6 @@ import com.wasu.dingding.AuthHelper;
 import com.wasu.dingding.UserHelper;
 import com.wasu.model.Assert;
 import com.wasu.model.InventoryHistory;
-import com.wasu.model.InventoryHistoryExample;
 import com.wasu.service.AssertService;
 import com.wasu.service.InventoryHistoryService;
 import org.apache.log4j.Logger;
@@ -18,6 +17,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -39,6 +39,7 @@ public class DingdingLiginController {
     @RequestMapping("test")
     public String test(Model model,HttpServletRequest request, HttpServletResponse response){
         String userid = request.getParameter("userid");
+        model.addAttribute("userid",userid);
         //需要传递自己的资产，待处理数据，数量
         if(userid!=null){
 //            model.addAttribute("userid",userid);
@@ -63,6 +64,11 @@ public class DingdingLiginController {
     @RequestMapping("test1")
     public String test1(Model model,HttpServletRequest request, HttpServletResponse response){
         String assetcode=request.getParameter("assetcode");
+        String userid = request.getParameter("userid");
+        String id = request.getParameter("id");
+        model.addAttribute("id",id);
+        model.addAttribute("userid",userid);
+
         if(assetcode!=null){
             Assert a=new Assert();
             a.setAssetcode(assetcode);
@@ -75,11 +81,59 @@ public class DingdingLiginController {
     @RequestMapping("test2")
     public String test2(Model model,HttpServletRequest request, HttpServletResponse response){
         String assetcode=request.getParameter("assetcode");
+        String userid = request.getParameter("userid");
+        String id = request.getParameter("id");
+        model.addAttribute("id",id);
+        model.addAttribute("userid",userid);
+
         String _config=AuthHelper.getConfig(request);
         model.addAttribute("conf",JSON.parseObject(_config));
         model.addAttribute("assetcode",assetcode);
 
         return "test2";
+    }
+
+    @RequestMapping("update")
+    public String update(Model model,HttpServletRequest request, HttpServletResponse response){
+        String assetcode=request.getParameter("assetcode");
+        String userid = request.getParameter("userid");
+        String id = request.getParameter("id");
+        model.addAttribute("userid",userid);
+
+        String saoma=request.getParameter("saoma");
+        String la=request.getParameter("la");
+        String lo=request.getParameter("lo");
+        String mess=request.getParameter("mess");
+        String image=request.getParameter("image");
+
+        Assert a=new Assert(assetcode,mess,new Date(),Long.parseLong(la),Long.parseLong(lo), image);
+        a.setInventorystate(1L);
+        int result_a=assertService.update(a);
+        System.out.println("成功更新assert表:"+result_a+"条数据");
+
+        InventoryHistory b=new InventoryHistory(Long.parseLong(id),mess,new Date(),Long.parseLong(la),Long.parseLong(lo),image);
+        b.setInventorystate(1L);
+        int result_b=inventoryHistoryService.update(b);
+        System.out.println("成功更新inventoryhistory表:"+result_b+"条数据");
+
+        if(userid!=null){
+//            model.addAttribute("userid",userid);
+            List<Assert> result=assertService.getByWorkCode(userid);
+            InventoryHistory inventoryHistory=new InventoryHistory();
+            inventoryHistory.setDeptname(result.get(0).getDeptname());
+            inventoryHistory.setInventoryUser(result.get(0).getPlace());
+            inventoryHistory.setInventorystate(-1L);
+
+            List<InventoryHistory> historys=inventoryHistoryService.getByExample(inventoryHistory);
+            if(!result.isEmpty()){
+                model.addAttribute("items",result);
+            }
+            if(!historys.isEmpty()){
+                model.addAttribute("historys",historys);
+                model.addAttribute("hsize",historys.size());
+            }
+        }
+        return "test3";
     }
 
 

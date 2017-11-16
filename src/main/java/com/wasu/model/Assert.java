@@ -59,6 +59,18 @@ public class Assert {
 
     private String inventoryUser;
 
+    public Assert() {
+    }
+
+    public Assert(String assetcode, String address, Date inventorydate, Long latitude, Long longitude, String photo) {
+        this.assetcode = assetcode;
+        this.address = address;
+        this.inventorydate = inventorydate;
+        this.latitude = latitude;
+        this.longitude = longitude;
+        this.photo = photo;
+    }
+
     public String getAssetcode() {
         return assetcode;
     }
