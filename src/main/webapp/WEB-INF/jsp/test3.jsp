@@ -31,7 +31,7 @@
             <span class="mui-tab-label">个人资产</span>
         </a>
         <a class="mui-tab-item" href="#tabbar-with-chat">
-            <span class="mui-icon mui-icon-email"><span class="mui-badge">2</span></span>
+            <span class="mui-icon mui-icon-email"><span class="mui-badge">${hsize}</span></span>
             <span class="mui-tab-label">未盘点</span>
         </a>
     </nav>
@@ -47,7 +47,7 @@
                             <p class="mui-h6 mui-ellipsis">经纬度:${a.latitude},${a.longitude}</p>
                         </div>
                         <div class="mui-table-cell mui-col-xs-2 mui-text-right">
-                            <span class="mui-h5">12:25</span>
+                            <span class="mui-h5">${a.place}</span>
                         </div>
                     </div>
                 </li>
@@ -58,6 +58,7 @@
             <ul class="mui-table-view mui-table-view-striped mui-table-view-condensed">
                 <c:forEach items="${historys}" var="a">
                     <li class="mui-table-view-cell">
+                        <a href="${pageContext.request.contextPath}/dingdinglogin/test1?assetcode=${a.assetcode}">
                         <div class="mui-table">
                             <div class="mui-table-cell mui-col-xs-10">
                                 <h4 class="mui-ellipsis">${a.name}</h4>
@@ -65,26 +66,12 @@
                                 <p class="mui-h6 mui-ellipsis">经纬度:${a.latitude},${a.longitude}</p>
                             </div>
                             <div class="mui-table-cell mui-col-xs-2 mui-text-right">
-                                <span class="mui-h5">12:25</span>
+                                <span class="mui-h5">${a.inventoryUser}</span>
                             </div>
                         </div>
+                        </a>
                     </li>
                 </c:forEach>
-                <li class="mui-table-view-cell">
-                    <a href="${pageContext.request.contextPath}/dingdinglogin/test1?pandian=1">
-                        <div class="mui-table">
-                            <div class="mui-table-cell mui-col-xs-10">
-                                <h4 class="mui-ellipsis-2">交换机</h4>
-                                <h5>申请人：项目经理</h5>
-                                <p class="mui-h6 mui-ellipsis">马鞍山机房</p>
-                            </div>
-                            <div class="mui-table-cell mui-col-xs-2 mui-text-right">
-                                <span class="mui-h5">13:25</span>
-
-                            </div>
-                        </div>
-                    </a>
-                </li>
             </ul>
         </div>
 

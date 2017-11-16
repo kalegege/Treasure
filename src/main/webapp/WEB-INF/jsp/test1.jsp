@@ -27,27 +27,30 @@
 <div>
     <%--<img src="${ctx}/image/head.jpg" style="width:100%"  alt="大标题" />--%>
     <input type="hidden" value="${ctx}" id="head"/>
+    <input type="hidden" value="${a.assetcode}" id="assetcode"/>
 </div>
     <ul class="mui-table-view">
-        <li class="mui-table-view-cell">资产编号:123456</li>
-        <li class="mui-table-view-cell">资产类别:个人资产</li>
-        <li class="mui-table-view-cell">资产名称:笔记本电脑</li>
-        <li class="mui-table-view-cell">数量:1</li>
-        <li class="mui-table-view-cell">状态:正常</li>
-        <li class="mui-table-view-cell">部门:IT管理部</li>
+        <li class="mui-table-view-cell">资产编号:${a.assetcode}</li>
+        <li class="mui-table-view-cell">资产类别:${a.assetsortname}</li>
+        <li class="mui-table-view-cell">资产名称:${a.name}</li>
+        <li class="mui-table-view-cell">数量:${a.numbers}</li>
+        <li class="mui-table-view-cell">状态:
+<c:choose>
+    <c:when test="${a.state} == 1">正常</c:when>
+    <c:otherwise>异常</c:otherwise>
+</c:choose></li>
+        <li class="mui-table-view-cell">部门:${a.deptname}</li>
         <li class="mui-table-view-cell">生产厂家:戴尔</li>
-        <li class="mui-table-view-cell">购入时间:2010年</li>
+        <li class="mui-table-view-cell">购入时间:${a.buydate}</li>
         <li class="mui-table-view-cell">资产备注:无</li>
-        <li class="mui-table-view-cell">详细存放地:白马湖5楼</li>
-        <li class="mui-table-view-cell">最新盘点位置:白马湖5楼</li>
+        <li class="mui-table-view-cell">详细存放地:${a.detailedlocation}</li>
+        <li class="mui-table-view-cell">最新盘点位置:${a.address}</li>
         <li class="mui-table-view-cell">个人备注:太卡</li>
     </ul>
-    <c:if test="${pandian == 1}">
     <div class="mui-content-padded">
         <button id='login' class="mui-btn mui-btn-block mui-btn-primary">盘点</button>
         </div>
     </div>
-    </c:if>
     <%--<div class="pandian" >--%>
         <%--<ul>--%>
             <%--<li class="btn">--%>
@@ -60,7 +63,7 @@
 <script>
     $('#login').click(function(){
 //        alert("switch page");
-        window.location.href="${pageContext.request.contextPath}/dingdinglogin/test2";
+        window.location.href="${pageContext.request.contextPath}/dingdinglogin/test2?assetcode=${a.assetcode}";
     });
 </script>
 

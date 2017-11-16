@@ -34,7 +34,15 @@ public class AssertServiceImpl implements AssertService {
     }
 
     @Override
-    public List<Assert> getByAssertCode(String workCode) {
+    public List<Assert> getByWorkCode(String workCode) {
         return assertMapper.getAssertbyCode(workCode);
+    }
+
+    @Override
+    public List<Assert> getByExample(Assert item) {
+        AssertExample assertExample=new AssertExample();
+        AssertExample.Criteria criteria=assertExample.createCriteria();
+        criteria.andAssetcodeEqualTo(item.getAssetcode());
+        return assertMapper.selectByExample(assertExample);
     }
 }

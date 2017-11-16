@@ -42,7 +42,7 @@ public class DingdingLiginController {
         //需要传递自己的资产，待处理数据，数量
         if(userid!=null){
 //            model.addAttribute("userid",userid);
-            List<Assert> result=assertService.getByAssertCode(userid);
+            List<Assert> result=assertService.getByWorkCode(userid);
             InventoryHistory inventoryHistory=new InventoryHistory();
             inventoryHistory.setDeptname(result.get(0).getDeptname());
             inventoryHistory.setInventoryUser(result.get(0).getPlace());
@@ -54,6 +54,7 @@ public class DingdingLiginController {
             }
             if(!historys.isEmpty()){
                 model.addAttribute("historys",historys);
+                model.addAttribute("hsize",historys.size());
             }
         }
         return "test3";
@@ -61,15 +62,23 @@ public class DingdingLiginController {
 
     @RequestMapping("test1")
     public String test1(Model model,HttpServletRequest request, HttpServletResponse response){
-        String pandian=request.getParameter("pandian");
-        model.addAttribute("pandian",pandian!=null?Integer.parseInt(pandian):0);
+        String assetcode=request.getParameter("assetcode");
+        if(assetcode!=null){
+            Assert a=new Assert();
+            a.setAssetcode(assetcode);
+            List<Assert> result=assertService.getByExample(a);
+            model.addAttribute("a",result.get(0));
+        }
         return "test1";
     }
 
     @RequestMapping("test2")
     public String test2(Model model,HttpServletRequest request, HttpServletResponse response){
+        String assetcode=request.getParameter("assetcode");
         String _config=AuthHelper.getConfig(request);
         model.addAttribute("conf",JSON.parseObject(_config));
+        model.addAttribute("assetcode",assetcode);
+
         return "test2";
     }
 

@@ -41,7 +41,7 @@
     </div>
     <ul class="mui-table-view">
         <li class="mui-table-view-cell">
-            <p>资产编号:123456</p>
+            <p>资产编号:${assetcode}</p>
         </li>
         <li class="mui-table-view-cell">
             <p id="r_saoma">扫码结果</p>
