@@ -138,3 +138,30 @@ function click_pai2() {
         onFail : function(err) {}
     });
 }
+
+function click_dept() {
+    dd.biz.contact.choose({
+        startWithDepartmentId: -1, //-1表示打开的通讯录从自己所在部门开始展示, 0表示从企业最上层开始，(其他数字表示从该部门开始:暂时不支持)
+        multiple: false, //是否多选： true多选 false单选； 默认true
+        users: [], //默认选中的用户列表，userid；成功回调中应包含该信息
+        disabledUsers:[],// 不能选中的用户列表，员工userid
+        corpId: "ding00fa2f34238dfc1d", //企业id
+        max: Number, //人数限制，当multiple为true才生效，可选范围1-1500
+        limitTips:"请指定一个人", //超过人数限制的提示语可以用这个字段自定义
+        isNeedSearch:true, // 是否需要搜索功能
+        onSuccess: function(data) {
+            alert(data);
+        //onSuccess将在选人结束，点击确定按钮的时候被回调
+        /* data结构
+         [{
+         "name": "张三", //姓名
+         "avatar": "http://g.alicdn.com/avatar/zhangsan.png" //头像图片url，可能为空
+         "emplId": '0573', //userid
+         },
+         ...
+         ]
+         */
+    },
+    onFail : function(err) {}
+});
+}
