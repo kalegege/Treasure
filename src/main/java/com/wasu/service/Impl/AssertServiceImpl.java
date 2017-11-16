@@ -2,6 +2,7 @@ package com.wasu.service.Impl;
 
 import com.wasu.dao.AssertMapper;
 import com.wasu.model.Assert;
+import com.wasu.model.AssertAdd;
 import com.wasu.model.AssertExample;
 import com.wasu.service.AssertService;
 import org.apache.log4j.Logger;
@@ -34,7 +35,7 @@ public class AssertServiceImpl implements AssertService {
     }
 
     @Override
-    public List<Assert> getByWorkCode(String workCode) {
+    public List<AssertAdd> getByWorkCode(String workCode) {
         return assertMapper.getAssertbyCode(workCode);
     }
 

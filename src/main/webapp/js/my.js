@@ -24,7 +24,9 @@ function click_pai() {
         onSuccess: function (info) {
             // var url=JSON.stringify(info);
             // alert(url);
-            $('#assertImage').attr('src',info[0]);
+            // $('#assertImage').attr('src',info[0]);
+            $('#imageBox').empty();
+            $('#imageBox').append("<img class=\"mui-media-object\" id=\"assertImage\" src="+info[0]+">");
         },
         onFail: function (err) {
             alert("camera fail:"+JSON.stringify(err));

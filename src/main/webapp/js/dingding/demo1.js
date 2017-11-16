@@ -16,7 +16,7 @@ dd.config({
 					'device.notification.confirm', 'device.notification.alert',
 					'device.notification.prompt', 'biz.ding.post',
 					'biz.util.openLink','biz.util.scan','biz.util.uploadImageFromCamera','biz.user.get',
-					'biz.util.uploadImage','device.geolocation.get']
+					'biz.util.uploadImage','device.geolocation.get','biz.contact.choose']
 		});
 
 

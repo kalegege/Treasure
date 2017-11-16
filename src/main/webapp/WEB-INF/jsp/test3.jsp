@@ -38,22 +38,30 @@
             <span class="mui-icon mui-icon-email"><span class="mui-badge">${hsize}</span></span>
             <span class="mui-tab-label">未盘点</span>
         </a>
+        <c:if test="${manager == 1}">
+            <a class="mui-tab-item" href="#tabbar-with-dept">
+                <span class="mui-icon mui-icon-email"><span class="mui-badge">${hsize2}</span></span>
+                <span class="mui-tab-label">部门未盘点</span>
+            </a>
+        </c:if>
     </nav>
     <div class="mui-content">
         <div id="tabbar" class="mui-control-content mui-active">
             <ul class="mui-table-view mui-table-view-striped mui-table-view-condensed">
                 <c:forEach items="${items}" var="a">
                 <li class="mui-table-view-cell">
+                    <a href="${pageContext.request.contextPath}/dingdinglogin/test1?assetcode=${a.assetcode}&userid=${userid}">
                     <div class="mui-table">
                         <div class="mui-table-cell mui-col-xs-10">
                             <h4 class="mui-ellipsis">${a.name}</h4>
                             <h5>资产编号:${a.assetcode}</h5>
-                            <p class="mui-h6 mui-ellipsis">经纬度:${a.latitude},${a.longitude}</p>
+                            <p class="mui-h6 mui-ellipsis">数量:${a.numbers}</p>
                         </div>
                         <div class="mui-table-cell mui-col-xs-2 mui-text-right">
                             <span class="mui-h5">${a.place}</span>
                         </div>
                     </div>
+                    </a>
                 </li>
             </c:forEach>
             </ul>
@@ -63,12 +71,12 @@
                 <c:forEach items="${historys}" var="a">
                     <li class="mui-table-view-cell">
                         <input type="hidden" value="${a.id}" id="id"/>
-                        <a href="${pageContext.request.contextPath}/dingdinglogin/test1?assetcode=${a.assetcode}&userid=${userid}&id=${a.id}">
+                        <a href="${pageContext.request.contextPath}/dingdinglogin/test1?assetcode=${a.assetcode}&userid=${userid}&id=${a.id}&pandian=1">
                         <div class="mui-table">
                             <div class="mui-table-cell mui-col-xs-10">
                                 <h4 class="mui-ellipsis">${a.name}</h4>
                                 <h5>资产编号:${a.assetcode}</h5>
-                                <p class="mui-h6 mui-ellipsis">经纬度:${a.latitude},${a.longitude}</p>
+                                <%--<p class="mui-h6 mui-ellipsis">经纬度:${a.latitude},${a.longitude}</p>--%>
                             </div>
                             <div class="mui-table-cell mui-col-xs-2 mui-text-right">
                                 <span class="mui-h5">${a.inventoryUser}</span>
@@ -79,7 +87,27 @@
                 </c:forEach>
             </ul>
         </div>
-
+        <div id="tabbar-with-dept" class="mui-control-content">
+            <ul class="mui-table-view mui-table-view-striped mui-table-view-condensed">
+                <c:forEach items="${historys2}" var="a">
+                    <li class="mui-table-view-cell">
+                        <input type="hidden" value="${a.id}" id="id2"/>
+                        <a href="${pageContext.request.contextPath}/dingdinglogin/test1?assetcode=${a.assetcode}&userid=${userid}&id=${a.id}&pandian=2">
+                            <div class="mui-table">
+                                <div class="mui-table-cell mui-col-xs-10">
+                                    <h4 class="mui-ellipsis">${a.name}</h4>
+                                    <h5>资产编号:${a.assetcode}</h5>
+                                        <%--<p class="mui-h6 mui-ellipsis">经纬度:${a.latitude},${a.longitude}</p>--%>
+                                </div>
+                                <div class="mui-table-cell mui-col-xs-2 mui-text-right">
+                                    <span class="mui-h5">${a.inventoryUser}</span>
+                                </div>
+                            </div>
+                        </a>
+                    </li>
+                </c:forEach>
+            </ul>
+        </div>
     </div>
 </div>
 </body>

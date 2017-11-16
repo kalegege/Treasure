@@ -5,6 +5,7 @@ import com.dingtalk.open.client.api.model.corp.CorpUserDetail;
 import com.wasu.dingding.AuthHelper;
 import com.wasu.dingding.UserHelper;
 import com.wasu.model.Assert;
+import com.wasu.model.AssertAdd;
 import com.wasu.model.InventoryHistory;
 import com.wasu.service.AssertService;
 import com.wasu.service.InventoryHistoryService;
@@ -43,11 +44,20 @@ public class DingdingLiginController {
         //需要传递自己的资产，待处理数据，数量
         if(userid!=null){
 //            model.addAttribute("userid",userid);
-            List<Assert> result=assertService.getByWorkCode(userid);
+            List<AssertAdd> result=assertService.getByWorkCode(userid);
+            model.addAttribute("manager",result.get(0).getManager());
             InventoryHistory inventoryHistory=new InventoryHistory();
             inventoryHistory.setDeptname(result.get(0).getDeptname());
-            inventoryHistory.setInventoryUser(result.get(0).getPlace());
             inventoryHistory.setInventorystate(-1L);
+            if(result.get(0).getManager().equals("1")){
+                //管理员
+                List<InventoryHistory> historys2=inventoryHistoryService.getByExample(inventoryHistory);
+                if(!historys2.isEmpty()){
+                    model.addAttribute("historys2",historys2);
+                    model.addAttribute("hsize2",historys2.size());
+                }
+            }
+            inventoryHistory.setInventoryUser(result.get(0).getPlace());
 
             List<InventoryHistory> historys=inventoryHistoryService.getByExample(inventoryHistory);
             if(!result.isEmpty()){
@@ -66,8 +76,17 @@ public class DingdingLiginController {
         String assetcode=request.getParameter("assetcode");
         String userid = request.getParameter("userid");
         String id = request.getParameter("id");
-        model.addAttribute("id",id);
+        String pandian=request.getParameter("pandian");
+        int p=pandian!=null?Integer.parseInt(pandian):0;
+        model.addAttribute("pandian",p);
+        if(id!=null){
+            model.addAttribute("id",id);
+        }
         model.addAttribute("userid",userid);
+
+        String _config=AuthHelper.getConfig(request);
+        model.addAttribute("conf",JSON.parseObject(_config));
+//        model.addAttribute("assetcode",assetcode);
 
         if(assetcode!=null){
             Assert a=new Assert();
@@ -118,7 +137,7 @@ public class DingdingLiginController {
 
         if(userid!=null){
 //            model.addAttribute("userid",userid);
-            List<Assert> result=assertService.getByWorkCode(userid);
+            List<AssertAdd> result=assertService.getByWorkCode(userid);
             InventoryHistory inventoryHistory=new InventoryHistory();
             inventoryHistory.setDeptname(result.get(0).getDeptname());
             inventoryHistory.setInventoryUser(result.get(0).getPlace());

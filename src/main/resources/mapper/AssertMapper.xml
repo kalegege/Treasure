@@ -31,6 +31,37 @@
     <result column="INVENTORY_REMARK" property="inventoryRemark" jdbcType="VARCHAR" />
     <result column="INVENTORY_USER" property="inventoryUser" jdbcType="VARCHAR" />
   </resultMap>
+  <resultMap id="ResultMapAddManage" type="com.wasu.model.AssertAdd" >
+    <id column="ASSETCODE" property="assetcode" jdbcType="VARCHAR" />
+    <result column="ADDRESS" property="address" jdbcType="VARCHAR" />
+    <result column="ASSETSORTNAME" property="assetsortname" jdbcType="VARCHAR" />
+    <result column="BUYDATE" property="buydate" jdbcType="DATE" />
+    <result column="DEPTNAME" property="deptname" jdbcType="VARCHAR" />
+    <result column="DETAILEDLOCATION" property="detailedlocation" jdbcType="VARCHAR" />
+    <result column="GUARANTEE" property="guarantee" jdbcType="DECIMAL" />
+    <result column="INVENTORYDATE" property="inventorydate" jdbcType="DATE" />
+    <result column="INVENTORYSTATE" property="inventorystate" jdbcType="DECIMAL" />
+    <result column="LATITUDE" property="latitude" jdbcType="DECIMAL" />
+    <result column="LIFEPERIODS" property="lifeperiods" jdbcType="DECIMAL" />
+    <result column="LONGITUDE" property="longitude" jdbcType="DECIMAL" />
+    <result column="MANUFACTURER" property="manufacturer" jdbcType="VARCHAR" />
+    <result column="NAME" property="name" jdbcType="VARCHAR" />
+    <result column="NORMS" property="norms" jdbcType="VARCHAR" />
+    <result column="NUMBERS" property="numbers" jdbcType="DECIMAL" />
+    <result column="PERIODSUSED" property="periodsused" jdbcType="DECIMAL" />
+    <result column="PHOTO" property="photo" jdbcType="VARCHAR" />
+    <result column="PLACE" property="place" jdbcType="VARCHAR" />
+    <result column="PRICE" property="price" jdbcType="DECIMAL" />
+    <result column="PROJECTID" property="projectid" jdbcType="VARCHAR" />
+    <result column="PROJECTNAME" property="projectname" jdbcType="VARCHAR" />
+    <result column="REMARK" property="remark" jdbcType="VARCHAR" />
+    <result column="STATE" property="state" jdbcType="DECIMAL" />
+    <result column="UNIT" property="unit" jdbcType="DECIMAL" />
+    <result column="VALID" property="valid" jdbcType="DECIMAL" />
+    <result column="INVENTORY_REMARK" property="inventoryRemark" jdbcType="VARCHAR" />
+    <result column="INVENTORY_USER" property="inventoryUser" jdbcType="VARCHAR" />
+    <result column="MANAGER" property="manager" jdbcType="VARCHAR" />
+  </resultMap>
   <sql id="Example_Where_Clause" >
     <where >
       <foreach collection="oredCriteria" item="criteria" separator="or" >
@@ -573,8 +604,8 @@
     where ASSETCODE = #{assetcode,jdbcType=VARCHAR}
   </update>
 
-  <select id="getAssertbyCode" parameterType="java.lang.String" resultMap="BaseResultMap" >
-    select b.* from asset b,oa_companyuser a
+  <select id="getAssertbyCode" parameterType="java.lang.String" resultMap="ResultMapAddManage" >
+    select b.*,a.manager from asset b,oa_companyuser a
     where a.supname=b.deptname and a.lastname=b.place and b.state=1 and a.workcode = #{workcode,jdbcType=VARCHAR}
   </select>
 </mapper>

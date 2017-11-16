@@ -52,7 +52,7 @@
             </button>
         </li>
         <li class="mui-table-view-cell">
-            <img class="mui-media-object" id="assertImage" src="${pageContext.request.contextPath}/image/avatar.png">
+            <div id="imageBox" style="height: 43px;"></div>
             <button type="button" id="pai" class="mui-btn mui-btn-primary">
                 拍照
             </button>
@@ -65,7 +65,7 @@
         </li>
         <li class="mui-table-view-cell">
             <div class="mui-input-row" style="margin: 10px 5px;">
-                <textarea id="textarea" rows="5" placeholder="备注:"></textarea>
+                <textarea id="textarea" rows="5" placeholder="盘点备注:"></textarea>
             </div>
         </li>
     </ul>
@@ -85,10 +85,16 @@
         var la=ll.split(",")[0];
         var lo=ll.split(",")[1];
         var mess=$('#textarea').val();
+        var iBox=$('#imageBox').html();
+        if(iBox == null || iBox.length  == 0){
+            alert("请上传资产照片!");
+            return false;
+        }
         var image=$('#assertImage')[0].src;
 
         if((saoma != null)&&(saoma != assetcode)){
             alert("扫码结果和资产编码不一致，请重新扫码！");
+            $('#r_saoma').text("扫码结果:");
         }else{
             window.location.href="${pageContext.request.contextPath}/dingdinglogin/update?userid=${userid}&id=${id}&assetcode="+
                     assetcode+"&saoma="+saoma+"&la="+la+"&lo="+lo+"&mess="+mess+"&image=" +image;

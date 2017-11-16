@@ -22,7 +22,9 @@ public class InventoryHistoryServiceImpl implements InventoryHistoryService {
     public List<InventoryHistory> getByExample(InventoryHistory inventoryHistory) {
         InventoryHistoryExample inventoryHistoryExample=new InventoryHistoryExample();
         InventoryHistoryExample.Criteria criteria=inventoryHistoryExample.createCriteria();
-        criteria.andInventoryUserEqualTo(inventoryHistory.getInventoryUser());
+        if(inventoryHistory.getInventoryUser()!= null){
+            criteria.andInventoryUserEqualTo(inventoryHistory.getInventoryUser());
+        }
         criteria.andDeptnameEqualTo(inventoryHistory.getDeptname());
         criteria.andInventorystateEqualTo(inventoryHistory.getInventorystate());
         List<InventoryHistory> result=inventoryHistoryMapper.selectByExample(inventoryHistoryExample);

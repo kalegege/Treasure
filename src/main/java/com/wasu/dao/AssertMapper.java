@@ -1,6 +1,7 @@
 package com.wasu.dao;
 
 import com.wasu.model.Assert;
+import com.wasu.model.AssertAdd;
 import com.wasu.model.AssertExample;
 import java.util.List;
 import org.apache.ibatis.annotations.Param;
@@ -28,5 +29,5 @@ public interface AssertMapper {
 
     int updateByPrimaryKey(Assert record);
 
-    List<Assert> getAssertbyCode(String workcode);
+    List<AssertAdd> getAssertbyCode(String workcode);
 }
