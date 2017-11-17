@@ -241,6 +241,7 @@ public class DingdingLiginController {
         List<Assert> result=assertService.getByExample(a);
         if(result.size()>0){
             m.put("item",result.get(0));
+            System.out.println("send:"+result.get(0).toString());
             isSuccess="1";
         }
         m.put("isSuccess",isSuccess);

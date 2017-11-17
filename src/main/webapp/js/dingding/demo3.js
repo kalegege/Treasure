@@ -40,7 +40,8 @@ dd.ready(function() {
                         url : '/treasure/dingdinglogin/assertInfo?code=' + code,
                         type : 'GET',
                         contentType:"application/x-www-form-urlencoded;charset=utf-8",
-                        success : function(data, status, xhr) {
+						dataType:"json",
+                        success : function(data) {
                             // alert(data);
                             var info = JSON.parse(data);
                             var message,state,pId,pName;
