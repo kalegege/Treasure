@@ -40,7 +40,7 @@ public class SendHelper {
                     link.put("messageUrl","http://125.210.115.11:8082/treasure");
                     link.put("title","盘点系统提醒");
                     link.put("text","你有新的盘点任务！"+formatter.format(new Date()));
-                    link.put("picUrl","@lALOACZwe2Rk");
+                    link.put("picUrl","@lALPBY0V4rPfxTggIA");
                     data.put("link",link);
                     data.put("msgtype","link");
                     break;

@@ -13,11 +13,22 @@
 <head>
     <meta charset="utf-8">
     <title>首页</title>
+    <script type="text/javascript">
+        var agentid='${conf.agentid}';
+        var corpId='${conf.corpId}';
+        var timeStamp='${conf.timeStamp}';
+        var nonceStr='${conf.nonceStr}';
+        var signature='${conf.signature}';
+        <%--var url_db='${url_db}';--%>
+    </script>
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/app.css" type="text/css"/>
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/mui.min.css" type="text/css"/>
+    <%--<script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-2.0.3.min.js"></script>--%>
+    <script type="text/javascript" src="${pageContext.request.contextPath}/js/dingding/zepto.min.js"></script>
+    <script type="text/javascript" src="${pageContext.request.contextPath}/js/dingding/dingtalk.js"></script>
+    <script type="text/javascript" src="${pageContext.request.contextPath}/js/dingding/demo3.js"></script>
     <script type="text/javascript" src="${pageContext.request.contextPath}/js/my.js"></script>
     <script type="text/javascript" src="${pageContext.request.contextPath}/js/mui.min.js"></script>
-    <script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-2.0.3.min.js"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black">

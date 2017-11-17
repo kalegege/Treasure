@@ -44,6 +44,10 @@ public class DingdingLiginController {
     public String test(Model model,HttpServletRequest request, HttpServletResponse response){
         String userid = request.getParameter("userid");
         model.addAttribute("userid",userid);
+
+        String _config=AuthHelper.getConfig(request);
+        model.addAttribute("conf",JSON.parseObject(_config));
+
         //需要传递自己的资产，待处理数据，数量
         if(userid!=null){
 //            model.addAttribute("userid",userid);
@@ -222,6 +226,24 @@ public class DingdingLiginController {
 //
 //        String param="oaId="+user.getJobnumber();
 //        System.out.print(param);
+        return JSON.toJSONString(m);
+    }
+
+    @RequestMapping("assertInfo")
+    @ResponseBody
+    public String assertInfo(HttpServletRequest request,HttpServletResponse response){
+        String code = request.getParameter("code");
+        code="03.02.00940";
+        Map<String,Object> m=new HashMap<>();
+        String isSuccess="0";
+        Assert a =new Assert();
+        a.setAssetcode(code);
+        List<Assert> result=assertService.getByExample(a);
+        if(result.size()>0){
+            m.put("item",result.get(0));
+            isSuccess="1";
+        }
+        m.put("isSuccess",isSuccess);
         return JSON.toJSONString(m);
     }
 }
