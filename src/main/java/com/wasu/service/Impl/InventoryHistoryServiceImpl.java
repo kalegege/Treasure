@@ -36,4 +36,9 @@ public class InventoryHistoryServiceImpl implements InventoryHistoryService {
     public int update(InventoryHistory inventoryHistory) {
         return inventoryHistoryMapper.updateByPrimaryKeySelective(inventoryHistory);
     }
+
+    @Override
+    public InventoryHistory getById(Long id) {
+        return inventoryHistoryMapper.selectByPrimaryKey(id);
+    }
 }

@@ -150,7 +150,7 @@ function click_dept() {
         limitTips:"请指定一个人", //超过人数限制的提示语可以用这个字段自定义
         isNeedSearch:true, // 是否需要搜索功能
         onSuccess: function(data) {
-            alert(data);
+
         //onSuccess将在选人结束，点击确定按钮的时候被回调
         /* data结构
          [{
@@ -163,5 +163,49 @@ function click_dept() {
          */
     },
     onFail : function(err) {}
+});
+}
+
+function click_dept1() {
+    var ids=$('#members').val();
+    var users=ids.substring(1,ids.length-2).split(", ");
+    dd.biz.customContact.choose({
+        title: '请选择盘点人员', //标题
+        users: users,//一组员工userid
+        corpId: 'ding00fa2f34238dfc1d',//加密的企业 ID，
+        isShowCompanyName: true,   //true|false，默认为 false
+        onSuccess: function(data) {
+            var userid=data[0].emplId;
+            // alert(userid);
+            //获取免登录授权码
+            dd.runtime.permission.requestOperateAuthCode({
+                corpId: "ding00fa2f34238dfc1d",
+                agentId:"134027113",
+                onSuccess: function(result) {
+                    // alert(result.code);
+                    window.location.href="/treasure/dingdinglogin/send?code="+result.code+"&destid="+userid+"&id="+$('#id').val()+"&userid="+$('#userid').val();
+                    /*{
+                        code: 'hYLK98jkf0m' //string authCode
+                    }*/
+                },
+                onFail : function(err) {
+                    alert("error:"+err);
+                }
+
+            });
+        /* data结构
+          [{
+            "name": "张三", //姓名
+            "avatar": "http://g.alicdn.com/avatar/zhangsan.png" //头像图片url，可能为空
+            "emplId": '0573', //userid，[<font color=red>获取成员详情接口</font>](https://open-doc.dingtalk.com/docs/doc.htm?spm=a219a.7629140.0.0.DHPTF8&treeId=385&articleId=106816&docType=1#s1)
+
+           },
+           ...
+          ]
+        */
+    },
+    onFail : function(err) {
+            alert("cuowu:"+err);
+    }
 });
 }

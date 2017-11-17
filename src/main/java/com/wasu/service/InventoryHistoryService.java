@@ -7,4 +7,5 @@ import java.util.List;
 public interface InventoryHistoryService {
     List<InventoryHistory> getByExample(InventoryHistory inventoryHistory);
     int update(InventoryHistory inventoryHistory);
+    InventoryHistory getById(Long id);
 }

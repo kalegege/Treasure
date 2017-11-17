@@ -1,9 +1,9 @@
 package com.wasu.controller;
 
 import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONObject;
 import com.dingtalk.open.client.api.model.corp.CorpUserDetail;
-import com.wasu.dingding.AuthHelper;
-import com.wasu.dingding.UserHelper;
+import com.wasu.dingding.*;
 import com.wasu.model.Assert;
 import com.wasu.model.AssertAdd;
 import com.wasu.model.InventoryHistory;
@@ -11,6 +11,7 @@ import com.wasu.model.OaCompanyUser;
 import com.wasu.service.AssertService;
 import com.wasu.service.InventoryHistoryService;
 import com.wasu.service.OaCompanyUserService;
+import com.wasu.utils.HttpHelper;
 import org.apache.log4j.Logger;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -46,21 +47,28 @@ public class DingdingLiginController {
         //需要传递自己的资产，待处理数据，数量
         if(userid!=null){
 //            model.addAttribute("userid",userid);
+            //查询是不是管理员
+            OaCompanyUser oaCompanyUser=new OaCompanyUser();
+            oaCompanyUser.setWorkcode(userid);
+            List<OaCompanyUser> member=oaCompanyUserService.getItemByExample(oaCompanyUser);
+            model.addAttribute("manager",member.get(0).getManager());
+
+            //查询个人资产
             List<AssertAdd> result=assertService.getByWorkCode(userid);
-            model.addAttribute("manager",result.get(0).getManager());
             InventoryHistory inventoryHistory=new InventoryHistory();
-            inventoryHistory.setDeptname(result.get(0).getDeptname());
+            inventoryHistory.setDeptname(member.get(0).getSupname());
             inventoryHistory.setInventorystate(-1L);
-            if(result.get(0).getManager().equals("1")){
+            if(member.get(0).getManager().equals("1")){
                 //管理员
+                //查询部门资产
                 List<InventoryHistory> historys2=inventoryHistoryService.getByExample(inventoryHistory);
                 if(!historys2.isEmpty()){
                     model.addAttribute("historys2",historys2);
                     model.addAttribute("hsize2",historys2.size());
                 }
             }
-            inventoryHistory.setInventoryUser(result.get(0).getPlace());
-
+            inventoryHistory.setInventoryUser(member.get(0).getLastname());
+            //查询需要盘点资产
             List<InventoryHistory> historys=inventoryHistoryService.getByExample(inventoryHistory);
             if(!result.isEmpty()){
                 model.addAttribute("items",result);
@@ -84,10 +92,14 @@ public class DingdingLiginController {
         if(p == 2){
             OaCompanyUser oaCompanyUser=new OaCompanyUser();
             oaCompanyUser.setWorkcode(userid);
-            List<OaCompanyUser> result=oaCompanyUserService.getItemByExample(oaCompanyUser);
+            List<OaCompanyUser> res=oaCompanyUserService.getItemByExample(oaCompanyUser);
+
+            OaCompanyUser oaCompanyUser2=new OaCompanyUser();
+            oaCompanyUser2.setSupname(res.get(0).getSupname());
+            List<OaCompanyUser> result=oaCompanyUserService.getItemByExample(oaCompanyUser2);
             List<String> ls=new ArrayList<>();
             for(OaCompanyUser item:result){
-                ls.add(item.getWorkcode());
+                ls.add(item.getWorkcode().trim());
             }
             model.addAttribute("members",ls);
         }
@@ -98,7 +110,6 @@ public class DingdingLiginController {
 
         String _config=AuthHelper.getConfig(request);
         model.addAttribute("conf",JSON.parseObject(_config));
-//        model.addAttribute("assetcode",assetcode);
 
         if(assetcode!=null){
             Assert a=new Assert();
@@ -147,26 +158,37 @@ public class DingdingLiginController {
         int result_b=inventoryHistoryService.update(b);
         System.out.println("成功更新inventoryhistory表:"+result_b+"条数据,id="+b.getId());
 
-        if(userid!=null){
-//            model.addAttribute("userid",userid);
-            List<AssertAdd> result=assertService.getByWorkCode(userid);
-            InventoryHistory inventoryHistory=new InventoryHistory();
-            inventoryHistory.setDeptname(result.get(0).getDeptname());
-            inventoryHistory.setInventoryUser(result.get(0).getPlace());
-            inventoryHistory.setInventorystate(-1L);
-
-            List<InventoryHistory> historys=inventoryHistoryService.getByExample(inventoryHistory);
-            if(!result.isEmpty()){
-                model.addAttribute("items",result);
-            }
-            if(!historys.isEmpty()){
-                model.addAttribute("historys",historys);
-                model.addAttribute("hsize",historys.size());
-            }
-        }
-        return "test3";
+        return "redirect:/dingdinglogin/test?userid="+userid;
     }
 
+    @RequestMapping("send")
+    public String send(HttpServletRequest request, HttpServletResponse response){
+        String code=request.getParameter("code");
+        String id=request.getParameter("id");
+        String userid=request.getParameter("userid");
+        String destid=request.getParameter("destid");
+
+        OaCompanyUser oaCompanyUser=new OaCompanyUser();
+        oaCompanyUser.setWorkcode(destid);
+        List<OaCompanyUser> member=oaCompanyUserService.getItemByExample(oaCompanyUser);
+
+
+        InventoryHistory inventoryHistory=new InventoryHistory();
+        inventoryHistory.setId(Long.parseLong(id));
+        inventoryHistory.setInventoryUser(member.get(0).getLastname());
+        int num=inventoryHistoryService.update(inventoryHistory);
+
+        InventoryHistory i= inventoryHistoryService.getById(Long.parseLong(id));
+        Assert a=new Assert();
+        a.setAssetcode(i.getAssetcode());
+        a.setInventoryUser(member.get(0).getLastname());
+        int num2=assertService.update(a);
+
+        if((num >0)&&(num2>0)){
+            SendHelper.send(destid,code,MSGTYPE.LINK);
+        }
+        return "redirect:/dingdinglogin/test?userid="+userid;
+    }
 
     @RequestMapping("userInfo")
     @ResponseBody

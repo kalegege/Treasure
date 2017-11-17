@@ -36,9 +36,9 @@ dd.ready(function() {
 					var user=JSON.parse(info.user);
 					var url;
 					if(info.isSuccess == '1'){
-                        window.location = "/treasure/dingdinglogin/test?userid="+user.userid;
+                        window.location.href = "/treasure/dingdinglogin/test?userid="+user.userid;
 					}else{
-                        window.location = "/treasure/html/error/error.jsp";
+                        window.location.href = "/treasure/html/error/error.jsp";
 					}
 					// dd.biz.util.openLink({
 					// 	url: url,//要打开链接的地址

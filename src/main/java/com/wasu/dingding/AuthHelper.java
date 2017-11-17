@@ -102,7 +102,7 @@ public class AuthHelper {
             ticket = AuthHelper.getJsapiTicket(accessToken);
             System.out.println("signedUrl:"+signedUrl);
             signature = AuthHelper.sign(ticket, nonceStr, timeStamp, signedUrl);
-            agentid = "134027113";
+            agentid = Env.AGENT_ID;
 
         } catch (OApiException e) {
             e.printStackTrace();

@@ -24,7 +24,7 @@
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/mui.min.css" type="text/css"/>
     <%--<script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-2.0.3.min.js"></script>--%>
     <script type="text/javascript" src="${pageContext.request.contextPath}/js/dingding/zepto.min.js"></script>
-    <script type="text/javascript" src="${pageContext.request.contextPath}/js/dingding/dingtalk.js"></script>
+    <script type="text/javascript" src="https://g.alicdn.com/dingding/open-develop/1.9.0/dingtalk.js"></script>
     <script type="text/javascript" src="${pageContext.request.contextPath}/js/dingding/demo2.js"></script>
     <script type="text/javascript" src="${pageContext.request.contextPath}/js/my.js"></script>
     <script type="text/javascript" src="${pageContext.request.contextPath}/js/mui.min.js"></script>
@@ -41,6 +41,7 @@
     <input type="hidden" value="${a.assetcode}" id="assetcode"/>
     <input type="hidden" value="${userid}" id="userid"/>
     <input type="hidden" value="${id}" id="id"/>
+    <input type="hidden" value="${members}" id="members"/>
 </div>
     <ul class="mui-table-view">
         <li class="mui-table-view-cell">资产编号:${a.assetcode}</li>
@@ -81,7 +82,7 @@
     });
     $('#choose').click(function(){
 //        alert("switch page");
-        click_dept();
+        click_dept1();
     });
 </script>
 

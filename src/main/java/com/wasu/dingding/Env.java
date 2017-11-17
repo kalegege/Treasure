@@ -12,6 +12,7 @@ public class Env {
     public static final String CORP_ID = "ding00fa2f34238dfc1d";
     public static final String CORP_SECRET = "BsQMnywGBAjMFQoYcVs0iJRXdK-KncQ-XupwHRsZezajKyX5Uc1Y1juXbpQ9cAGF";
     public static final String SSO_Secret = "";
+    public static final String AGENT_ID="134027113";
 
     /**
      * DING API地址

@@ -22,7 +22,12 @@ public class OaCompanyUserServiceImpl implements OaCompanyUserService{
     public List<OaCompanyUser> getItemByExample(OaCompanyUser oaCompanyUser) {
         OaCompanyUserExample oaCompanyUserExample=new OaCompanyUserExample();
         OaCompanyUserExample.Criteria criteria=oaCompanyUserExample.createCriteria();
-        criteria.andWorkcodeEqualTo(oaCompanyUser.getWorkcode());
+        if(oaCompanyUser.getWorkcode()!=null){
+            criteria.andWorkcodeEqualTo(oaCompanyUser.getWorkcode());
+        }
+        if(oaCompanyUser.getSupname()!=null){
+            criteria.andSupnameEqualTo(oaCompanyUser.getSupname());
+        }
         return oaCompanyUserMapper.selectByExample(oaCompanyUserExample);
     }
 }
