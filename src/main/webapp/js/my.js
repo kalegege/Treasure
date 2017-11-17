@@ -209,3 +209,17 @@ function click_dept1() {
     }
 });
 }
+
+function test() {
+    $.ajax({
+        url : '/treasure/dingdinglogin/assertInfo?code=1',
+        type : 'GET',
+        contentType:"application/x-www-form-urlencoded;charset=utf-8",
+        success : function(data) {
+            alert(data);
+        },
+        error : function(xhr, errorType, error) {
+            alert(errorType + ', ' + error);
+        }
+    });
+}

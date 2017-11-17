@@ -50,7 +50,6 @@ public class DingdingLiginController {
 
         //需要传递自己的资产，待处理数据，数量
         if(userid!=null){
-//            model.addAttribute("userid",userid);
             //查询是不是管理员
             OaCompanyUser oaCompanyUser=new OaCompanyUser();
             oaCompanyUser.setWorkcode(userid);
@@ -229,7 +228,7 @@ public class DingdingLiginController {
         return JSON.toJSONString(m);
     }
 
-    @RequestMapping("assertInfo")
+    @RequestMapping(value ="assertInfo",produces="application/json;charset=UTF-8")
     @ResponseBody
     public String assertInfo(HttpServletRequest request,HttpServletResponse response){
         String code = request.getParameter("code");
@@ -240,7 +239,7 @@ public class DingdingLiginController {
         a.setAssetcode(code);
         List<Assert> result=assertService.getByExample(a);
         if(result.size()>0){
-            m.put("item",result.get(0));
+            m.put("item",JSON.toJSONString(result.get(0)));
             System.out.println("send:"+result.get(0).toString());
             isSuccess="1";
         }
