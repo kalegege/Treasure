@@ -45,7 +45,11 @@ dd.ready(function() {
                             var info = JSON.parse(data);
                             var message,state,pId,pName;
                             if(info.isSuccess == '1'){
-                                var item=info.item;
+                                var item=JSON.parse(info.item);
+                                if(item == null){
+                                    alert("查无此资产!");
+                                    return false;
+                                }
                                 if(item.state == 1){
                                     state="使用中";
                                 }else if(item.state == 2){

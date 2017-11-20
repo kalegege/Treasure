@@ -62,9 +62,9 @@
         <li class="mui-table-view-cell">
             <p id="ll">经纬度</p>
         </li>
-        <li class="mui-table-view-cell">
-            <p>大致位置：白马湖5楼</p>
-        </li>
+        <%--<li class="mui-table-view-cell">--%>
+            <%--<p>大致位置：白马湖5楼</p>--%>
+        <%--</li>--%>
         <li class="mui-table-view-cell">
             <div class="mui-input-row" style="margin: 10px 5px;">
                 <textarea id="textarea" rows="5" placeholder="盘点备注:"></textarea>

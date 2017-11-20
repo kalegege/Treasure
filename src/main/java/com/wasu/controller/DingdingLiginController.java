@@ -232,7 +232,7 @@ public class DingdingLiginController {
     @ResponseBody
     public String assertInfo(HttpServletRequest request,HttpServletResponse response){
         String code = request.getParameter("code");
-        code="03.02.00940";
+//        code="03.02.00940";
         Map<String,Object> m=new HashMap<>();
         String isSuccess="0";
         Assert a =new Assert();
