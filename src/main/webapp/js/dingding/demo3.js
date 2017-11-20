@@ -85,13 +85,13 @@ dd.ready(function() {
 
                         },
                         error : function(xhr, errorType, error) {
-                            alert(errorType + ', ' + error);
+                            alert("获取资产信息出错");
                         }
                     });
 
                 },
                 onFail : function(err) {
-                    alert("扫码失败"+err);
+                    alert("扫码失败");
                 }
             })
             //如果control为true，则onSuccess将在发生按钮点击事件被回调

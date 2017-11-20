@@ -23,7 +23,7 @@ public class InventoryHistoryServiceImpl implements InventoryHistoryService {
         InventoryHistoryExample inventoryHistoryExample=new InventoryHistoryExample();
         InventoryHistoryExample.Criteria criteria=inventoryHistoryExample.createCriteria();
         if(inventoryHistory.getInventoryUser()!= null){
-            criteria.andInventoryUserEqualTo(inventoryHistory.getInventoryUser());
+            criteria.andInventoryUserLike(inventoryHistory.getInventoryUser());
         }
         criteria.andDeptnameEqualTo(inventoryHistory.getDeptname());
         criteria.andInventorystateEqualTo(inventoryHistory.getInventorystate());

@@ -52,7 +52,9 @@
             </button>
         </li>
         <li class="mui-table-view-cell">
-            <div id="imageBox" style="height: 43px;"></div>
+            <div id="imageBox" style="height: 43px;">
+                <img class="mui-media-object" id="assertImage" style="display: none;" src="${pageContext.request.contextPath}/image/avatar.png">
+            </div>
             <button type="button" id="pai" class="mui-btn mui-btn-primary">
                 拍照
             </button>
@@ -85,12 +87,13 @@
         var la=ll.split(",")[0];
         var lo=ll.split(",")[1];
         var mess=$('#textarea').val();
-        var iBox=$('#imageBox').html();
-        if(iBox == null || iBox.length  == 0){
+        var image=$('#assertImage')[0].src;
+        var iList=image.split("/");
+
+        if(iList[iList.length-1] == "avatar.png"){
             alert("请上传资产照片!");
             return false;
         }
-        var image=$('#assertImage')[0].src;
 
         if((saoma != null)&&(saoma != assetcode)){
             alert("扫码结果和资产编码不一致，请重新扫码！");
