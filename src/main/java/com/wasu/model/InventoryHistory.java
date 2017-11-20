@@ -34,9 +34,9 @@ public class InventoryHistory {
     public InventoryHistory() {
     }
 
-    public InventoryHistory(Long id, String address, Date inventorydate, Double latitude, Double longitude, String photo) {
+    public InventoryHistory(Long id, String inventoryRemark, Date inventorydate, Double latitude, Double longitude, String photo) {
         this.id = id;
-        this.address = address;
+        this.inventoryRemark = inventoryRemark;
         this.inventorydate = inventorydate;
         this.latitude = latitude;
         this.longitude = longitude;

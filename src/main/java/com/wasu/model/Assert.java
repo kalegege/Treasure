@@ -62,9 +62,9 @@ public class Assert {
     public Assert() {
     }
 
-    public Assert(String assetcode, String address, Date inventorydate, Double latitude, Double longitude, String photo) {
+    public Assert(String assetcode, String inventoryRemark, Date inventorydate, Double latitude, Double longitude, String photo) {
         this.assetcode = assetcode;
-        this.address = address;
+        this.inventoryRemark = inventoryRemark;
         this.inventorydate = inventorydate;
         this.latitude = latitude;
         this.longitude = longitude;

@@ -43,7 +43,7 @@ dd.ready(function() {
                         success : function(data) {
                             // alert(data);
                             var info = JSON.parse(data);
-                            var message,state,pId,pName;
+                            var message,state,pId,pName,deptname,place;
                             if(info.isSuccess == '1'){
                                 var item=JSON.parse(info.item);
                                 if(item == null){
@@ -65,11 +65,13 @@ dd.ready(function() {
                                 }
 								pId=item.projectid == undefined?"":item.projectid;
                                 pName=item.projectname == undefined?"":item.projectname;
+                                deptname=item.deptname == undefined?"":item.deptname;
+                                place=item.place == undefined?"":item.place;
                                 message="资产编号:" + item.assetcode +
                                     "\n资产名称:" + item.name +
                                     "\n状态:" + state +
-                                    "\n部门:" + item.deptname +
-                                    "\n归属人:" + item.place +
+                                    "\n部门:" + deptname +
+                                    "\n归属人:" + place +
                                     "\n项目编号:" + pId +
                                     "\n项目名称:" +pName;
                             }else{
