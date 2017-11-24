@@ -22,6 +22,21 @@ dd.config({
 
 dd.ready(function() {
 
+    dd.biz.navigation.setRight({
+        show: false,//控制按钮显示， true 显示， false 隐藏， 默认true
+        control: true,//是否控制点击事件，true 控制，false 不控制， 默认false
+        text: '',//控制显示文本，空字符串表示显示默认文本
+        onSuccess : function(result) {
+            //如果control为true，则onSuccess将在发生按钮点击事件被回调
+            /*
+            {}
+            */
+        },
+        onFail : function(err) {
+            alert("error"+err);
+        }
+    });
+
     dd.device.geolocation.get({
         targetAccuracy : 200,
         coordinate : 1,

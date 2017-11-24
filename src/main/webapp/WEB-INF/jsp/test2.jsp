@@ -24,7 +24,7 @@
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/mui.min.css" type="text/css"/>
     <%--<script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-2.0.3.min.js"></script>--%>
     <script type="text/javascript" src="${pageContext.request.contextPath}/js/dingding/zepto.min.js"></script>
-    <script type="text/javascript" src="${pageContext.request.contextPath}/js/dingding/dingtalk.js"></script>
+    <script type="text/javascript" src="${pageContext.request.contextPath}/js/dingding/dingtalk1.js"></script>
     <script type="text/javascript" src="${pageContext.request.contextPath}/js/dingding/demo1.js"></script>
     <script type="text/javascript" src="${pageContext.request.contextPath}/js/my.js"></script>
     <script type="text/javascript" src="${pageContext.request.contextPath}/js/mui.min.js"></script>
@@ -235,7 +235,7 @@
             <div id="imageBox" style="height: 43px;">
                 <div class="mui-content-padded">
                     <p>
-                        <img class="mui-media-object" id="assertImage" style="display: none;" src="${pageContext.request.contextPath}/image/avatar.png" data-preview-src="" data-preview-group="1">
+                        <img class="mui-media-object" id="assertImage" style="display:none;" src="${pageContext.request.contextPath}/image/avatar.png" data-preview-src="" data-preview-group="1">
                     </p>
                 </div>
             </div>

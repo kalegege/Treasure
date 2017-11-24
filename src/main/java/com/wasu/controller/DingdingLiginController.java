@@ -90,6 +90,10 @@ public class DingdingLiginController {
         String userid = request.getParameter("userid");
         String id = request.getParameter("id");
         String pandian=request.getParameter("pandian");
+
+        String _config=AuthHelper.getConfig(request);
+        model.addAttribute("conf",JSON.parseObject(_config));
+
         int p=pandian!=null?Integer.parseInt(pandian):0;
         model.addAttribute("pandian",p);
         if(p == 2){
@@ -110,9 +114,6 @@ public class DingdingLiginController {
             model.addAttribute("id",id);
         }
         model.addAttribute("userid",userid);
-
-        String _config=AuthHelper.getConfig(request);
-        model.addAttribute("conf",JSON.parseObject(_config));
 
         if(assetcode!=null){
             Assert a=new Assert();

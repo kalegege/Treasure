@@ -24,7 +24,7 @@
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/mui.min.css" type="text/css"/>
     <%--<script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-2.0.3.min.js"></script>--%>
     <script type="text/javascript" src="${pageContext.request.contextPath}/js/dingding/zepto.min.js"></script>
-    <script type="text/javascript" src="https://g.alicdn.com/dingding/open-develop/1.9.0/dingtalk.js"></script>
+    <script type="text/javascript" src="${pageContext.request.contextPath}/js/dingding/dingtalk1.js"></script>
     <script type="text/javascript" src="${pageContext.request.contextPath}/js/dingding/demo2.js"></script>
     <script type="text/javascript" src="${pageContext.request.contextPath}/js/my.js"></script>
     <script type="text/javascript" src="${pageContext.request.contextPath}/js/mui.min.js"></script>
@@ -57,8 +57,8 @@
         <li class="mui-table-view-cell">项目编号:${a.projectid}</li>
         <li class="mui-table-view-cell">项目名称:${a.projectname}</li>
         <li class="mui-table-view-cell">资产备注:${a.remark}</li>
-        <%--<li class="mui-table-view-cell">详细存放地:${a.detailedlocation}</li>--%>
-        <%--<li class="mui-table-view-cell">最新盘点位置:${a.address}</li>--%>
+        <li class="mui-table-view-cell">详细存放地:${a.detailedlocation}</li>
+        <li class="mui-table-view-cell">最新盘点位置:${a.address}</li>
         <li class="mui-table-view-cell">最新盘点备注:${a.inventoryRemark}</li>
         <li class="mui-table-view-cell">盘点人:${a.inventoryUser}</li>
     </ul>

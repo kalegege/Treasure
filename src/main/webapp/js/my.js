@@ -35,6 +35,18 @@ function click_pai() {
     });
 }
 
+function jumpa(index) {
+    var ids="#a"+index;
+    window.location.href=$(ids).val();
+}
+function jumpb(id) {
+    var ids="#b"+id;
+    window.location.href=$(ids).val();
+}
+function jumpc(id) {
+    var ids="#c"+id;
+    window.location.href=$(ids).val();
+}
 function click_pai1(){
     dd.biz.util.uploadImage({
         compression:true,//(是否压缩，默认为true)

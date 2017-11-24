@@ -25,7 +25,7 @@
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/mui.min.css" type="text/css"/>
     <%--<script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-2.0.3.min.js"></script>--%>
     <script type="text/javascript" src="${pageContext.request.contextPath}/js/dingding/zepto.min.js"></script>
-    <script type="text/javascript" src="${pageContext.request.contextPath}/js/dingding/dingtalk.js"></script>
+    <script type="text/javascript" src="${pageContext.request.contextPath}/js/dingding/dingtalk1.js"></script>
     <script type="text/javascript" src="${pageContext.request.contextPath}/js/dingding/demo3.js"></script>
     <script type="text/javascript" src="${pageContext.request.contextPath}/js/my.js"></script>
     <script type="text/javascript" src="${pageContext.request.contextPath}/js/mui.min.js"></script>
@@ -59,8 +59,9 @@
     <div class="mui-content">
         <div id="tabbar" class="mui-control-content mui-active">
             <ul class="mui-table-view mui-table-view-striped mui-table-view-condensed">
-                <c:forEach items="${items}" var="a">
+                <c:forEach items="${items}" var="a" varStatus="status">
                 <li class="mui-table-view-cell">
+                    <input type="hidden" value="" id="a${status.index+1}"/>
                     <a href="${pageContext.request.contextPath}/dingdinglogin/test1?assetcode=${a.assetcode}&userid=${userid}">
                     <div class="mui-table">
                         <div class="mui-table-cell mui-col-xs-10">
