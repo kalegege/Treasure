@@ -189,6 +189,7 @@ function click_dept1() {
         isShowCompanyName: true,   //true|false，默认为 false
         onSuccess: function(data) {
             var userid=data[0].emplId;
+            var name=data[0].name;
             // alert(userid);
             //获取免登录授权码
             dd.runtime.permission.requestOperateAuthCode({
@@ -196,7 +197,7 @@ function click_dept1() {
                 agentId:"134027113",
                 onSuccess: function(result) {
                     // alert(result.code);
-                    var msg="确认？";
+                    var msg="确认指派给"+name+"?";
                     dd.device.notification.confirm({
                         message: msg,
                         title: "提示",
