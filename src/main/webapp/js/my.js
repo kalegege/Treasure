@@ -196,7 +196,26 @@ function click_dept1() {
                 agentId:"134027113",
                 onSuccess: function(result) {
                     // alert(result.code);
-                    window.location.href="/treasure/dingdinglogin/send?code="+result.code+"&destid="+userid+"&id="+$('#id').val()+"&userid="+$('#userid').val();
+                    var msg="确认？";
+                    dd.device.notification.confirm({
+                        message: msg,
+                        title: "提示",
+                        buttonLabels: ['是', '不是'],
+                        onSuccess : function(result) {
+                            //onSuccess将在点击button之后回调
+                            if(result.buttonIndex == 0){
+                                window.location.href="/treasure/dingdinglogin/send?code="+result.code+"&destid="+userid+"&id="+$('#id').val()+"&userid="+$('#userid').val();
+                            }
+                            /*
+                            {
+                                buttonIndex: 0 //被点击按钮的索引值，Number类型，从0开始
+                            }
+                            */
+                        },
+                        onFail : function(err) {}
+                    });
+
+
                     /*{
                         code: 'hYLK98jkf0m' //string authCode
                     }*/
