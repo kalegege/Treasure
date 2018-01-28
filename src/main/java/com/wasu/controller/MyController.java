@@ -6,8 +6,10 @@ import org.apache.log4j.Logger;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
 /**
@@ -31,5 +33,12 @@ public class MyController {
 //        callService.findCall();
 //		System.out.println("message"+responses.getMessage()+"id"+responses.getId());
         return "test";
+    }
+
+    @RequestMapping("startAndComplete")
+    @ResponseBody
+    public String startAndComplete(HttpServletRequest request){
+
+        return "ok";
     }
 }

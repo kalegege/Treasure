@@ -4,10 +4,14 @@
         "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
 
 <generatorConfiguration>
-    <classPathEntry location="D:/java/ext/ojdbc14.jar"/>
+    <!--<classPathEntry location="D:/java/ext/ojdbc14.jar"/>-->
     <context id="my" targetRuntime="MyBatis3">
+        <!--<commentGenerator>-->
+            <!--<property name="suppressDate" value="false"/>-->
+            <!--<property name="suppressAllComments" value="true"/>-->
+        <!--</commentGenerator>-->
+        <!--关闭注解信息 -->
         <commentGenerator>
-            <property name="suppressDate" value="false"/>
             <property name="suppressAllComments" value="true"/>
         </commentGenerator>
 
@@ -15,9 +19,12 @@
                         <!--connectionURL="jdbc:oracle:thin:@127.0.0.1:1521:ORCL" userId="system"-->
                         <!--password="123456"/>-->
 
-        <jdbcConnection driverClass="oracle.jdbc.driver.OracleDriver"
-                        connectionURL="jdbc:oracle:thin:@125.210.115.11:1521:oatest" userId="weigdzc"
-                        password="wasu#2017 "/>
+        <!--<jdbcConnection driverClass="oracle.jdbc.driver.OracleDriver"-->
+                        <!--connectionURL="jdbc:oracle:thin:@125.210.115.11:1521:oatest" userId="weigdzc"-->
+                        <!--password="wasu#2017 "/>-->
+        <jdbcConnection driverClass="com.mysql.jdbc.Driver"
+                        connectionURL="jdbc:mysql://192.168.1.109:3306/treasure" userId="root"
+                        password="123456 "/>
 
         <javaModelGenerator targetPackage="com.wasu.model"
                             targetProject="src/main/java">
@@ -43,7 +50,7 @@
         <!--<table tableName="asset" domainObjectName="Assert"></table>-->
         <!--<table tableName="inventory" domainObjectName="Inventory"></table>-->
         <!--<table tableName="inventory_history" domainObjectName="InventoryHistory"></table>-->
-        <table tableName="oa_companyuser" domainObjectName="OaCompanyUser"></table>
+        <table tableName="business_car" domainObjectName="BusinessCar"></table>
                <!--enableCountByExample="false" enableUpdateByExample="false"-->
                <!--enableDeleteByExample="false" enableSelectByExample="false"-->
                <!--selectByExampleQueryId="false">-->

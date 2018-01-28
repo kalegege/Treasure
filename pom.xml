@@ -182,6 +182,18 @@
             <artifactId>commons-dbcp</artifactId>
             <version>1.2.2</version>
         </dependency>
+        <!-- https://mvnrepository.com/artifact/org.activiti/activiti-engine -->
+        <dependency>
+            <groupId>org.activiti</groupId>
+            <artifactId>activiti-engine</artifactId>
+            <version>5.17.0</version>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/org.activiti/activiti-spring -->
+        <dependency>
+            <groupId>org.activiti</groupId>
+            <artifactId>activiti-spring</artifactId>
+            <version>5.17.0</version>
+        </dependency>
 
         <!-- 上传组件包 -->
         <dependency>
@@ -328,6 +340,11 @@
                     <overwrite>true</overwrite>
                 </configuration>
                 <dependencies>
+                    <dependency>
+                        <groupId>mysql</groupId>
+                        <artifactId>mysql-connector-java</artifactId>
+                        <version>5.1.38</version>
+                    </dependency>
                     <!--<dependency>-->
                         <!--<groupId>com.wasu.ptyw</groupId>-->
                         <!--<artifactId>ojdbc</artifactId>-->
